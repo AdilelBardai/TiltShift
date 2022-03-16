@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background-color:#ffffff;
+    --hoofd-color: #4D80E2;
+    --secondary-color: aliceblue;
+
+    /* thema's colors */
+    --openbare-orde:#ACECA1;
+    --Financien:#867275;
+    --Verkeer:#B3679B;
+}
+
+body {
+    font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
+    min-height: 100vh;
+}  
+  
+.navigation-bar {
+    height: 70px;
+    width: 100%;
+    text-align:center;
+    background-color: var(--secondary-color);
+}
+
+.navigation-bar img{
+    float: left;
+    width: 250px;
+    padding: 20px 10px 10px 15px;
+}
+
+.navigation-bar ul {
+    padding: 0px 20px 0px 0px;
+    float: right;
+}
+
+.navigation-bar li {
+    display: inline;
+}
+
+.navigation-bar li a {
+    color: black;
+    font-size: 16px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 5px 15px;
+}
+
+header article {
+    padding: 20px;
+    background-color: var(--secondary-color);
+    height: 100px;
+}
+
+main section {
+    width: 95%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: baseline;
+}
+
+main section h2 a {
+    float: left;
+    padding: 20px 10px 10px 15px;
+}
+
+main section select {
+    padding: 0px 20px 0px 0px;
+    float: right;
+    margin-top: 20px;
+}
+
+main section select {
+    border-radius: 5px;
+    border: 2px solid var(--hoofd-color);
+    padding: 2px;
+}
+
+main section .list-option img {
+    width: 25px;
+    float: right;
+    filter: invert(48%) sepia(90%) saturate(2077%) hue-rotate(201deg) brightness(92%) contrast(93%);
+    margin-top: 20px;
+    margin-left: 17px;
+}
+
+main section .search img {
+    width: 17px;
+    float: right;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(242deg) brightness(105%) contrast(105%);
+}
+
+main section .search {
+    padding: 5px;
+    background-color: var(--hoofd-color);
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 17px;
+    margin-left: 17px;
+}
+
+main section button img {
+    filter: invert(100%) sepia(0%) saturate(1833%) hue-rotate(316deg) brightness(110%) contrast(100%);
+    margin: 0;
+}
+
+main section h2 a {
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+    
+    table td {
+        padding: 20px;
+        font-size: 14px;
+        width: 100px;
+    }
+
+    table, th, td {
+        text-align: center;
+    }
+
+    table td img {
+        width: 150px;
+    }
+    
+    table tr:nth-child(even) {
+        background-color: #f0f8ff;
+    }
+    
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        color: var(--hoofd-color);
+    }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: var(--hoofd-color);
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #f0f8ff;
+    border-radius: 5px;
+  }
+
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f8ff;
+    color: black;
+    text-align: center;
+    padding: 20px;
+ }
+
+
+/* @media only screen and (max-width: 600px) {
+
+    .navigation {
+        background-color: var(--secondary-color);
+        height: 150px;
+    }
+
+    .navigation .logo {
+        width: 250px;
+        padding: 10px 0px 0px 10px;
+    }
+
+    .navigation ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        padding: 10px;
+    }   
+
+    .navigation ul li {
+        padding: 10px;
+    }
+
+    h1 {
+        padding: 10px;
+    }
+
+}  */
+
+
+
+/*  het bolkjes lijst */
+main ul{
+    width: 100%;
+    padding-top: 1.5em;
+    padding-left: 11em;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+main ul li{
+    width: 23em;
+    display: block;
+    position: relative;
+}
+
+main ul li img{
+    width: 22em;
+    display: block;
+    height: 15em;
+    overflow: hidden;
+    border-radius: .8em;
+}
+
+main ul li div{
+    width: 18em;
+    height: 21em;
+    padding: 1em;
+    background-color: var(--background-color);
+    border-radius: .5em;
+    position: relative;
+    top: -5em;
+    left: 2em;
+}
+
+    .Openbareorde-box{
+        box-shadow: var(--openbare-orde) 0 2px 6px;
+    }
+
+    .Financien-box{
+        box-shadow: var(--Financien) 0 2px 6px;
+    }
+
+    .Verkeer-box{
+        box-shadow: var(--Verkeer) 0 2px 6px;
+    }
+
+main ul li a{
+    text-decoration: none;
+}
+
+main ul li div a h3{
+    color: #000000;
+    margin-bottom: 1em;
+    background-size: .9em;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+}
+
+    .Openbareorde{
+        background-image: url(images/icons/Openbareorde.icon.svg);
+    }
+
+    .Financien{
+        background-image: url(images/icons/Financien-icon.svg);
+    }
+
+    .Verkeer{
+        background-image: url(images/icons/Verkeer-icon.svg);
+    }
+
+main ul li div a h3::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .05em;
+    position: relative;
+    bottom: -.2em;
+    background-color: rgb(4, 5, 0);
+}
+
+main ul li div p{
+    line-height: 1.5em;
+}
+
+main ul li>a{
+    color: var(--hoofd-color);
+    position: relative;
+    bottom: 7em;
+    left: 3em;
+}
+
+main ul li>a:hover{
+    text-decoration: underline;
+}
