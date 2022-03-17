@@ -19,6 +19,8 @@
 body {
     font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
     min-height: 100vh;
+    background-image: linear-gradient(var(--background-color) 25em, var(--secondary-color) 20em);
+    background-size: 100% 40em;
 }  
   
 .navigation-bar {
@@ -31,7 +33,6 @@ body {
 .navigation-bar img{
     float: left;
     width: 250px;
-    /* padding: 20px 10px 10px 15px; */
     padding: 20px 10px 10px 66px;
 }
 
@@ -217,8 +218,6 @@ footer {
 
 
         /*  het bolkjes lijst */
-
-.bolkjeslijst{}
 
 main ul{
     width: 100%;
