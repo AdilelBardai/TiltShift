@@ -185,6 +185,24 @@ footer {
     padding: 20px;
  }
 
+.filterOption {
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+     width: 100%;
+     justify-content: center;
+ }
+
+ .filterOption a {
+    text-decoration: none;
+    background-color: #f0f8ff;
+    color: black;
+    opacity: 0.7;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 10px 15px 0px;
+ }
+
 
 /* @media only screen and (max-width: 600px) {
 
