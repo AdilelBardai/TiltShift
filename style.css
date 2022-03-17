@@ -21,7 +21,11 @@ body {
     min-height: 100vh;
     background-image: linear-gradient(var(--background-color) 25em, var(--secondary-color) 20em);
     background-size: 100% 40em;
-}  
+} 
+
+.lijst{
+    background-image: none;
+}
   
 .navigation-bar {
     height: 70px;
