@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+:root{
+    --background-color:#ffffff;
+    --hoofd-color: #4D80E2;
+    --secondary-color: aliceblue;
+    --grey-color: #676968;
+
+    /* thema's colors */
+    --openbare-orde:#ACECA1;
+    --Financien:#867275;
+    --Verkeer:#B3679B;
+}
+
 body {
     font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
     min-height: 100vh;
@@ -13,17 +25,18 @@ body {
     height: 70px;
     width: 100%;
     text-align:center;
-    background-color: aliceblue;
+    background-color: var(--secondary-color);
 }
 
 .navigation-bar img{
     float: left;
     width: 250px;
-    padding: 20px 10px 10px 15px;
+    /* padding: 20px 10px 10px 15px; */
+    padding: 20px 10px 10px 66px;
 }
 
 .navigation-bar ul {
-    padding: 0px 20px 0px 0px;
+    padding: 0px 41px 0px 0px;
     float: right;
 }
 
@@ -41,8 +54,8 @@ body {
 }
 
 header article {
-    padding: 20px;
-    background-color: aliceblue;
+    padding: 20px 70px;
+    background-color: var(--secondary-color);
     height: 100px;
 }
 
@@ -51,6 +64,7 @@ main section {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
+    align-items: baseline;
 }
 
 main section h2 a {
@@ -66,7 +80,7 @@ main section select {
 
 main section select {
     border-radius: 5px;
-    border: 2px solid #4d80e2;
+    border: 2px solid var(--hoofd-color);
     padding: 2px;
 }
 
@@ -79,14 +93,14 @@ main section .list-option img {
 }
 
 main section .search img {
-    width: 20px;
+    width: 17px;
     float: right;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(242deg) brightness(105%) contrast(105%);
 }
 
 main section .search {
     padding: 5px;
-    background-color: #4d80e2;
+    background-color: var(--hoofd-color);
     border: none;
     border-radius: 5px;
     float: right;
@@ -100,7 +114,7 @@ main section button img {
 }
 
 main section h2 a {
-    padding: 20px;
+    padding: 20px 70px;
     text-decoration: none;
     color: black;
 }
@@ -110,30 +124,30 @@ table {
     border-collapse: collapse;
     width: 100%;
   }
-  
-table td {
-    padding: 20px;
-    font-size: 14px;
-    width: 100px;
-}
+    
+    table td {
+        padding: 20px;
+        font-size: 14px;
+        width: 100px;
+    }
 
-table, th, td {
-    text-align: center;
-}
+    table, th, td {
+        text-align: center;
+    }
 
-table td img {
-    width: 150px;
-}
-  
-table tr:nth-child(even) {
-    background-color: #f0f8ff;
-}
-  
-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    color: #4d80e2;
-}
+    table td img {
+        width: 150px;
+    }
+    
+    table tr:nth-child(even) {
+        background-color: #f0f8ff;
+    }
+    
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        color: var(--hoofd-color);
+    }
 
 .pagination {
     display: flex;
@@ -150,7 +164,7 @@ table th {
   }
   
   .pagination a.active {
-    background-color: #4d80e2;
+    background-color: var(--hoofd-color);
     color: white;
     border-radius: 5px;
   }
@@ -174,7 +188,7 @@ footer {
 /* @media only screen and (max-width: 600px) {
 
     .navigation {
-        background-color: aliceblue;
+        background-color: var(--secondary-color);
         height: 150px;
     }
 
@@ -199,3 +213,127 @@ footer {
     }
 
 }  */
+
+
+
+        /*  het bolkjes lijst */
+
+.bolkjeslijst{}
+
+main ul{
+    width: 100%;
+    padding-top: 1.5em;
+    padding-left: 11em;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+main ul li{
+    width: 23em;
+    display: block;
+    position: relative;
+}
+
+main ul li img{
+    width: 22em;
+    display: block;
+    height: 15em;
+    overflow: hidden;
+    border-radius: .8em;
+}
+
+main ul li div{
+    width: 18em;
+    height: 21em;
+    padding: 1em;
+    background-color: var(--background-color);
+    border-radius: .5em;
+    position: relative;
+    top: -5em;
+    left: 2em;
+}
+
+    .Openbareorde-box{
+        box-shadow: var(--openbare-orde) 0 2px 6px;
+    }
+
+    .Financien-box{
+        box-shadow: var(--Financien) 0 2px 6px;
+    }
+
+    .Verkeer-box{
+        box-shadow: var(--Verkeer) 0 2px 6px;
+    }
+
+main ul li a{
+    text-decoration: none;
+}
+
+main ul li div a h3{
+    color: #000000;
+    margin-bottom: 1em;
+    background-size: .9em;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+}
+
+    .Openbareorde{
+        background-image: url(images/icons/Openbareorde.icon.svg);
+    }
+
+    .Financien{
+        background-image: url(images/icons/Financien-icon.svg);
+    }
+
+    .Verkeer{
+        background-image: url(images/icons/Verkeer-icon.svg);
+    }
+
+main ul li div a h3::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .05em;
+    position: relative;
+    bottom: -.2em;
+    background-color: rgb(4, 5, 0);
+}
+
+main ul li div p{
+    line-height: 1.5em;
+}
+
+main ul li>a{
+    color: var(--hoofd-color);
+    position: relative;
+    bottom: 7em;
+    left: 3em;
+}
+
+main ul li>a:hover{
+    text-decoration: underline;
+}
+
+.chatbot{
+    background-color: transparent;
+    border: none;
+    transform: scale(.6);
+    transition: .5s;
+
+
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    cursor: pointer;
+}
+
+    .chatbot:hover{
+        transform: scale(.7);
+    }
+
+    .chatbot.open{
+        transform: scale(.5);
+    }
