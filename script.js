@@ -1,9 +1,20 @@
-function myFunction() {
-    var show = document.getElementsByClassName("filterOption");
+var filterknop = document.querySelector(".filterknop");
+var filtermenu = document.querySelector(".filterOption");
 
-    if (show.style.display === "none") {
-    show.style.display = "block";
-    } else {
-    show.style.display = "none";
-    }
+function openfiltermenu(){
+    console.log("click");
+    filtermenu.classList.toggle("openfilter");
+    filterknop.classList.toggle("closemenu");
 }
+
+filterknop.addEventListener("click", openfiltermenu);
+
+var searchKnop = document.querySelector("main section div button");
+var searchInput = document.querySelector("main section input");
+
+function opensearcharea(){
+    console.log("click search");
+    searchInput.classList.toggle("opensearch");
+}
+
+searchKnop.addEventListener("click", opensearcharea);
