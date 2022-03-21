@@ -6,14 +6,29 @@
 
 :root{
     --background-color:#ffffff;
+    --font-color: #000000;
     --hoofd-color: #4D80E2;
     --secondary-color: aliceblue;
     --grey-color: #676968;
+    --buttons-shadow: #e2e2e2;
 
     /* thema's colors */
-    --openbare-orde:#ACECA1;
-    --Financien:#867275;
-    --Verkeer:#B3679B;
+    --thema-Natuur:#DCE6BB;
+    --thema-Financien:#867275;
+    --thema-Integratie:#B5C5DF;
+    --thema-openbare-orde:#ACECA1;
+    --thema-Sociale-zekerheid:#688B58;
+    --thema-Gezondheid:#8B4D57;
+    --thema-Cultuur:#FBBE96;
+    --thema-Huisvesting:#F5A26B;
+    --thema-Bestuur:#4C6663;
+    --thema-Recht:#49101C;
+    --thema-Verkeer:#B3679B;
+    --thema-Economie:#8B4D57;
+    --thema-Landbouw:#76881C;
+    --thema-Onderwijs:#FDB07E;
+    --thema-Infrastructuur:#D7907B;
+    --thema-Werk:#6C4A5E;
 }
 
 body {
@@ -34,14 +49,14 @@ body {
     background-color: var(--secondary-color);
 }
 
-.navigation-bar img{
+.navigation-bar>img{
     float: left;
     width: 250px;
     padding: 20px 10px 10px 66px;
 }
 
 .navigation-bar ul {
-    padding: 0px 41px 0px 0px;
+    padding: 0px 70px 0px 0px;
     float: right;
 }
 
@@ -50,12 +65,30 @@ body {
 }
 
 .navigation-bar li a {
-    color: black;
+    color: var(--font-color);
     font-size: 16px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-decoration: none;
     line-height: 70px;
     padding: 5px 15px;
+}
+
+.navigation-bar ul li:nth-of-type(2) a{
+    font-weight: bold;
+    color: var(--hoofd-color);
+}
+
+.navigation-bar ul li button{
+    border: none;
+    background-color: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+header nav ul li button img{
+    width: 2em;
+    height: 1.2em;
 }
 
 header article {
@@ -159,10 +192,11 @@ table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 2em;
   }
     
     table td {
-        padding: 20px;
+        padding: 20px 0;
         font-size: 14px;
         width: 100px;
     }
@@ -176,7 +210,7 @@ table {
     }
     
     table tr:nth-child(even) {
-        background-color: #f0f8ff;
+        background-color: var(--secondary-color);
     }
     
     table th {
@@ -193,7 +227,7 @@ table {
 }
   
   .pagination a {
-    color: black;
+    color: var(--font-color);
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -206,7 +240,7 @@ table {
   }
   
   .pagination a:hover:not(.active) {
-    background-color: #f0f8ff;
+    background-color: var(--secondary-color);
     border-radius: 5px;
   }
 
@@ -214,51 +248,114 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f0f8ff;
-    color: black;
+    background-color: var(--secondary-color);
+    color: var(--font-color);
     text-align: center;
     padding: 20px;
  }
 
-.filterOption {
-    padding: 0 4em;
+.filterOptions2,
+.filterOptions{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: left;
+    padding: 0 70px;
+    justify-content: flex-start;
     opacity: 0;
     height: 0;
-    margin-top: 0px;
-    height: clamp(2em, 4em, 5em);
-    transition: .7s height, 0.7s opacity;
+    margin: 0;
+    padding-top: 0;
+    transition: .7s;
+    gap:1.5em;
 }
 
-.filterOption.openfilter{
+.filterOptions2 button,
+.filterOptions button{
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    border-radius: 5px;
+    height: 3em;
+    width: 9.7em;
+    padding: 0;
+
+    cursor: pointer;
+    box-shadow: var(--buttons-shadow) 0 .15em .2em ;
+}
+
+    .filterOptions button:first-of-type:hover{
+        background-color:var(--thema-Natuur);
+    }
+
+    .filterOptions button:nth-of-type(2):hover{
+        background-color:var(--thema-Financien);
+    }
+    .filterOptions button:nth-of-type(3):hover{
+        background-color:var(--thema-Integratie);
+    }
+    .filterOptions button:nth-of-type(4):hover{
+        background-color:var(--thema-Recht);
+        color: var(--background-color);
+    }
+    .filterOptions button:nth-of-type(5):hover{
+        background-color:var(--thema-Sociale-zekerheid);
+    }
+    .filterOptions button:nth-of-type(6):hover{
+        background-color:var(--thema-Gezondheid);
+        color: var(--background-color);
+    }
+    .filterOptions button:nth-of-type(7):hover{
+        background-color:var(--thema-Verkeer);
+    }
+    .filterOptions button:nth-of-type(8):hover{
+        background-color:var(--thema-Cultuur);
+    }
+    .filterOptions button:nth-of-type(9):hover{
+        background-color:var(--thema-Huisvesting);
+    }
+    .filterOptions button:nth-of-type(10):hover{
+        background-color:var(--thema-Bestuur);
+        color: var(--background-color);
+    }
+    .filterOptions button:nth-of-type(11):hover{
+        background-color:var(--thema-Economie);
+    }
+    .filterOptions button:nth-of-type(12):hover{
+        background-color:var(--thema-Landbouw);
+    }
+    .filterOptions button:nth-of-type(13):hover{
+        background-color:var(--thema-Onderwijs);
+    }
+    .filterOptions button:nth-of-type(14):hover{
+        background-color:var(--thema-Infrastructuur);
+    }
+    .filterOptions button:nth-of-type(15):hover{
+        background-color:var(--thema-Werk);
+        color: var(--background-color);
+    }
+    .filterOptions button:nth-of-type(16):hover{
+        background-color:var(--thema-openbare-orde);
+    }
+
+
+.openfilter{
     opacity: 1;
     height: 100%;
  }
 
-
+.filterknop2::after,
 .filterknop::after{
     content: ">";
     display: inline-block;
     transform: rotate(90deg);
 }
 
+.filterknop2.closemenu::after,
 .filterknop.closemenu::after{
     transform: rotate(-90deg);
 }
 
-.filterOption a {
-    text-decoration: none;
-    background-color: #f0f8ff;
-    color: black;
-    opacity: 0.7;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 15px 10px 0px 0px;
- }
 
 
 
@@ -277,7 +374,7 @@ footer {
 
     .navigation ul li a {
         text-decoration: none;
-        color: black;
+        color: var(--font-color);
         font-size: 15px;
         padding: 10px;
     }   
@@ -298,12 +395,13 @@ footer {
 
 main ul{
     width: 100%;
-    padding-top: 1.5em;
-    padding-left: 11em;
+    /* padding: 1.5em 70px; */
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5em;
+    gap: 4.4em;
+    margin:2em 4em;
+    justify-content: flex-start;
 }
 
 main ul li{
@@ -314,8 +412,8 @@ main ul li{
 
 main ul li img{
     width: 22em;
-    display: block;
     height: 15em;
+    display: block;
     overflow: hidden;
     border-radius: .8em;
 }
@@ -332,15 +430,15 @@ main ul li div{
 }
 
     .Openbareorde-box{
-        box-shadow: var(--openbare-orde) 0 2px 6px;
+        box-shadow: var(--thema-openbare-orde) 0 2px 6px;
     }
 
     .Financien-box{
-        box-shadow: var(--Financien) 0 2px 6px;
+        box-shadow: var(--thema-Financien) 0 2px 6px;
     }
 
     .Verkeer-box{
-        box-shadow: var(--Verkeer) 0 2px 6px;
+        box-shadow: var(--thema-Verkeer) 0 2px 6px;
     }
 
 main ul li a{

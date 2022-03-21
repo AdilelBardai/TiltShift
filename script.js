@@ -1,5 +1,7 @@
 var filterknop = document.querySelector(".filterknop");
-var filtermenu = document.querySelector(".filterOption");
+var filterknop2 = document.querySelector(".filterknop2");
+var filtermenu = document.querySelector(".filterOptions");
+var filtermenu2 = document.querySelector(".filterOptions2");
 
 function openfiltermenu(){
     console.log("click");
@@ -7,7 +9,15 @@ function openfiltermenu(){
     filterknop.classList.toggle("closemenu");
 }
 
+function openfiltermenu2(){
+    console.log("click");
+    filtermenu2.classList.toggle("openfilter");
+    filterknop2.classList.toggle("closemenu");
+}
+
+
 filterknop.addEventListener("click", openfiltermenu);
+filterknop2.addEventListener("click", openfiltermenu2);
 
 var searchKnop = document.querySelector("main section div button");
 var searchInput = document.querySelector("main section input");
