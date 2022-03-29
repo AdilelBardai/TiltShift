@@ -1,3 +1,29 @@
+/* Snelle toegang door het gewenste titel te kopiëren en er direct naar te zoeken */
+
+/******************* Body stylen *******************/
+/* Navigation-bar */
+/* header stylen */
+/* footer stylen */
+
+/******************* algemeen stylen *******************/
+/* pagination / page nummer */
+/* main div first section */
+/* Thema filter */
+
+/************* main stylen P1 Bolkjes view ************/
+
+/************ main stylen P2 lijst view ***************/
+
+/******************* Chatbot stylen *******************/
+/* Chatbot icon */
+/* Open chatbot */
+/* De vragen list */
+/* input position */
+
+
+
+
+/* De code  */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +36,7 @@
     --hoofd-color: #4D80E2;
     --secondary-color: aliceblue;
     --grey-color: #676968;
-    --buttons-shadow: #e2e2e2;
+    --licht-grey-color: #e2e2e2;
 
     /* thema's colors */
     --thema-Natuur:#DCE6BB;
@@ -31,6 +57,11 @@
     --thema-Werk:#6C4A5E;
 }
 
+
+/* ************************************************** */
+/******************* Body stylen *******************/
+/* ************************************************** */
+
 body {
     font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
     min-height: 100vh;
@@ -41,30 +72,36 @@ body {
 .lijst{
     background-image: none;
 }
-  
-.navigation-bar {
+
+
+
+/* Navigation-bar */
+
+header nav{
     height: 70px;
     width: 100%;
     text-align:center;
     background-color: var(--secondary-color);
+
+    display: flex;
+    justify-content: space-between;
 }
 
-.navigation-bar>img{
+header nav>img{
     float: left;
     width: 250px;
     padding: 20px 10px 10px 66px;
 }
 
-.navigation-bar ul {
+header nav ul{
     padding: 0px 70px 0px 0px;
-    float: right;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.navigation-bar li {
-    display: inline;
-}
-
-.navigation-bar li a {
+header nav ul li a{
     color: var(--font-color);
     font-size: 16px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -73,12 +110,11 @@ body {
     padding: 5px 15px;
 }
 
-.navigation-bar ul li:nth-of-type(2) a{
+header nav ul li a.actived{
     font-weight: bold;
-    color: var(--hoofd-color);
 }
 
-.navigation-bar ul li button{
+header nav ul li button{
     border: none;
     background-color: none;
     margin: 0;
@@ -91,159 +127,19 @@ header nav ul li button img{
     height: 1.2em;
 }
 
+
+/* header stylen */
 header article {
     padding: 20px 70px;
     background-color: var(--secondary-color);
-    height: 100px;
+    height: 11em;
 }
 
-main section h2 {
-    float: left;
-    cursor: pointer;
+header article h1{
+    margin: 1em 0;
 }
 
-main section {
-    position: relative;
-    right: 0;
-    padding: 20px 70px 0px 70px;
-    width: 100%;
-    text-align: center;
-    margin: 15px 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline; 
-}
-
-main section div{
-    margin: 0;
-    padding: 0;
-    width: 23em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-main section div select {
-    padding: 0px 20px 0px 0px;
-    float: right;
-}
-
-main section div select {
-    border-radius: 5px;
-    border: 2px solid var(--hoofd-color);
-    padding: 2px;
-}
-
-main section div .list-option img {
-    width: 25px;
-    float: right;
-    filter: invert(48%) sepia(90%) saturate(2077%) hue-rotate(201deg) brightness(92%) contrast(93%);
-
-}
-
-main section div button{
-    width: 27px;
-    height: 27px;
-    background-color: var(--hoofd-color);
-    border: none;
-    border-radius: 6px;
-    padding-top: 5px;
-    cursor: pointer;
-}
-
-main section div button img {
-    width: 17px;
-    float: center;
-}
-
-main section input{
-    position: relative;
-    float: right;
-    right: -33px;
-    border: var(--hoofd-color) solid 2px;
-    border-radius: 6px 0 0 6px;
-    order: -1;
-    height: 27px;
-    width: 13em;
-    transition: .8s;
-    opacity: 0;
-    z-index: -1;
-
-    box-shadow: inset var(--grey-color) 0 0px 3px;
-}
-
-main section input.opensearch{
-    opacity: 1;
-    z-index: -1;
-}
-
-main section input[type="text"]{
-    color: var(--grey-color);
-    text-indent: 5px;
-}
-
-main section div button img {
-    filter: invert(100%) sepia(0%) saturate(1833%) hue-rotate(316deg) brightness(110%) contrast(100%);
-    margin: 0;
-}
-
-table {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 2em;
-  }
-    
-    table td {
-        padding: 20px 0;
-        font-size: 14px;
-        width: 100px;
-    }
-
-    table, th, td {
-        text-align: center;
-    }
-
-    table td img {
-        width: 150px;
-    }
-    
-    table tr:nth-child(even) {
-        background-color: var(--secondary-color);
-    }
-    
-    table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        color: var(--hoofd-color);
-    }
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-  
-  .pagination a {
-    color: var(--font-color);
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  .pagination a.active {
-    background-color: var(--hoofd-color);
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .pagination a:hover:not(.active) {
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-  }
-
+/* footer stylen */
 footer {
     left: 0;
     bottom: 0;
@@ -254,7 +150,193 @@ footer {
     padding: 20px;
  }
 
-.filterOptions2,
+
+
+
+
+
+
+
+
+
+
+
+ 
+/* ************************************************** */
+/******************* algemeen stylen *******************/
+/* ************************************************** */
+
+
+/* pagination / page nummer */
+.pagination1,
+.pagination2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--background-color);
+}
+
+  .pagination1 button,
+  .pagination2 button {
+    padding: 8px 16px;
+    border: none;
+    background-color: transparent ;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: var(--hoofd-color);
+    color: var(--background-color);
+    border-radius: 5px;
+  }
+  
+  .pagination1 button:hover:not(.active),
+  .pagination2 button:hover:not(.active) {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    color: var(--font-color);
+  }
+
+
+
+
+
+/* main div first section */
+
+main section:first-of-type {
+    position: relative;
+    right: 0;
+    padding: 20px 70px 0px 70px;
+    width: 100%;
+    text-align: center;
+    margin: 15px 0 1em 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; 
+    flex-wrap: wrap;
+}
+
+main section div:first-of-type{
+    margin: 0;
+    padding: 0;
+    width: 25em;
+    min-width: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+main section:first-of-type h2{
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+main section:first-of-type h2::after{
+    content: ">";
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+main section:first-of-type h2.closemenu::after{
+    transform: rotate(-90deg);
+}
+
+main section:first-of-type div{
+    width: 22em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+main section:first-of-type div>img{
+    width: 2em;
+    order: 4;
+}
+
+main section:first-of-type div button:first-of-type img {
+    width: 17px;
+    filter: invert(100%) sepia(0%) saturate(1833%) hue-rotate(316deg) brightness(110%) contrast(100%);
+    margin: 0;
+}
+
+main section:first-of-type div button:nth-of-type(2),
+main section:first-of-type div button:nth-of-type(3){
+    order: 2;
+    cursor: pointer;
+    border: 0;
+    background-color: none;
+}
+
+main section:first-of-type div button:nth-of-type(2) img,
+main section:first-of-type div button:nth-of-type(3) img {
+    width: 25px;
+    float: right;
+    filter: invert(48%) sepia(90%) saturate(2077%) hue-rotate(201deg) brightness(92%) contrast(93%);
+}
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
+main section:first-of-type div select {
+    border-radius: 5px;
+    border: 2px solid var(--hoofd-color);
+    padding: 2px;
+}
+
+main section:first-of-type div select:nth-of-type(2){
+    order: 1;
+}
+
+
+main section:first-of-type div button:first-of-type{
+    width: 27px;
+    height: 27px;
+    background-color: var(--hoofd-color);
+    border: none;
+    border-radius: 6px;
+    padding-top: 5px;
+    cursor: pointer;
+    z-index: 2;
+    order: 3;
+}
+
+main section:first-of-type div input{
+    position: absolute;
+    left: 7.9em;
+    border: var(--hoofd-color) solid 2px;
+    border-radius: 6px 0 0 6px;
+    height: 26.5px;
+    width: 14.5em;
+    opacity: 0;
+    z-index: -1;
+
+    box-shadow: inset var(--grey-color) 0 0 .2em;
+}
+
+main section:first-of-type div input.opensearch{
+    opacity: 1;
+    z-index: 1;
+}
+
+main section:first-of-type div input[type="text"]{
+    color: var(--grey-color);
+    padding: .3em;
+}
+
+
+
+/* Thema filter */
+
 .filterOptions{
     display: flex;
     justify-content: space-around;
@@ -270,7 +352,6 @@ footer {
     gap:1.5em;
 }
 
-.filterOptions2 button,
 .filterOptions button{
     border: none;
     background-color: var(--secondary-color);
@@ -281,7 +362,7 @@ footer {
     padding: 0;
 
     cursor: pointer;
-    box-shadow: var(--buttons-shadow) 0 .15em .2em ;
+    box-shadow: var(--licht-grey-color) 0 .15em .2em ;
 }
 
     .filterOptions button:first-of-type:hover{
@@ -344,64 +425,37 @@ footer {
     height: 100%;
  }
 
-.filterknop2::after,
-.filterknop::after{
-    content: ">";
-    display: inline-block;
-    transform: rotate(90deg);
-}
-
-.filterknop2.closemenu::after,
-.filterknop.closemenu::after{
-    transform: rotate(-90deg);
-}
 
 
 
 
 
-/* @media only screen and (max-width: 600px) {
-
-    .navigation {
-        background-color: var(--secondary-color);
-        height: 150px;
-    }
-
-    .navigation .logo {
-        width: 250px;
-        padding: 10px 0px 0px 10px;
-    }
-
-    .navigation ul li a {
-        text-decoration: none;
-        color: var(--font-color);
-        font-size: 15px;
-        padding: 10px;
-    }   
-
-    .navigation ul li {
-        padding: 10px;
-    }
-
-    h1 {
-        padding: 10px;
-    }
-
-}  */
 
 
 
-        /*  het bolkjes lijst */
+
+
+
+
+
+
+
+
+
+
+/* ************************************************** */
+/************* main stylen P1 Bolkjes view ************/
+/* ************************************************** */
 
 main ul{
-    width: 100%;
+    /* width: 100%; */
     /* padding: 1.5em 70px; */
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 4.4em;
     margin:2em 4em;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 main ul li{
@@ -491,6 +545,117 @@ main ul li>a:hover{
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ************************************************** */
+/************ main stylen P2 lijst view ***************/
+/* ************************************************** */
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2em;
+  }
+
+    table tr th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        color: var(--hoofd-color);
+    }
+    
+    table tr td {
+        padding: 20px 0;
+        font-size: 14px;
+        width: 100px;
+    }
+
+    table, th, td {
+        text-align: center;
+    }
+
+    table tr th:last-of-type, table tr td:last-of-type,
+    table tr th:first-of-type, table tr td:first-of-type {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+
+    table tr td img {
+        width: 9em;
+        height: 5em;
+        border-radius: .5em;
+    }
+    
+    table tr:nth-child(even) {
+        background-color: var(--secondary-color);
+    }
+
+
+
+
+
+
+
+
+
+
+/* @media only screen and (max-width: 600px) {
+
+    .navigation {
+        background-color: var(--secondary-color);
+        height: 150px;
+    }
+
+    .navigation .logo {
+        width: 250px;
+        padding: 10px 0px 0px 10px;
+    }
+
+    .navigation ul li a {
+        text-decoration: none;
+        color: var(--font-color);
+        font-size: 15px;
+        padding: 10px;
+    }   
+
+    .navigation ul li {
+        padding: 10px;
+    }
+
+    h1 {
+        padding: 10px;
+    }
+
+}  */
+
+
+
+
+/* ************************************************** */
+/******************* Chatbot stylen *******************/
+/* ************************************************** */
+
+        /* Chatbot icon */
 .chatbot{
     background-color: transparent;
     border: none;
@@ -499,15 +664,223 @@ main ul li>a:hover{
 
 
     position: fixed;
-    bottom: 1em;
-    right: 1em;
+    bottom: .3em;
+    right: 0;
+    z-index: 100;
     cursor: pointer;
 }
 
     .chatbot:hover{
         transform: scale(.7);
+        filter: drop-shadow(.3em .3em 0 var(--grey-color) );
+        transition: .2s;
     }
 
-    .chatbot.open{
+    .chatbot.openchat{
+        transform: scale(.4);
+    }
+
+    .chatbot.openchat:hover{
         transform: scale(.5);
     }
+
+
+
+    /* Open chatbot */
+main section:last-of-type{
+    width: 29em;
+    height: 35em;
+    border-radius: 2em 2em 0 2em;
+    position: fixed;
+    right: 3em;
+    bottom: 3em;
+
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: .5s;
+    background-color: var(--background-color);
+    box-shadow: var(--licht-grey-color) 0 .15em .2em ;
+
+    overflow: hidden;
+}
+
+main section:last-of-type.openchat{
+    transform: scale(1);
+}
+
+    main section:last-of-type,
+    main section:last-of-type p,
+    main section:last-of-type ul,
+    main section:last-of-type ul li,
+    main section:last-of-type button{
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+    }
+
+    main section:last-of-type>p:first-of-type{
+        color: var(--background-color);
+        background-color: var(--hoofd-color);
+        font-weight: bold;
+        position: absolute;
+
+        padding: 1em;
+        text-align: left;
+
+        width: 100%;
+        height: 3em;
+        border-radius: 2em 2em 0 0;
+
+    }
+        main section:last-of-type>p:first-of-type::after{
+            content: ">";
+            display: inline-block;
+            position: absolute;
+            right: 2em;
+            transform: rotate(-90deg);
+            transition: .6s;
+
+            cursor: pointer;
+        }
+
+            main section:last-of-type>p.closelist::after{
+                transform: rotate(90deg);
+            }
+
+        main section:last-of-type p:nth-of-type(2){
+            max-width: 20em;
+            padding: .5em 1em ;
+            font-size: .8em;
+            background-color: var(--licht-grey-color);
+            border-radius: .7em .7em .7em .2em;
+            position: absolute;
+            bottom: 7em;
+            left: 1em;
+        }
+
+        main section:last-of-type p:nth-of-type(3){
+            font-size: .6em;
+            color: var(--grey-color);
+            position: absolute;
+            bottom: 8em;
+            left: 2em;
+        }
+
+    /* De vragen list */
+main section:last-of-type dl{
+    width: 100%;
+    position: absolute;
+    top: 3em;
+    list-style: none;
+    gap: 0;
+    box-shadow: var(--licht-grey-color) 0 .15em .2em ;
+    background-color: var(--background-color);
+    transform: scaleY(1);
+    z-index: 99;
+}
+
+    main section:last-of-type dl.closelist{
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    main section:last-of-type dl dt,
+    main section:last-of-type dl dd{
+        width: 100%;
+        font-size: .8em;
+        padding: 1em 2em 1em 1em;
+        text-align: left;
+    }
+
+    main section:last-of-type dl dd:nth-of-type(2n+1),
+    main section:last-of-type dl dt:nth-of-type(2n+1){
+        background-color: var(--secondary-color);
+    }
+
+    main section:last-of-type dl dt::after{
+        content: ">";
+        display: inline-block;
+        position: absolute;
+        right: 2.5em;
+        transform: rotate(90deg);
+        transition: .6s;
+
+        cursor: pointer;
+    }
+
+    main section:last-of-type dl dt.closedslid{
+        padding-bottom: .5em;
+    }
+
+    main section:last-of-type dl dt.closedslid::after{
+        transform: rotate(-90deg);
+    }
+
+    main section:last-of-type dl dd{
+        padding: 0 1.5em 1em 2em;
+
+    }
+
+    main section:last-of-type dl dd.closedslid{
+        clip: rect(0 0 0 0);
+        position: absolute;
+        white-space: nowrap;
+    }
+
+
+
+
+    /* input position */
+main section:last-of-type div{
+    width: 100%;
+    height: 3em;
+    border-radius: 0 0 0 1.5em;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--background-color);
+    z-index:99;
+}
+
+    main section:last-of-type div::after{
+        content: "";
+        display: block;
+        height: .07em;
+        width: 93%;
+        background-color: var(--licht-grey-color);
+        position: absolute;
+        top: 0;
+        left: 1em;
+    }
+
+    main section:last-of-type div button{
+        background-color: transparent;
+
+        border-top: 1.5em solid transparent;
+        border-left: 2.5em solid var(--hoofd-color);
+        border-bottom: 1.5em solid transparent;
+        transform: scale(.7);
+
+        position: relative;
+        right: 1em;
+    }
+
+    main section:last-of-type div button:hover{
+        transform: scale(.8);
+    }
+
+    main section:last-of-type div input{
+        background-color: var(--hoofd-color);
+        width: 87%;
+        height: 2em ;
+
+        position: relative;
+        left: 1em;
+        border: none;
+        border-radius: .5em ;
+        opacity: 1;
+    }
+
+        main section:last-of-type div input[type="text"]{
+            color: var(--background-color);
+            padding: 0 1em;
+        }
