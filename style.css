@@ -457,11 +457,12 @@ main section:first-of-type div input[type="text"]{
 }
 
 main ul{
+    width: 100%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 6em;
-    margin:2em 8em;
+    gap: 4.5em;
+    padding:2em 8em;
     justify-content: flex-start;
 }
 

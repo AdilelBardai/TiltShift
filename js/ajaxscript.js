@@ -23,23 +23,14 @@ var selectoption2 = document.querySelector("main section:first-of-type div selec
 var selectoption3 = document.querySelector("main section:first-of-type div select option:nth-of-type(3)");
 
 // JSON Data
-var requestURL = "json\\database.json";
-var request = new Request(requestURL);
+var requestfile = "json\\database.json";
+var request = new Request(requestfile);
 var response;
 var algoritmes;
 
 
-
-
 async function switchview() {
-    if (style === "table") {
-
-        console.log("Bolkjes view");
-        style = "Bolkjes";
-        viewImage.src = "images/list-option.png";
-
-        localStorage.setItem("viewImage", JSON.stringify(true));
-    } else {
+    if (style === "Bolkjes") {
         console.log("Table view");
         style = "table";
         viewImage.src = "images/stripe-list-icon.png";
@@ -47,6 +38,13 @@ async function switchview() {
         pageResultaten.innerHTML = "Resultaten: 1-7 van 14";
 
         page2knop.classList.add("active");
+
+        localStorage.setItem("viewImage", JSON.stringify(true));
+
+    } else {
+        console.log("Bolkjes view");
+        style = "Bolkjes";
+        viewImage.src = "images/list-option.png";
 
         localStorage.setItem("viewImage", JSON.stringify(false));
     }
@@ -63,12 +61,12 @@ function getalgoritmes(index) {
     currentPage = index;
     console.log(currentPage);
 
-    if (style === "table") {
-        console.log("Table");
-        getalgoritmestable(index, index+7);
-    } else {
+    if (style === "Bolkjes") {
         getalgoritmesblokjes(index, index+6);
         console.log("Blokjes");
+    } else {
+        console.log("Table");
+        getalgoritmestable(index, index+7);
     }
 }
 
@@ -87,7 +85,10 @@ function getalgoritmesblokjes(index,end) {
         myul.replaceChildren();
     }
 
+    // let pagenum = entry === undefined ?? 0 ;
+
     for (let n = 0; n < end; n++) {
+        // pagenum = index;
 
         var myimage = document.createElement("img");
         var div = document.createElement("div");
@@ -193,7 +194,6 @@ function getalgoritmestable(index,end) {
 console.log(end)
     // 7 -end
     for (let n = 0; n < end; n++) {
-        console.log('NONO')
 
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
@@ -240,7 +240,6 @@ console.log(end)
         }else{
             mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
-            console.log("not nice");
         }
 
         mytable.appendChild(mytr2);
@@ -250,14 +249,14 @@ console.log(end)
 
 requestData();
 if (localStorage.getItem('viewImage')==="true"){
-    viewImage.innerHTML = "table";
+    viewImage.innerHTML = "Bolkjes";
 }
 
 viewKnop.addEventListener("click", switchview);
 
-page1knop.addEventListener("click", getalgoritmes(0,6) );
-page2knop.addEventListener("click", getalgoritmes(0,6) );
-page3knop.addEventListener("click", getalgoritmes(7,12) );
+page1knop.addEventListener("click", getalgoritmes(0) );
+page2knop.addEventListener("click", getalgoritmes(0) );
+page3knop.addEventListener("click", getalgoritmes(1) );
 
 
 // organisatie filter
