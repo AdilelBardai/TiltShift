@@ -14,14 +14,22 @@
 
 /************ main stylen P2 lijst view ***************/
 
+/*************** detail-pagina stylen *****************/
+/* Tabs */
+/* Dataverwerking */
+/* Data */
+/* contactgegevens */
+/* feedback form */
+/* subjects */
+
 /******************* Chatbot stylen *******************/
 /* Chatbot icon */
 /* Open chatbot */
 /* De vragen list */
 /* input position */
 
-
-
+/* *********************************************************** */
+/* *********************************************************** */
 
 /* De code  */
 * {
@@ -66,10 +74,10 @@ body {
     font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
     min-height: 100vh;
     background-image: linear-gradient(var(--background-color) 25em, var(--secondary-color) 20em);
-    background-size: 100% 40em;    
+    background-size: 100% 40em;
 } 
 
-.lijst{
+.lijstbackground{
     background-image: none;
 }
 
@@ -141,6 +149,7 @@ header article h1{
 
 /* footer stylen */
 footer {
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -161,6 +170,7 @@ footer {
 
 
 
+
  
 /* ************************************************** */
 /******************* algemeen stylen *******************/
@@ -168,37 +178,41 @@ footer {
 
 
 /* pagination / page nummer */
-.pagination1,
-.pagination2 {
+.pagination{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: var(--background-color);
+    left: 0;
+    right: 0;
 }
 
-  .pagination1 button,
-  .pagination2 button {
-    padding: 8px 16px;
+  .pagination button {
+    padding: 6px 8px;
     border: none;
     background-color: transparent ;
     border-radius: 5px;
     cursor: pointer;
   }
 
-  .active {
+  .pagination button.active {
     background-color: var(--hoofd-color);
     color: var(--background-color);
     border-radius: 5px;
   }
   
-  .pagination1 button:hover:not(.active),
-  .pagination2 button:hover:not(.active) {
+
+  .pagination button:hover:not(.active) {
     background-color: var(--secondary-color);
     border-radius: 5px;
     color: var(--font-color);
   }
 
+.pagination p{
+    position: absolute;
+    right: 4em;
+}
 
 
 
@@ -246,7 +260,7 @@ main section:first-of-type h2.closemenu::after{
 }
 
 main section:first-of-type div{
-    width: 22em;
+    width: 26em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -264,27 +278,17 @@ main section:first-of-type div button:first-of-type img {
     margin: 0;
 }
 
-main section:first-of-type div button:nth-of-type(2),
-main section:first-of-type div button:nth-of-type(3){
+main section:first-of-type div button:nth-of-type(2){
     order: 2;
     cursor: pointer;
     border: 0;
     background-color: none;
 }
 
-main section:first-of-type div button:nth-of-type(2) img,
-main section:first-of-type div button:nth-of-type(3) img {
+main section:first-of-type div button:nth-of-type(2) img{
     width: 25px;
     float: right;
     filter: invert(48%) sepia(90%) saturate(2077%) hue-rotate(201deg) brightness(92%) contrast(93%);
-}
-
-.hidden{
-    display: none;
-}
-
-.visible{
-    display: block;
 }
 
 main section:first-of-type div select {
@@ -312,7 +316,7 @@ main section:first-of-type div button:first-of-type{
 
 main section:first-of-type div input{
     position: absolute;
-    left: 7.9em;
+    left: 13em;
     border: var(--hoofd-color) solid 2px;
     border-radius: 6px 0 0 6px;
     height: 26.5px;
@@ -321,6 +325,8 @@ main section:first-of-type div input{
     z-index: -1;
 
     box-shadow: inset var(--grey-color) 0 0 .2em;
+
+    transition: .2s;
 }
 
 main section:first-of-type div input.opensearch{
@@ -446,30 +452,36 @@ main section:first-of-type div input[type="text"]{
 /* ************************************************** */
 /************* main stylen P1 Bolkjes view ************/
 /* ************************************************** */
+.hidden{
+    display: none;
+}
 
 main ul{
-    /* width: 100%; */
-    /* padding: 1.5em 70px; */
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 4.4em;
-    margin:2em 4em;
-    justify-content: center;
+    gap: 6em;
+    margin:2em 8em;
+    justify-content: flex-start;
 }
 
 main ul li{
-    width: 23em;
-    display: block;
+    width: 22em;
+    height: 32em;
     position: relative;
 }
 
-main ul li img{
+main ul li>img{
     width: 22em;
     height: 15em;
-    display: block;
+    position:absolute;
+    top: 0;
+
     overflow: hidden;
     border-radius: .8em;
+    margin: 0;
+
+    order: 0;
 }
 
 main ul li div{
@@ -479,8 +491,10 @@ main ul li div{
     background-color: var(--background-color);
     border-radius: .5em;
     position: relative;
-    top: -5em;
+    top: 10em;
     left: 2em;
+    z-index: 1;
+    order: 1;
 }
 
     .Openbareorde-box{
@@ -495,14 +509,39 @@ main ul li div{
         box-shadow: var(--thema-Verkeer) 0 2px 6px;
     }
 
+    .Socialezekerheid-box{
+        box-shadow: var(--thema-Sociale-zekerheid) 0 2px 6px;
+    }
+
+    .Bestuur-box{
+        box-shadow: var(--thema-Bestuur) 0 2px 6px;
+    }
+
+    .Onderwijs-box{
+        box-shadow: var(--thema-Onderwijs) 0 2px 6px;
+    }
+
 main ul li a{
     text-decoration: none;
+    position: absolute;
 }
 
-main ul li div a h3{
+main ul li div a:first-of-type{
+    top: 1em;
+    left: 1em;
+    right: 1em;
+}
+
+/* main ul li div a:first-of-type::after{
+    content: "";
+    display: block;
+} */
+
+
+main ul li div a:first-of-type h3{
     color: #000000;
-    margin-bottom: 1em;
-    background-size: .9em;
+    padding-right: 2em;
+    background-size: 1em;
     background-repeat: no-repeat;
     background-position-x: right;
     background-position-y: bottom;
@@ -520,31 +559,51 @@ main ul li div a h3{
         background-image: url(images/icons/Verkeer-icon.svg);
     }
 
-main ul li div a h3::after{
+    .Socialezekerheid{
+        background-image: url(images/icons/Socialezekerheid.icon.svg);
+    }
+
+    .Bestuur{
+        background-image: url(images/icons/Bestuur.icon.svg);
+    }
+
+    .Onderwijs{
+        background-image: url(images/icons/Onderwijs.icon.svg);
+    }
+
+main ul li div a:first-of-type h3::after{
     content: "";
     display: block;
-    width: 100%;
+    width: 13.5em;
     height: .05em;
     position: relative;
-    bottom: -.2em;
-    background-color: rgb(4, 5, 0);
+    bottom: -.4em;
+    background-color: var(--grey-color);
 }
 
-main ul li div p{
+main ul li div>p{
     line-height: 1.5em;
-}
-
-main ul li>a{
-    color: var(--hoofd-color);
     position: relative;
-    bottom: 7em;
-    left: 3em;
+    top: 4em;
 }
 
-main ul li>a:hover{
+main ul li div a:last-of-type{
+    color: var(--hoofd-color);
+    position: absolute;
+    bottom: 1.5em;
+    left: 1em;
+}
+
+main ul li a:last-of-type:hover{
     text-decoration: underline;
 }
 
+main ul li div img{
+    width: 3em;
+    position: absolute;
+    bottom: 1em;
+    right: 1.5em;
+}
 
 
 
@@ -577,27 +636,41 @@ table {
     margin-top: 2em;
   }
 
+
     table tr th {
         padding-top: 12px;
         padding-bottom: 12px;
         color: var(--hoofd-color);
+        width: 4em;
     }
     
     table tr td {
-        padding: 20px 0;
-        font-size: 14px;
-        width: 100px;
+        padding: 1.25em 0;
+        font-size: .8em;
+        width: 4em;
+    }
+
+    table tr td a{
+        text-decoration: none;
+        color: var(--font-color);
+    }
+
+    table tr td a:hover{
+        text-decoration: underline;
     }
 
     table, th, td {
         text-align: center;
     }
 
-    table tr th:last-of-type, table tr td:last-of-type,
-    table tr th:first-of-type, table tr td:first-of-type {
-        padding-left: 4em;
-        padding-right: 4em;
+    table tr th:last-of-type, table tr td:last-of-type{
+        padding-right: 10%;
     }
+
+    table tr th:first-of-type, table tr td:first-of-type {
+        padding-left: 10%;
+    }
+
 
 
     table tr td img {
@@ -612,6 +685,401 @@ table {
 
 
 
+
+
+
+
+/* ************************************************** */
+/*************** detail-pagina stylen *****************/
+/* ************************************************** */
+
+.detail-page {
+    padding: 20px 70px 0px 70px;
+}
+
+.detail-page a {
+    color: black;
+    text-decoration: none;
+}
+
+.detail-container {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 6em;
+}
+
+.detail-banner {
+    display: inline-block;
+}
+
+.detail-banner img {
+    height: 20em;
+    width: 35em;
+
+    margin-top: 15px;
+    object-fit: cover;
+
+    border-radius: .3em;
+}
+
+.detail-block {
+    border-radius: .3em;
+    height: 20em;
+    width: 35em;
+    box-shadow: 5px 0px 20px 1px grey;
+    padding: 10px;
+    background-color: white;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.detail-block h1 {
+    border-bottom: 1px solid black;
+    float: left;
+    margin-bottom: 20px;
+    font-weight: 100;
+}
+
+.detail-content {
+    display: inline;
+    text-align: left;
+}
+
+.detail-block .detail-content li {
+    padding: 10px 0px 10px 10px;
+    height: fit-content;
+}
+
+.detail-content li p {
+    display: inline;
+    float: right;
+}
+
+.detail-content li a {
+    position: unset;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.inhoud-container {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 0px 20px 1px grey;
+    width: 70%;
+    border-radius: 5px;
+    display: block;
+    background-color: white;
+    padding: 70px;
+}
+
+.inhoud-container article {
+    text-align: left;
+}
+
+.inhoud-container h2 {
+    font-weight: 100;
+}
+
+/* Tabs */
+section.tabbed {
+    text-align: left;
+    display: block;
+
+    width: 70%;
+    padding: 20px 0 ;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabbed input {
+  display: none;
+}
+
+.tabbed label{
+    display: block;
+    float: left;
+    padding: 12px 10px;
+    margin-right: 0.15em;
+    width: calc(99% / 5);
+    min-width: fit-content;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 0.1em solid #5379bc;
+    border-radius: 1em 1em 0 0;
+    background: var(--hoofd-color);
+    color: #ffffff;
+}
+
+.tabbed label:last-of-type{
+    margin-right: 0em;
+}
+
+.tabbed label:hover,
+.tabbed input:checked + label {
+    background: #ffffff;
+    color: #000000;
+    border: 0.1em solid var(--hoofd-color);
+}
+
+.tabbed .tabs {
+    clear: both;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top:0em;
+    left: 0;
+}
+
+.tabbed .tabs > div {
+    width: 100%;
+    position: relative;
+    border: 2px solid var(--hoofd-color);
+    border-radius: 0 0 1em 1em;
+    line-height: 1.4em;
+    background-color: var(--background-color);
+    display: none;
+    text-align: left;
+    align-content: center;
+    padding: 20px 70px;
+}
+
+#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
+#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
+#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
+#tab-nav-4:checked ~ .tabs > div:nth-of-type(4),
+#tab-nav-5:checked ~ .tabs > div:nth-of-type(5) {
+  display: block;
+  z-index: 1;
+}
+
+.tabbed .tabs > div > p:first-of-type {
+  color: var(--grey-color);
+  margin-bottom: .5em;
+}
+
+
+.tabbed .tabs > div > p:first-of-type::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .05em;
+    position: relative;
+    bottom: -.2em;
+    background-color: var(--grey-color);
+  
+}
+
+
+.tabbed .tabs div p a {
+  text-decoration: underline;
+  color: var(--hoofd-color);
+}
+
+/* Dataverwerking */
+.tabs div table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+/* Data */
+.tabs>div>section{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  row-gap: 2em;
+  padding: 0;
+}
+
+.tabs>div>section>div{
+  width: 100%;
+  display: block;
+  text-align: left;
+}
+
+.tabs>div>section>div p:nth-of-type(1){
+    color: var(--font-color);
+    margin-bottom: 0;
+    font-weight:bold;
+}
+
+.tabs>div>section>div p:nth-of-type(1)::after{
+    display: none;
+}
+
+.tabs div section div ul{
+  list-style:none;
+  margin:0;
+  margin-top: .5em;
+  padding-left:2em;
+  gap: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs div section div ul li{
+    width: fit-content;
+}
+
+.tabs div section div ul li::before{
+  content:"- ";
+}
+
+.tabs > div table tr:first-of-type td {
+  font-weight: bold;
+  color: var(--hoofd-color);
+}
+
+.tabs > div table tr td {
+  padding: 1em;
+}
+
+.tabs > div table tr td a {
+  color: var(--hoofd-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tabs > div table tr:nth-child(even) {
+  background-color: var(--secondary-color);
+}
+
+/* contactgegevens */
+
+.contactgegevens {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactgegevens h2 {
+    font-weight: 100;
+    background-color: var(--secondary-color);
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
+.contactgegevens table td {
+    text-align: left;
+    padding: 20px;
+}
+
+.contactgegevens table tr:nth-child(1) {
+    background-color: white;
+    border-bottom: 1px solid rgb(95, 94, 94);
+    border-top: 1px solid rgb(95, 94, 94);
+}
+
+.contactgegevens table tr:nth-child(3) {
+    background-color: white;
+    border-bottom: 1px solid rgb(95, 94, 94);
+    border-top: 1px solid rgb(95, 94, 94);
+}
+
+/* feedback form */
+
+.feedback {
+    display: block;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 30px;
+}
+
+.feedback h3 {
+    font-weight: 100;
+}
+
+.feedback button {
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 1%);
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 130px;
+    text-align: left;
+}
+
+.feedback button:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+/* subjects */
+
+.detail-page .subjects {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 82%;
+    margin-top: 30px;
+    align-items: flex-start;
+
+    background-color: rebeccapurple;
+}
+
+.subjects h4 {
+    font-weight: 100;
+    text-align: left;
+}
+
+.subject-container {
+    display: inline-flex;
+}
+
+.subject-container img {
+    width: 150px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.subject-content {
+    display: inline-block;
+    text-align: left;
+    /* margin-top: 20px; */
+    margin-left: 20px;
+}
+
+.subject-content p {
+    font-size: 12px;
+    margin-top: 10px;
+    color: var(--grey-color);
+}
+
+.subject-content .subject-icon {
+    width: 15px;
+    margin-left: 20px;
+}
+
+.subject-content h5 {
+    border-bottom: 1px solid black;
+    width: 160px;
+}
+
+.subject-content a {
+    font-size: 12px;
+    color: var(--hoofd-color);
+}
+
+.subject-content div {
+    display: flex;
+    justify-content: flex-start;
+}
 
 
 
@@ -655,7 +1123,7 @@ table {
 /******************* Chatbot stylen *******************/
 /* ************************************************** */
 
-        /* Chatbot icon */
+    /* Chatbot icon */
 .chatbot{
     background-color: transparent;
     border: none;
@@ -672,7 +1140,7 @@ table {
 
     .chatbot:hover{
         transform: scale(.7);
-        filter: drop-shadow(.3em .3em 0 var(--grey-color) );
+        filter: drop-shadow(.3em .3em 0 var(--licht-grey-color) );
         transition: .2s;
     }
 
@@ -884,3 +1352,5 @@ main section:last-of-type div{
             color: var(--background-color);
             padding: 0 1em;
         }
+
+

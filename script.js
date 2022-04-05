@@ -67,34 +67,6 @@ VragenListKnop.addEventListener("click", Openvragenlist);
 
 
 
-    // view functions
 
-var paginaview = document.querySelector ("html");
-var bolkjesviewknop = document.querySelector ("main section:first-of-type div button:nth-of-type(2)"); //blokjes
-var lijstviewknop = document.querySelector ("main section:first-of-type div button:nth-of-type(3)"); //table
-
-function lijstview(){
-  request.open('GET', 'lijstview.html');
-      request.onload = function (){
-          console.log("open lijst view");
-          paginaview.innerHTML = this.responseText;
-      };
-  request.send();
-}
-
-lijstviewknop.addEventListener("click", lijstview);
-
-
-
-function bolkjesview(){
-  request.open('GET', 'index.html');
-      request.onload = function (){
-          console.log("open bolkjes view");
-          paginaview.innerHTML = this.responseText;
-      };
-  request.send();
-}
-
-bolkjesviewknop.addEventListener("click", bolkjesview);
 
 
