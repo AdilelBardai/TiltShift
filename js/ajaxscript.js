@@ -65,9 +65,9 @@ function getalgoritmes(index) {
 
     if (style === "table") {
         console.log("Table");
-        getalgoritmestable(index);
+        getalgoritmestable(index, index+7);
     } else {
-        getalgoritmesblokjes(index);
+        getalgoritmesblokjes(index, index+6);
         console.log("Blokjes");
     }
 }
@@ -99,35 +99,35 @@ function getalgoritmesblokjes(index,end) {
         var leestekst = document.createElement("p");
         var myicon = document.createElement("img");
 
-        myimage.src = `${algoritmes[index * 6 + n]["IMAGE"]}`;
-        myh3.textContent = `${algoritmes[index * 6 + n]["NAAM"]}`;
-        mypara.textContent = `${algoritmes[index * 6 + n]["BESCHRIJVING"]}`;
-        leeslink.href = `${algoritmes[index * 6 + n]["LINK"]}`;
+        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
+        myh3.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
+        mypara.textContent = `${algoritmes[index * end + n]["BESCHRIJVING"]}`;
+        leeslink.href = `${algoritmes[index * end + n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
-        myicon.src = `${algoritmes[index * 6 + n]["ICON"]}`;
-        link.href = `${algoritmes[index * 6 + n]["LINK"]}`;
+        myicon.src = `${algoritmes[index * end + n]["ICON"]}`;
+        link.href = `${algoritmes[index * end + n]["LINK"]}`;
 
-        if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Openbare orde") {
+        if (`${algoritmes[index * end + n]["THEMA"]}` === "Openbare orde") {
             div.classList.add("Openbareorde-box");
             myh3.classList.add("Openbareorde");
 
-        } else if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Sociale zekerheid") {
+        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Financien-box");
             myh3.classList.add("Financien");
 
-        } else if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Verkeer") {
+        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Verkeer") {
             div.classList.add("Verkeer-box");
             myh3.classList.add("Verkeer");
 
-        } else if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Sociale zekerheid") {
+        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Socialezekerheid-box");
             myh3.classList.add("Socialezekerheid");
 
-        } else if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Bestuur") {
+        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Bestuur") {
             div.classList.add("Bestuur-box");
             myh3.classList.add("Bestuur");
 
-        } else if (`${algoritmes[index * 6 + n]["THEMA"]}` === "Onderwijs") {
+        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Onderwijs") {
             div.classList.add("Onderwijs-box");
             myh3.classList.add("Onderwijs");
 
@@ -151,11 +151,13 @@ function getalgoritmesblokjes(index,end) {
 
 }
 
+
+
 // ******************************
 // making tabel *****************
 // ******************************
 // index,end
-function getalgoritmestable(index) {
+function getalgoritmestable(index,end) {
     myul.classList.add("hidden");
     mytable.classList.remove("hidden");
     Body.classList.add("lijstbackground");
@@ -188,9 +190,10 @@ function getalgoritmestable(index) {
     mytr1.appendChild(myth6);
     mytable.appendChild(mytr1);
 
-
+console.log(end)
     // 7 -end
-    for (let n = 0; n < 7; n++) {
+    for (let n = 0; n < end; n++) {
+        console.log('NONO')
 
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
@@ -208,15 +211,15 @@ function getalgoritmestable(index) {
 
         // console.log("myimage",myimage);
 
-        mya1.href = `${algoritmes[index * 7 + n]["LINK"]}`;
-        mya2.href = `${algoritmes[index * 7 + n]["LINK"]}`;
+        mya1.href = `${algoritmes[index * end + n]["LINK"]}`;
+        mya2.href = `${algoritmes[index * end + n]["LINK"]}`;
 
-        myimage.src = `${algoritmes[index * 7 + n]["IMAGE"]}`;
-        mya2.textContent = `${algoritmes[index * 7 + n]["NAAM"]}`;
-        mytd3.textContent = `${algoritmes[index * 7 + n]["ORGANISATIE"]}`;
-        mytd4.textContent = `${algoritmes[index * 7 + n]["DATUM"]}`;
-        mytd5.textContent = `${algoritmes[index * 7 + n]["STATUS"]}`;
-        mytd6.textContent = `${algoritmes[index * 7 + n]["TYPE"]}`;
+        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
+        mya2.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
+        mytd3.textContent = `${algoritmes[index * end + n]["ORGANISATIE"]}`;
+        mytd4.textContent = `${algoritmes[index * end + n]["DATUM"]}`;
+        mytd5.textContent = `${algoritmes[index * end + n]["STATUS"]}`;
+        mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
 
         mya1.appendChild(myimage);
         mytd1.appendChild(mya1);
@@ -229,13 +232,13 @@ function getalgoritmestable(index) {
         mytr2.appendChild(mytd5);
         mytr2.appendChild(mytd6);
 
-        if(`${algoritmes[index * 7 + n]["type"]}` === "images/icons/Zelflerend-systeem.icon.png"){
-            mytype.src = `${algoritmes[index * 7 + n]["TYPE"]}`;
+        if(`${algoritmes[index * end + n]["type"]}` === "images/icons/Zelflerend-systeem.icon.png"){
+            mytype.src = `${algoritmes[index * end + n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
             mytd6.appendChild(mytype);
             console.log("nice");
         }else{
-            mytd6.textContent = `${algoritmes[index * 7 + n]["TYPE"]}`;
+            mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
             console.log("not nice");
         }
@@ -252,9 +255,9 @@ if (localStorage.getItem('viewImage')==="true"){
 
 viewKnop.addEventListener("click", switchview);
 
-// page1knop.addEventListener("click", getalgoritmes(0,6) );
-// page2knop.addEventListener("click", getalgoritmes(0,6) );
-// page3knop.addEventListener("click", getalgoritmes(7,12) );
+page1knop.addEventListener("click", getalgoritmes(0,6) );
+page2knop.addEventListener("click", getalgoritmes(0,6) );
+page3knop.addEventListener("click", getalgoritmes(7,12) );
 
 
 // organisatie filter
