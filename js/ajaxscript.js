@@ -30,26 +30,27 @@ var algoritmes;
 
 
 async function switchview() {
-    if (style === "Bolkjes") {
-        console.log("Table view");
-        style = "table";
-        viewImage.src = "images/stripe-list-icon.png";
-        var pageResultaten = document.querySelector(".pagination p");
-        pageResultaten.innerHTML = "Resultaten: 1-7 van 14";
-
-        page2knop.classList.add("active");
-
-        localStorage.setItem("viewImage", JSON.stringify(true));
-
-    } else {
+    if (style === "table") {
         console.log("Bolkjes view");
         style = "Bolkjes";
+        viewImage.src = "images/stripe-list-icon.png";
+
+        localStorage.setItem("viewImage", JSON.stringify(true));
+    } else {
+        console.log("Table view");
+        style = "table";
         viewImage.src = "images/list-option.png";
+        var pageResultaten = document.querySelector(".pagination p");
+        pageResultaten.innerHTML = "Resultaten: 1-7 van 14";
 
         localStorage.setItem("viewImage", JSON.stringify(false));
     }
 
     getalgoritmes(currentPage);
+}
+
+if (localStorage.getItem('viewImage')==="true"){
+    viewImage.innerHTML = "table";
 }
 
 async function requestData() {
@@ -247,9 +248,7 @@ console.log(end)
 }
 
 
-if (localStorage.getItem('viewImage')==="true"){
-    viewImage.innerHTML = "Bolkjes";
-}
+
 
 viewKnop.addEventListener("click", switchview);
 window.onload =switchview;
