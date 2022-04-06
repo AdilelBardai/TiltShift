@@ -55,6 +55,7 @@ async function switchview() {
 async function requestData() {
     response = await fetch(request);
     algoritmes = await response.json();
+    
 }
 
 function getalgoritmes(index) {
@@ -70,12 +71,14 @@ function getalgoritmes(index) {
     }
 }
 
-
 // ******************************
 // making Bolkjes****************
 // ******************************
 
-function getalgoritmesblokjes(index,end) {
+async function getalgoritmesblokjes(index,end) {
+    // Er was error want de data was nog niet gereed daarom heb ik await gebruikt
+    if(!algoritmes) await requestData();
+
     myul.classList.remove("hidden");
     mytable.classList.add("hidden");
     Body.classList.remove("lijstbackground");
@@ -153,7 +156,6 @@ function getalgoritmesblokjes(index,end) {
 }
 
 
-
 // ******************************
 // making tabel *****************
 // ******************************
@@ -194,7 +196,6 @@ function getalgoritmestable(index,end) {
 console.log(end)
     // 7 -end
     for (let n = 0; n < end; n++) {
-
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
 
@@ -208,8 +209,6 @@ console.log(end)
         var mytd5 = document.createElement("td");
         var mytd6 = document.createElement("td");
         var mytype = document.createElement("img");
-
-        // console.log("myimage",myimage);
 
         mya1.href = `${algoritmes[index * end + n]["LINK"]}`;
         mya2.href = `${algoritmes[index * end + n]["LINK"]}`;
@@ -247,23 +246,23 @@ console.log(end)
 
 }
 
-requestData();
+
 if (localStorage.getItem('viewImage')==="true"){
     viewImage.innerHTML = "Bolkjes";
 }
 
 viewKnop.addEventListener("click", switchview);
-
-page1knop.addEventListener("click", getalgoritmes(0) );
-page2knop.addEventListener("click", getalgoritmes(0) );
-page3knop.addEventListener("click", getalgoritmes(1) );
+window.onload =switchview;
+  
+// page1knop.addEventListener("click", getalgoritmes(0) );
+// page2knop.addEventListener("click", getalgoritmes(0) );
+// page3knop.addEventListener("click", getalgoritmes(1) );
 
 
 // organisatie filter
 // selectoption1.addEventListener("click", organisatiefilter);
 // selectoption2.addEventListener("click", organisatiefilter);
 // selectoption3.addEventListener("click", organisatiefilter);
-
 
 
 
