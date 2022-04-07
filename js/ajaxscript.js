@@ -6,10 +6,12 @@
 var viewKnop = document.querySelector("main section:first-of-type div button:nth-of-type(2)");
 var viewImage = document.querySelector("main section:first-of-type div button:nth-of-type(2) img");
 
+var pagination=document.querySelector(".pagination");
+
 var myul = document.querySelector("main ul");
 var mytable = document.querySelector("main table");
 
-var currentPage = 0;
+var currentPage = 1;
 var style = "table";
 var Body = document.body;
 
@@ -20,8 +22,51 @@ var response;
 var algoritmes;
 var themaArray=[];
 
+/* pagination / page nummer */
+function createPagination(num){
+    if(num<2)return; //guard block
+    var btnPrev = document.createElement("button");
+    btnPrev.textContent= "<";
+    pagination.appendChild(btnPrev);
+
+    for(var i = 1;i<=num;i++){
+        var btn = document.createElement("button");
+        btn.textContent= i;
+        pagination.appendChild(btn);
+    }
+
+    var btnNext = document.createElement("button");
+    btnNext.innerText= ">";
+    pagination.appendChild(btnNext);
+}
+function showMore(event){
+    var pageNum;
+    if(event.target.textContent===">"){
+    pageNum=currentPage+1;
+    currentPage++;
+}
+    else if(event.target.textContent==="<"){
+    pageNum=currentPage-1;
+    currentPage--;    
+}
+    else
+    pageNum= +event.target.textContent;
+    pagination.replaceChildren();
+    if(style==="table"){
+    getalgoritmestable(pageNum);
+    }else{
+        getalgoritmesblokjes(pageNum);
+    }
+   console.log(currentPage);
+
+
+}
+
+pagination.addEventListener("click",showMore);
+// event.target.classList.add("active");
 
 function noItems(){
+    if(!algoritmes) return;
     if(algoritmes.length===0)
     {
      
@@ -56,8 +101,7 @@ async function switchview() {
         console.log("Table view");
         style = "table";
         viewImage.src = "images/list-option.png";
-        var pageResultaten = document.querySelector(".pagination p");
-        pageResultaten.innerHTML = "Resultaten: 1-7 van 14";
+
 
         localStorage.setItem("viewImage", JSON.stringify(false));
     }
@@ -81,19 +125,22 @@ function getalgoritmes(index) {
     console.log(currentPage);
 
     if (style === "Bolkjes") {
-        getalgoritmesblokjes(index, index+6);
+        getalgoritmesblokjes(index);
         console.log("Blokjes");
     } else {
         console.log("Table");
-        getalgoritmestable(index, index+7);
+        getalgoritmestable(index);
     }
+
+    
 }
 
 // ******************************
 // making Bolkjes****************
 // ******************************
 
-async function getalgoritmesblokjes(index,end) {
+async function getalgoritmesblokjes(index) {
+   
     // Er was error want de data was nog niet gereed daarom heb ik await gebruikt
     if(!algoritmes) await requestData();
 
@@ -105,8 +152,10 @@ async function getalgoritmesblokjes(index,end) {
     if (x > 0) {
         myul.replaceChildren();
     }
-
-    for (let n = 0; n < end; n++) {
+    pagination.replaceChildren();
+    var start =(index-1)*6;//1*66
+    var end = (index-1)*6 + 6<=algoritmes.length?(index-1)*6+6:algoritmes.length;
+    for (let n = start; n < end; n++) {
 
         var myimage = document.createElement("img");
         var div = document.createElement("div");
@@ -118,35 +167,35 @@ async function getalgoritmesblokjes(index,end) {
         var leestekst = document.createElement("p");
         var myicon = document.createElement("img");
 
-        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
-        myh3.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
-        mypara.textContent = `${algoritmes[index * end + n]["BESCHRIJVING"]}`;
-        leeslink.href = `${algoritmes[index * end + n]["LINK"]}`;
+        myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        myh3.textContent = `${algoritmes[n]["NAAM"]}`;
+        mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
+        leeslink.href = `${algoritmes[n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
-        myicon.src = `${algoritmes[index * end + n]["ICON"]}`;
-        link.href = `${algoritmes[index * end + n]["LINK"]}`;
+        myicon.src = `${algoritmes[n]["ICON"]}`;
+        link.href = `${algoritmes[n]["LINK"]}`;
 
-        if (`${algoritmes[index * end + n]["THEMA"]}` === "Openbare orde") {
+        if (`${algoritmes[n]["THEMA"]}` === "Openbare orde") {
             div.classList.add("Openbareorde-box");
             myh3.classList.add("Openbareorde");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Financien-box");
             myh3.classList.add("Financien");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Verkeer") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Verkeer") {
             div.classList.add("Verkeer-box");
             myh3.classList.add("Verkeer");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Socialezekerheid-box");
             myh3.classList.add("Socialezekerheid");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Bestuur") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Bestuur") {
             div.classList.add("Bestuur-box");
             myh3.classList.add("Bestuur");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Onderwijs") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Onderwijs") {
             div.classList.add("Onderwijs-box");
             myh3.classList.add("Onderwijs");
 
@@ -168,7 +217,7 @@ async function getalgoritmesblokjes(index,end) {
 
     }
 
-
+    createPagination(Math.ceil(algoritmes.length/6));
 }
 
 
@@ -176,18 +225,19 @@ async function getalgoritmesblokjes(index,end) {
 // making tabel *****************
 // ******************************
 
-async function getalgoritmestable(index,end) {
-
+async function getalgoritmestable(index) {
+    
     if(!algoritmes) await requestData();
 
     myul.classList.add("hidden");
     mytable.classList.remove("hidden");
     Body.classList.add("lijstbackground");
 
-    let y = mytable.hasChildNodes()
+    let y = mytable.hasChildNodes();
     if (y > 0) {
         mytable.replaceChildren();
     }
+    pagination.replaceChildren();
 
     var mytr1 = document.createElement("tr");
     var myth1 = document.createElement("th");
@@ -211,8 +261,9 @@ async function getalgoritmestable(index,end) {
     mytr1.appendChild(myth5);
     mytr1.appendChild(myth6);
     mytable.appendChild(mytr1);
-
-    for (let n = 0; n < end; n++) {
+    var start =(index-1)*7;//1*66
+    var end = (index-1)*7 + 7<=algoritmes.length?(index-1)*7+7:algoritmes.length;
+    for (let n = start; n < end; n++) {
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
 
@@ -227,16 +278,16 @@ async function getalgoritmestable(index,end) {
         var mytd6 = document.createElement("td");
         var mytype = document.createElement("img");
 
-        console.log(mytype);
+        console.log(n);
 
-        mya1.href = `${algoritmes[index * end + n]["LINK"]}`;
-        mya2.href = `${algoritmes[index * end + n]["LINK"]}`;
+        mya1.href = `${algoritmes[n]["LINK"]}`;
+        mya2.href = `${algoritmes[n]["LINK"]}`;
 
-        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
-        mya2.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
-        mytd3.textContent = `${algoritmes[index * end + n]["ORGANISATIE"]}`;
-        mytd4.textContent = `${algoritmes[index * end + n]["DATUM"]}`;
-        mytd5.textContent = `${algoritmes[index * end + n]["STATUS"]}`;
+        myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        mya2.textContent = `${algoritmes[n]["NAAM"]}`;
+        mytd3.textContent = `${algoritmes[n]["ORGANISATIE"]}`;
+        mytd4.textContent = `${algoritmes[n]["DATUM"]}`;
+        mytd5.textContent = `${algoritmes[n]["STATUS"]}`;
 
         mya1.appendChild(myimage);
         mytd1.appendChild(mya1);
@@ -249,12 +300,12 @@ async function getalgoritmestable(index,end) {
         mytr2.appendChild(mytd5);
         mytr2.appendChild(mytd6);
 
-        if((`${algoritmes[index * end + n]["TYPE"]}` === "Rule based") || (`${algoritmes[index * end + n]["TYPE"]}` === "?")){
-            mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
+        if((`${algoritmes[n]["TYPE"]}` === "Rule based") || (`${algoritmes[n]["TYPE"]}` === "?")){
+            mytd6.textContent = `${algoritmes[n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
             console.log("its a text");
         }else{
-            mytype.src = `${algoritmes[index * end + n]["TYPE"]}`;
+            mytype.src = `${algoritmes[n]["TYPE"]}`;
             mytd6.appendChild(mytype);
             mytr2.appendChild(mytd6);
             console.log("its an icon");
@@ -265,6 +316,8 @@ async function getalgoritmestable(index,end) {
         
     }
 
+
+    createPagination(Math.ceil(algoritmes.length/7));
 }
 
 viewKnop.addEventListener("click", switchview);
@@ -279,13 +332,13 @@ async function filterCity(){
         algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
         }
         algoritmes=themaArray.length>0? algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"])):algoritmes;
-            let total=algoritmes.length;
+
             if (style === "Bolkjes") {
-                getalgoritmesblokjes(0,  (total<6?total:6));
+                getalgoritmesblokjes(1);
                 console.log("Blokjes");
             } else {
                 console.log("Table");
-                getalgoritmestable(0, (total<7?total:7));
+                getalgoritmestable(1);
             }
 
 
@@ -319,4 +372,5 @@ async function filterData(event){
 
 const selectBtns=document.querySelector(".filterOptions");
 selectBtns.addEventListener("click",filterData);
+
 
