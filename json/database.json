@@ -8,6 +8,7 @@
         "TYPE":"?",
         "BESCHRIJVING":"In Amsterdam is er beperkt woon- en verblijfsruimte, zowel voor Amsterdammers als voor bezoekers. Het verhuren van een woning of woonboot aan toeristen moet aan bepaalde voorwaarden voldoen. Het mag bijvoorbeeld maximaal 30…",
         "THEMA":"Openbare orde",
+        "THEMA-ICON":"images/icons/Openbareorde.icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -21,6 +22,7 @@
         "TYPE":"?",
         "BESCHRIJVING":"Om de stad veiliger te maken coördineert de gemeente, samen met haar maatschappelijke partners, vanuit het Actiecentrum Veiligheid en Zorg (AcVZ) verschillende aanpakken op het snijvlak van veiligheid, zorg en het sociaal domein. De kenmerken…",
         "THEMA":"Openbare orde",
+        "THEMA-ICON":"images/icons/Openbareorde.icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -32,8 +34,9 @@
         "DATUM":"03 - 03 - 2022",
         "STATUS":"Actief",
         "TYPE":"?",
-        "BESCHRIJVING":"In Amsterdam strijden we tegen armoede. Mensen die in armoede dreigen te raken proberen we zo vroeg mogelijk te helpen, om te voorkomen dat ze ernstige schulden krijgen of uit hun woning gezet worden. Als problemen nog klein zijn, kan een advies of een lichte interventie al voldoende…",
+        "BESCHRIJVING":"In Amsterdam strijden we tegen armoede. Mensen die in armoede dreigen te raken proberen we zo vroeg mogelijk te helpen, om te voorkomen dat ze ernstige schulden krijgen of uit hun woning gezet worden. Als problemen nog klein zijn, kan een advies of een…",
         "THEMA":"Sociale zekerheid",
+        "THEMA-ICON":"images/icons/Socialezekerheid.icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -47,6 +50,7 @@
         "TYPE":"?",
         "BESCHRIJVING":"Als er op straat of in een park iets gemaakt of opgeruimd moet worden, dan kan dat bij de gemeente worden gemeld via SIA, het online meldingensysteem. Ook een gevaarlijke verkeerssituatie of overlast van personen en…",
         "THEMA":"Openbare orde",
+        "THEMA-ICON":"images/icons/Openbareorde.icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -58,8 +62,9 @@
         "DATUM":"23-01-2022",
         "STATUS":"In ontwikkeling",
         "TYPE":"Rule based",
-        "BESCHRIJVING":"Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een parkeervergunning heeft…",
+        "BESCHRIJVING":"Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een…",
         "THEMA":"Verkeer",
+        "THEMA-ICON":"images/icons/Verkeer-icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -71,8 +76,9 @@
         "DATUM":"02 - 10 - 2021",
         "STATUS":"Actief",
         "TYPE":"?",
-        "BESCHRIJVING":"Amsterdam is een drukke stad. Dit kan soms leiden tot verkeersonveilige situaties. Door data te verzamelen over de aantallen voetgangers is het mogelijk om maatregelen te treffen, waardoor de drukte in goede banen geleid kan worden. Hierdoor blijft de…",
+        "BESCHRIJVING":"Amsterdam is een drukke stad. Dit kan soms leiden tot verkeersonveilige situaties. Door data te verzamelen over de aantallen voetgangers is het mogelijk om maatregelen te treffen, waardoor de drukte in goede banen geleid kan worden. Hierdoor blijft…",
         "THEMA":"Verkeer",
+        "THEMA-ICON":"images/icons/Verkeer-icon.svg",
         "ICON":"images/amsterdam.png",
         "LINK":"detail-pagina.html"
     }
@@ -86,6 +92,7 @@
         "TYPE":"?",
         "BESCHRIJVING":"Als er op straat of in een park iets gemaakt of opgeruimd moet worden, dan kan dat bij de gemeente worden gemeld via SIA, het online meldingensysteem. Ook een gevaarlijke verkeerssituatie of overlast van personen en…",
         "THEMA":"Openbare orde",
+        "THEMA-ICON":"images/icons/Openbareorde.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -99,6 +106,7 @@
         "TYPE":"Rule based",
         "BESCHRIJVING":"Het Wmo-voorspelmodel geeft een voorspelling van het aantal unieke gebruikers en de kosten van de Wmo met een voorspelhorizon van vijf jaar. Voorspellingen worden gedaan op wijkniveau voor zowel de Wmo-totaal als voor deelproducten van de Wmo…",
         "THEMA":"Sociale zekerheid",
+        "THEMA-ICON":"images/icons/Socialezekerheid.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -112,6 +120,7 @@
         "TYPE":"Rule based",
         "BESCHRIJVING":"Het doel van het algoritme is om kentekens automatisch te scannen ten behoeve van parkeerhandhaving en handhaving milieuzones.",
         "THEMA":"Verkeer",
+        "THEMA-ICON":"images/icons/Verkeer-icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -125,6 +134,7 @@
         "TYPE":"images/icons/Zelflerend-systeem.icon.png",
         "BESCHRIJVING":"Het model berekent aan de hand van verzuimmeldingen van Haagse leerlingen de kans dat een leerling (van 12 tot 18 jaar) ergens in het lopende schooljaar langdurig relatief gaat verzuimen. Langdurig relatief verzuim (LRV) wil in dit kader…",
         "THEMA":"Onderwijs",
+        "THEMA-ICON":"images/icons/Onderwijs.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -138,6 +148,7 @@
         "TYPE":"Rule based",
         "BESCHRIJVING":"Er worden meerdere analyses uitgevoerd in het project Zicht op Ondermijning, zie ook website www.zichtopondermijning.nl. Er wordt continu doorgewerkt aan het toevoegen van inzichten en (nieuwe) analyses…",
         "THEMA":"Bestuur",
+        "THEMA-ICON":"images/icons/Bestuur.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -151,6 +162,7 @@
         "TYPE":"Rule based",
         "BESCHRIJVING":" Het algoritme berekent de hoeveelheid verplaatsingen (auto, OV en fiets) op basis van inputgegevens zoals netwerken en demografische data. Het model wordt gebruikt, intern bij Den Haag, bij andere gemeenten en bij…",
         "THEMA":"Verkeer",
+        "THEMA-ICON":"images/icons/Verkeer-icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -162,8 +174,9 @@
         "DATUM":"17 - 10 - 2021",
         "STATUS":"Actief",
         "TYPE":"Rule based",
-        "BESCHRIJVING":"Het is een verkeersmodel om stadsbreed de hinder van activiteiten (bouwwerkzaamheden, wegwerkzaamheden en evenementen) op het netwerk Bereikbaarheidsregie (het Haags hoofd verkeersnetwerk) inzichtelijk te maken, te objectiveren en zo te ondersteunen bij de afstemming en planning van die activiteiten zodat de Haagse Bereikbaarheid zo veel mogelijk geborgd blijft…",
+        "BESCHRIJVING":"Het is een verkeersmodel om stadsbreed de hinder van activiteiten (bouwwerkzaamheden, wegwerkzaamheden en evenementen) op het netwerk Bereikbaarheidsregie (het Haags hoofd verkeersnetwerk) inzichtelijk te maken, te objectiveren en zo te ondersteunen bij de afstemming en planning van die activiteite…",
         "THEMA":"Verkeer",
+        "THEMA-ICON":"images/icons/Verkeer-icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }
@@ -177,6 +190,7 @@
         "TYPE":"Rule based",
         "BESCHRIJVING":"Het bepalen en fiatteren van de WOZ-waarde op basis van taxatiemodellen en het opstellen van een taxatieverslag. De status van 4Woz 2.0 is in productie. In de gemeente Den Haag worden in 2022 voor het eerst taxatiewaarden…",
         "THEMA":"Sociale zekerheid ",
+        "THEMA-ICON":"images/icons/Socialezekerheid.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"
     }

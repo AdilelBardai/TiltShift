@@ -371,60 +371,91 @@ main section:first-of-type div input[type="text"]{
     box-shadow: var(--licht-grey-color) 0 .15em .2em ;
 }
 
+    .filterOptions button:first-of-type.activated,
     .filterOptions button:first-of-type:hover{
         background-color:var(--thema-Natuur);
     }
 
+    .filterOptions button:nth-of-type(2).activated,
     .filterOptions button:nth-of-type(2):hover{
         background-color:var(--thema-Financien);
+        color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(3).activated,
     .filterOptions button:nth-of-type(3):hover{
         background-color:var(--thema-Integratie);
     }
+
+    .filterOptions button:nth-of-type(4).activated,
     .filterOptions button:nth-of-type(4):hover{
         background-color:var(--thema-Recht);
         color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(5).activated,
     .filterOptions button:nth-of-type(5):hover{
         background-color:var(--thema-Sociale-zekerheid);
     }
+
+    .filterOptions button:nth-of-type(6).activated,
     .filterOptions button:nth-of-type(6):hover{
         background-color:var(--thema-Gezondheid);
         color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(7).activated,
     .filterOptions button:nth-of-type(7):hover{
         background-color:var(--thema-Verkeer);
     }
+
+    .filterOptions button:nth-of-type(8).activated,
     .filterOptions button:nth-of-type(8):hover{
         background-color:var(--thema-Cultuur);
     }
+
+    .filterOptions button:nth-of-type(9).activated,
     .filterOptions button:nth-of-type(9):hover{
         background-color:var(--thema-Huisvesting);
     }
+
+    .filterOptions button:nth-of-type(10).activated,
     .filterOptions button:nth-of-type(10):hover{
         background-color:var(--thema-Bestuur);
         color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(11).activated,
     .filterOptions button:nth-of-type(11):hover{
         background-color:var(--thema-Economie);
+        color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(12).activated,
     .filterOptions button:nth-of-type(12):hover{
         background-color:var(--thema-Landbouw);
     }
+
+    .filterOptions button:nth-of-type(13).activated,
     .filterOptions button:nth-of-type(13):hover{
         background-color:var(--thema-Onderwijs);
     }
+
+    .filterOptions button:nth-of-type(14).activated,
     .filterOptions button:nth-of-type(14):hover{
         background-color:var(--thema-Infrastructuur);
     }
+
+    .filterOptions button:nth-of-type(15).activated,
     .filterOptions button:nth-of-type(15):hover{
         background-color:var(--thema-Werk);
         color: var(--background-color);
     }
+
+    .filterOptions button:nth-of-type(16).activated,
     .filterOptions button:nth-of-type(16):hover{
         background-color:var(--thema-openbare-orde);
     }
-
 
 .openfilter{
     opacity: 1;
@@ -457,13 +488,18 @@ main section:first-of-type div input[type="text"]{
 }
 
 main ul{
+    width: 100%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 6em;
-    margin:2em 8em;
+    gap: 4.5em;
+    padding:2em 8em;
     justify-content: flex-start;
 }
+
+    main ul>p{
+        text-align: center;
+    }
 
 main ul li{
     width: 22em;
@@ -636,6 +672,9 @@ table {
     margin-top: 2em;
   }
 
+    main table>p{
+    text-align: center;
+    }
 
     table tr th {
         padding-top: 12px;
@@ -678,10 +717,21 @@ table {
         height: 5em;
         border-radius: .5em;
     }
+
+    table tr td:last-of-type img{
+        width: 2em;
+        height: auto;
+    }
     
     table tr:nth-child(even) {
         background-color: var(--secondary-color);
     }
+
+
+
+
+
+
 
 
 
