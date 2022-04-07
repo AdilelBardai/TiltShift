@@ -18,6 +18,31 @@ var requestfile = "json\\database.json";
 var request = new Request(requestfile);
 var response;
 var algoritmes;
+var themaArray=[];
+
+
+function noItems(){
+    if(algoritmes.length===0)
+    {
+     
+        if (style === "table") {
+        var myTdEmpty = document.createElement("td");
+        var myTrEmpty = document.createElement("tr");
+        myTdEmpty.textContent= "Geen resultaten gevonden.";
+        myTrEmpty.appendChild(myTdEmpty);
+        mytable.appendChild(myTrEmpty);
+        myTdEmpty.classList.add("no-item");
+        myTdEmpty.colSpan="6";
+       }
+        else{
+            var myLiEmpty = document.createElement("li");
+            myLiEmpty.textContent = "Geen resultaten gevonden.";
+            myul.appendChild(myLiEmpty);
+            myLiEmpty.classList.add("no-item");
+        
+        }
+    }
+}
 
 
 async function switchview() {
@@ -38,6 +63,7 @@ async function switchview() {
     }
 
     getalgoritmes(currentPage);
+    noItems();
 }
 
 if (localStorage.getItem('viewImage')==="true"){
@@ -139,6 +165,7 @@ async function getalgoritmesblokjes(index,end) {
         leeslink.appendChild(leestekst);
         div.appendChild(leeslink);
         myul.appendChild(myli);
+
     }
 
 
@@ -185,7 +212,6 @@ async function getalgoritmestable(index,end) {
     mytr1.appendChild(myth6);
     mytable.appendChild(mytr1);
 
-    // 7 - end
     for (let n = 0; n < end; n++) {
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
@@ -235,6 +261,8 @@ async function getalgoritmestable(index,end) {
         }
 
         mytable.appendChild(mytr2);
+
+        
     }
 
 }
@@ -246,43 +274,11 @@ window.onload =switchview;
 var selectbar = document.querySelector("main section:first-of-type div select");
 const selectFilter=document.querySelector("select[name=filter]:first-of-type");
 
-async function filterCity(city){
-    if (city!=="organisatie"){
-        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"] ===city);
-        // console.log(algoritmes);
-        }
-        let total=algoritmes.length;
-
-        if (style === "Bolkjes") {
-            getalgoritmesblokjes(0,  (total<6?total:6));
-            console.log("Blokjes");
-        } else {
-            console.log("Table");
-            getalgoritmestable(0,  (total<7?total:7));
-        }
-}
-async function organisatiefilter (event){
-    await requestData(); //get the algorithm array
-    await filterCity(event.target.value);
-}
-
-selectFilter.addEventListener("change",organisatiefilter);
-
-
-// Thema filter 
-async function filterData(event){
-    
-    if (event.target.textContent==="") return;
-    
-    if(!event.target.classList.contains("activated")){
-
-      //  await requestData();
-        event.target.classList.add("activated");
-
-        if (selectFilter.value!=="organisatie"){
+async function filterCity(){
+    if (selectFilter.value!=="organisatie"){
         algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
         }
-            algoritmes= algoritmes.filter(algoritm=>algoritm["THEMA"]===event.target.textContent);
+        algoritmes=themaArray.length>0? algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"])):algoritmes;
             let total=algoritmes.length;
             if (style === "Bolkjes") {
                 getalgoritmesblokjes(0,  (total<6?total:6));
@@ -292,20 +288,33 @@ async function filterData(event){
                 getalgoritmestable(0, (total<7?total:7));
             }
 
-            if(total===0)
-            {
-                var myp = document.createElement("p");
-                myp.textContent= "Geen resultaten gevonden.";
-                myul.appendChild(myp);
-                mytable.appendChild(myp);
-            }
-    } else {
-        console.log("already active");
-        await requestData();
-        event.target.classList.remove("activated");
-       await filterCity(selectFilter.value);
-    }
+
 }
+async function organisatiefilter (event){
+    await requestData(); //get the algorithm array
+    await filterCity();
+}
+
+selectFilter.addEventListener("change",organisatiefilter);
+
+
+// Thema filter 
+async function filterData(event){
+    
+    if (event.target.textContent==="") return;
+    await requestData();
+    if(!event.target.classList.contains("activated")){
+        themaArray.push(event.target.textContent);
+    }else {
+
+        themaArray.splice(themaArray.indexOf(event.target.textContent),1);
+    }
+        event.target.classList.toggle("activated");
+
+        filterCity();
+        noItems();
+    } 
+
 
 
 const selectBtns=document.querySelector(".filterOptions");

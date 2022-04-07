@@ -727,8 +727,11 @@ table {
         background-color: var(--secondary-color);
     }
 
-
-
+/* geen items gevonden na het filteren */
+.no-item{
+    width: 100%;
+    text-align: center;
+}
 
 
 
