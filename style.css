@@ -717,10 +717,21 @@ table {
         height: 5em;
         border-radius: .5em;
     }
+
+    table tr td:last-of-type img{
+        width: 2em;
+        height: auto;
+    }
     
     table tr:nth-child(even) {
         background-color: var(--secondary-color);
     }
+
+
+
+
+
+
 
 
 

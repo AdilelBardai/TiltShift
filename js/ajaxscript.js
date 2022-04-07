@@ -9,18 +9,9 @@ var viewImage = document.querySelector("main section:first-of-type div button:nt
 var myul = document.querySelector("main ul");
 var mytable = document.querySelector("main table");
 
-var page1knop = document.querySelector(".pagination button:nth-of-type(1)");
-var page2knop = document.querySelector(".pagination button:nth-of-type(2)");
-var page3knop = document.querySelector(".pagination button:nth-of-type(3)");
 var currentPage = 0;
 var style = "table";
 var Body = document.body;
-
-// organisatie filter
-var selectbar = document.querySelector("main section:first-of-type div select");
-var selectoption1 = document.querySelector("main section:first-of-type div select option:nth-of-type(1)");
-var selectoption2 = document.querySelector("main section:first-of-type div select option:nth-of-type(2)");
-var selectoption3 = document.querySelector("main section:first-of-type div select option:nth-of-type(3)");
 
 // JSON Data
 var requestfile = "json\\database.json";
@@ -89,10 +80,7 @@ async function getalgoritmesblokjes(index,end) {
         myul.replaceChildren();
     }
 
-    // let pagenum = entry === undefined ?? 0 ;
-
     for (let n = 0; n < end; n++) {
-        // pagenum = index;
 
         var myimage = document.createElement("img");
         var div = document.createElement("div");
@@ -160,8 +148,11 @@ async function getalgoritmesblokjes(index,end) {
 // ******************************
 // making tabel *****************
 // ******************************
-// index,end
-function getalgoritmestable(index,end) {
+
+async function getalgoritmestable(index,end) {
+
+    if(!algoritmes) await requestData();
+
     myul.classList.add("hidden");
     mytable.classList.remove("hidden");
     Body.classList.add("lijstbackground");
@@ -194,8 +185,7 @@ function getalgoritmestable(index,end) {
     mytr1.appendChild(myth6);
     mytable.appendChild(mytr1);
 
-console.log(end)
-    // 7 -end
+    // 7 - end
     for (let n = 0; n < end; n++) {
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
@@ -211,6 +201,8 @@ console.log(end)
         var mytd6 = document.createElement("td");
         var mytype = document.createElement("img");
 
+        console.log(mytype);
+
         mya1.href = `${algoritmes[index * end + n]["LINK"]}`;
         mya2.href = `${algoritmes[index * end + n]["LINK"]}`;
 
@@ -219,7 +211,6 @@ console.log(end)
         mytd3.textContent = `${algoritmes[index * end + n]["ORGANISATIE"]}`;
         mytd4.textContent = `${algoritmes[index * end + n]["DATUM"]}`;
         mytd5.textContent = `${algoritmes[index * end + n]["STATUS"]}`;
-        mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
 
         mya1.appendChild(myimage);
         mytd1.appendChild(mya1);
@@ -232,14 +223,15 @@ console.log(end)
         mytr2.appendChild(mytd5);
         mytr2.appendChild(mytd6);
 
-        if(`${algoritmes[index * end + n]["type"]}` === "images/icons/Zelflerend-systeem.icon.png"){
-            mytype.src = `${algoritmes[index * end + n]["TYPE"]}`;
-            mytr2.appendChild(mytd6);
-            mytd6.appendChild(mytype);
-            console.log("nice");
-        }else{
+        if((`${algoritmes[index * end + n]["TYPE"]}` === "Rule based") || (`${algoritmes[index * end + n]["TYPE"]}` === "?")){
             mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
+            console.log("its a text");
+        }else{
+            mytype.src = `${algoritmes[index * end + n]["TYPE"]}`;
+            mytd6.appendChild(mytype);
+            mytr2.appendChild(mytd6);
+            console.log("its an icon");
         }
 
         mytable.appendChild(mytr2);
@@ -247,23 +239,5 @@ console.log(end)
 
 }
 
-
-
-
 viewKnop.addEventListener("click", switchview);
 window.onload =switchview;
-  
-// page1knop.addEventListener("click", getalgoritmes(0) );
-// page2knop.addEventListener("click", getalgoritmes(0) );
-// page3knop.addEventListener("click", getalgoritmes(1) );
-
-
-// organisatie filter
-// selectoption1.addEventListener("click", organisatiefilter);
-// selectoption2.addEventListener("click", organisatiefilter);
-// selectoption3.addEventListener("click", organisatiefilter);
-
-
-
-
-
