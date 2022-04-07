@@ -10,12 +10,12 @@
 <body>
     <header>
         <nav class="navigation-bar">          
-            <img src="images/algoritmeregister-logo.svg">
+            <img src="images/algoritmeregister-logo.svg" alt="logo">
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="index.html">Overzicht</a></li>
+              <li><a href="#">Overzicht</a></li>
               <li><a href="#">Contact</a></li>
-              <li><button><img src="images/Netherlands.png" alt=""></button></li>
+              <li><button><img src="images/Netherlands.png" alt="taal-selectie"></button></li>
             </ul>
         </nav>    
         <article>
@@ -26,14 +26,33 @@
 
     <main class="detail-page">
         <section>
-            <a href="index.html"> < Terug </a>
+            <a href="lijst2.html" class="terug-link">< Terug </a>
             <div>
                 <input type="text" value="Wat zoek je?">
-                <button><img src="images/search.png"></button>
-                <a href="#"><img src="images/icons/notification.png" alt="notification-knop"></a>
+                <button><img src="images/search.png" alt="zoek-knop"></button>
+                <img src="images/icons/notification.png" alt="notification-knop" id="notificationBtn">
                 <a href="#"><img src="images/icons/sound.png" alt="voorlees-knop"></a>
             </div>
         </section>
+        <div id="popUp" class="pop-up">
+          <div class="popUp-content">
+            <span class="close">&times;</span>
+            <h5>Ik wil op de hoogte blijven van:</h5>
+            <input type="checkbox" name="keuze1" value="keuze1">
+            <label for="keuze1"> Wanneer er wijzigingen plaatsvinden voor <b>"Handhaving Illegale Vakantieverhuur"</b></label><br>
+            <input type="checkbox" name="keuze2" value="keuze2">
+            <label for="keuze2">Nieuwe algoritmes met hetzelfde thema bijkomen</label><br>
+            <input type="checkbox" name="keuze3" value="keuze3">
+            <label for="keuze3"> Nieuwe algoritmes bijkomen</label><br>
+            <form>
+              <label for="e-mail">Voer uw e-mail in:</label>
+              <input type="text" required>
+            </form>
+            <div>
+              <button class="gereed">gereed</button>
+            </div>
+          </div>
+        </div>
 
         <section class="detail-container">
             <div class="detail-banner">
@@ -89,146 +108,146 @@
         </section>
 
         <!--Tabs-->
-      <section class="tabbed">
-          <input type="radio" name="tabs" id="tab-nav-1" checked>
-          <label for="tab-nav-1">Risico’s</label>
-          <input type="radio" name="tabs" id="tab-nav-2">
-          <label for="tab-nav-2">Discriminatie</label>
-          <input type="radio" name="tabs" id="tab-nav-3">
-          <label for="tab-nav-3">Menselijk toezicht</label>
-          <input type="radio" name="tabs" id="tab-nav-4">
-          <label for="tab-nav-4">Data</label>
-          <input type="radio" name="tabs" id="tab-nav-5">
-          <label for="tab-nav-5">Dataverwerking</label>
-
-          <div class="tabs">
-            <!--     Risico’s     -->
-            <div>
-              <p>Welke risico’s heeft het gebruik van het algoritme en wat doet de gemeente om deze risico’s te ondervangen?
-              <p>
-      
-              <p>Het systeem heeft uiteraard gevolgen voor de mogelijke overtreder. Een melding kan namelijk meer of minder prioriteit krijgen dan zonder het algoritme. We hebben verschillende maatregelen getroffen om ervoor te zorgen dat alle risico-inschattingen van het algoritme niet op toeval berusten. Een belangrijk maatregel is dat we dit algoritme in een pilotfase uitvoerig en voortdurend evalueren op bv. betrouwbaarheid, voordat het wordt geïmplementeerd in de bedrijfsvoering. </p>
+        <section class="tabbed">
+            <input type="radio" name="tabs" id="tab-nav-1" checked>
+            <label for="tab-nav-1">Risico’s</label>
+            <input type="radio" name="tabs" id="tab-nav-2">
+            <label for="tab-nav-2">Discriminatie</label>
+            <input type="radio" name="tabs" id="tab-nav-3">
+            <label for="tab-nav-3">Menselijk toezicht</label>
+            <input type="radio" name="tabs" id="tab-nav-4">
+            <label for="tab-nav-4">Data</label>
+            <input type="radio" name="tabs" id="tab-nav-5">
+            <label for="tab-nav-5">Dataverwerking</label>
+  
+            <div class="tabs">
+              <!--     Risico’s     -->
+              <div>
+                <p>Welke risico’s heeft het gebruik van het algoritme en wat doet de gemeente om deze risico’s te ondervangen?
+                <p>
+        
+                <p>Het systeem heeft uiteraard gevolgen voor de mogelijke overtreder. Een melding kan namelijk meer of minder prioriteit krijgen dan zonder het algoritme. We hebben verschillende maatregelen getroffen om ervoor te zorgen dat alle risico-inschattingen van het algoritme niet op toeval berusten. Een belangrijk maatregel is dat we dit algoritme in een pilotfase uitvoerig en voortdurend evalueren op bv. betrouwbaarheid, voordat het wordt geïmplementeerd in de bedrijfsvoering. </p>
+              </div>
+  
+              <!--    Discriminatie    -->
+              <div>
+                <p>Hoe bevordert het algoritme gelijke behandeling of gaat het ongelijke behandeling tegen?
+                <p>
+        
+                <p>Bij het ontwikkelen van het algoritme hebben we kritisch gekeken naar beschikbare datasets. Hiervoor is een ‘Privacy Impact assessment’ (PIA) opgesteld. We hebben ervoor gekozen niet alle beschikbare informatie te verwerken in het algoritme. We hebben alleen informatie die noodzakelijk is voor het vaststellen van een overtreding van de Huisvestingswet opgenomen in de dataset waarop het algoritme is ontwikkeld[1]. Informatie als geboorteplaats, nationaliteit, burgerlijke staat en geboorteland zijn niet verwerkt in het algoritme. Dat voorkomt dat er een vertekend beeld of vooroordeel ontstaat over specifieke groepen.</p>
+                <p>De gegevens die het algoritme gebruikt, komen van eerdere illegale vakantieverhuurzaken. Er moeten kwalitatief goede gegevens worden gebruikt om een handhavingsbesluit te kunnen onderbouwen en juridisch staande te kunnen houden. We nemen daarom aan dat de onderliggende gegevens geen wezenlijke vooroordelen bevatten, die doen twijfelen aan de betrouwbaarheid van de gegevens en de kansberekening.</p>
+        
+                <p>Een algoritme kan echter zo goed zijn in het vinden van patronen, dat het direct uitsluiten van gevoelige gegevens niet voldoende is. We hebben daarom ook uitgezocht of de niet-gevoelige gegevens die het algoritme verwerkt indirect toch tot ongewenste verschillen in behandeling leiden. Het zou bijvoorbeeld kunnen dat in bepaalde wijken veel mensen wonen met een bepaalde nationaliteit, of dat een bepaalde groep gemiddeld genomen grotere gezinnen heeft. Als het algoritme dan gebruik kan maken van een gegeven als postcode of gezinsgrootte, kan het indirect alsnog onderscheid maken tussen bepaalde groepen, simpelweg door onderscheid te maken tussen wijken/gezinsgrootte. Zo kan een groep alsnog benadeeld worden door het algoritme, ook al is de groep niet expliciet bekend bij het algoritme.</p>
+        
+                <p>We hebben ervoor gekozen om hier nader onderzoek naar te doen. Het zogenaamd onderzoek naar onbewuste vooringenomenheid (bias) uitgevoerd en de resultaten hiervan zijn te vinden op:
+                  <br>Blog post 1:
+                  <br> <a>Analyzing Bias in Machine Learning: a step-by-step approach (amsterdamintelligence.com)</a>
+                  <br>Er kan worden geconcludeerd dat het algoritme vrij is van een ongerechtvaardigde vooringenomenheid en daarmee geschikt is om een pilot mee te starten.
+                </p>
+        
+                <p> <a>[1] Commissie Persoonsgegevens Amsterdam – Gemeente Amsterdam,</a> advies Bias analyse over ontwikkelde algoritme 10 december 2020. </p>
+              </div>
+        
+              <!--     Menselijk toezicht     -->
+              <div>
+                <p>In hoeverre houden mensen toezicht op de werking van het algoritme?</p>
+                <p>Er is geen sprake van geautomatiseerde besluitvorming. Als we een adres onderzoeken op het vermoeden van illegale vakantieverhuur komt dit voort uit een melding van bijvoorbeeld een omwonende of een verhuurplatform. Het algoritme helpt de medewerkers van Toezicht & Handhaving te bepalen bij welke meldingen de kans op illegale verhuur het grootst is, zodat die meldingen het eerst onderzocht kunnen worden. De medewerker krijgt een overzicht te zien, die toont op grond van welke criteria het algoritme het risico op illegale vakantieverhuur hoog of laag inschat. Op die manier maken we inzichtelijk waarop het algoritme de risico-inschatting heeft gebaseerd.</p>
+                <p>Er is geen sprake van geautomatiseerde besluitvorming. Als we een adres onderzoeken op het vermoeden van illegale vakantieverhuur komt dit voort uit een melding van bijvoorbeeld een omwonende of een verhuurplatform. Het algoritme helpt de medewerkers van Toezicht & Handhaving te bepalen bij welke meldingen de kans op illegale verhuur het grootst is, zodat die meldingen het eerst onderzocht kunnen worden. De medewerker krijgt een overzicht te zien, die toont op grond van welke criteria het algoritme het risico op illegale vakantieverhuur hoog of laag inschat. Op die manier maken we inzichtelijk waarop het algoritme de risico-inschatting heeft gebaseerd.</p>
+                <p>Om te voorkomen dat medewerkers teveel vertrouwen in het algoritme hebben, is er iemand aangesteld om het algoritme en de werking daarvan te monitoren. Daarnaast is een werkinstructie opgesteld voor de medewerkers die met dit instrument gaan werken. Daarbij volgen de medewerkers workshop over de kansen en risico’s van het gebruik van algoritmen.</p>
+              </div>
+        
+              <!--    Data    -->
+              <div>
+                <p>Overzicht van de belangrijkste datasets die gebruikt zijn in de ontwikkeling en de toepassing van het algoritme. De verschillende datasets worden onderscheiden door subkoppen.</p>
+                <section>
+                  <div>
+                    <p>Identiteits- en huisvestingsgegevens (BRP)</p>
+                    <p>Een beperkte set gegevens uit de Basisregistratie Personen (BRP) over de identiteit en huisvestingssituatie van de bewoners, namelijk:</p>
+                    <ul>
+                      <li>Naam van de geregistreerde bewoners</li>
+                      <li>Geboortedatum</li>
+                      <li>Vertrekdatum Amsterdam</li>
+                      <li>Vertrekdatum adres</li>
+                      <li>Vestigingsdatum adres</li>
+                      <li>Overlijdensdatum</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p>Gegevens over gebouwen (BAG)</p>
+                    <p>Een beperkte set gegevens uit de Basisregistratie Adressen en Gebouwen (BAG) over het gebouw, namelijk:</p>
+                    <ul>
+                      <li>Adres, straatcode, postcode</li>
+                      <li>id-adres</li>
+                      <li>omschrijving pand</li>
+                      <li>Amsterdamse BAG-code, landelijke BAG-code</li>
+                      <li>type woning (huur, sociale huur / vrije sector, koop)</li>
+                      <li>adresseerbaar BAG-ID</li>
+                      <li>aantal kamers</li>
+                      <li>vloeroppervlak</li>
+                      <li>bouwlaag van voordeur appartement</li>
+                      <li>aantal bouwlagen</li>
+                      <li>omschrijving verdieping woonobject</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p>Gegevens uit illegale vakantieverhuurzaak</p>
+                    <p>Gegevens uit de melding en eventuele gerelateerde illegale vakantieverhuurzaak, namelijk:</p>
+                    <ul>
+                      <li>zaak id</li>
+                      <li>datum van start van onderzoek / melding</li>
+                      <li>stadium van behandeling van de melding</li>
+                      <li>stadia nummer, omschrijving en id</li>
+                      <li>(meld)code</li>
+                      <li>code overtreding</li>
+                      <li>code (behandelend) medewerker</li>
+                      <li>wel / geen anonieme melder</li>
+                      <li>datum melding</li>
+                      <li>situatieschets</li>
+                      <li>bevindingen onderzoek</li>
+                      <li>gebruiker die melding heeft gecreëerd (met datum), of aangepast (met datum aanpassing)</li>
+                      <li>behandelcode (type zaak, indeling in team)</li>
+                      <li>resultaat</li>
+                      <li>datum wanneer zaak is afgesloten</li>
+                      <li>reden waarom zaak is afgesloten</li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+        
+              <!--   Dataverwerking     -->
+              <div>
+                <p>Hoe gebruikt het systeem de data?</p>
+                <p><strong>Architectuur van het model</strong> <br> Gemeente Amsterdam heeft een algoritme ontwikkeld dat verbanden en patronen kan vinden in grote hoeveelheid informatie over illegale vakantieverhuur. Het algoritme
+                  berekent welke informatie vaker in verband kan worden gebracht met illegale vakantieverhuur en welke informatie niet. Het algoritme doet dit door wiskundige berekeningen
+                  uit te voeren volgens het kansboom-principe. Dat wil zeggen dat het algoritme op basis van een groot aantal kansberekeningen een gemiddelde neemt. Dit gemiddelde wordt
+                  gebruikt om de wiskundige verwachting te genereren van illegale vakantieverhuur op een adres. Het algoritme berekent deze verwachting pas als we een nieuwe melding
+                  (bijvoorbeeld van een omwonende of verhuurplatform) ontvangen van mogelijke illegale vakantieverhuur.</p>
+                <p>Dit algoritme wordt een ‘random forest regressie algoritme’ genoemd. Om de door het algoritme gemaakte afwegingen inzichtelijk te maken voor mensen passen we de
+                  “SHAP”-methodiek toe (SHapley Additive exPlanations; https://github.com/slundberg/shap). SHAP berekent voor iedere individuele zaak welke indicatoren hebben
+                  bijgedragen aan die voorspelling en of dit ervoor zorgde dat de voorspelling hoger of lager werd. Zo kan een medewerker altijd zien waar het algoritme de risico-inschatting
+                  op heeft gebaseerd en een afgewogen besluit nemen.</p>
+                <table>
+                  <tr>
+                    <td>CONTENT</td>
+                    <td>ATTACHMENT</td>
+                  </tr>
+                  <tr>
+                    <td>Architectuur van het model</td>
+                    <td><a>Handhaving Illegale Vakantieverhuur Afbeelding</a></td>
+                  </tr>
+                </table>
+                <p><strong>Prestatie</strong>
+                  <br>Het voordeel van een ‘random forest regressie’ is dat het een redelijk complex algoritme is dat de werkelijkheid goed kan benaderen. Maar er is wel een kans op overfitting. Een
+                  ‘tree’ met veel lagen perst de data uit om specifieke antwoorden te leveren. Er is onderzocht hoeveel lagen het model nodig heeft om generiek inzetbaar te blijven en dus niet
+                  te overfitten. Daarnaast worden continu datapunten gecategoriseerd (gegroepeerd), zodat het model een overzichtelijk aantal mogelijkheden heeft in plaats van een oneindig
+                  aantal met continue waarden. Hierdoor is het model beter in staat is om tot een conclusie te komen.
+                </p>
+              </div>
+        
             </div>
-
-            <!--    Discriminatie    -->
-            <div>
-              <p>Hoe bevordert het algoritme gelijke behandeling of gaat het ongelijke behandeling tegen?
-              <p>
-      
-              <p>Bij het ontwikkelen van het algoritme hebben we kritisch gekeken naar beschikbare datasets. Hiervoor is een ‘Privacy Impact assessment’ (PIA) opgesteld. We hebben ervoor gekozen niet alle beschikbare informatie te verwerken in het algoritme. We hebben alleen informatie die noodzakelijk is voor het vaststellen van een overtreding van de Huisvestingswet opgenomen in de dataset waarop het algoritme is ontwikkeld[1]. Informatie als geboorteplaats, nationaliteit, burgerlijke staat en geboorteland zijn niet verwerkt in het algoritme. Dat voorkomt dat er een vertekend beeld of vooroordeel ontstaat over specifieke groepen.</p>
-              <p>De gegevens die het algoritme gebruikt, komen van eerdere illegale vakantieverhuurzaken. Er moeten kwalitatief goede gegevens worden gebruikt om een handhavingsbesluit te kunnen onderbouwen en juridisch staande te kunnen houden. We nemen daarom aan dat de onderliggende gegevens geen wezenlijke vooroordelen bevatten, die doen twijfelen aan de betrouwbaarheid van de gegevens en de kansberekening.</p>
-      
-              <p>Een algoritme kan echter zo goed zijn in het vinden van patronen, dat het direct uitsluiten van gevoelige gegevens niet voldoende is. We hebben daarom ook uitgezocht of de niet-gevoelige gegevens die het algoritme verwerkt indirect toch tot ongewenste verschillen in behandeling leiden. Het zou bijvoorbeeld kunnen dat in bepaalde wijken veel mensen wonen met een bepaalde nationaliteit, of dat een bepaalde groep gemiddeld genomen grotere gezinnen heeft. Als het algoritme dan gebruik kan maken van een gegeven als postcode of gezinsgrootte, kan het indirect alsnog onderscheid maken tussen bepaalde groepen, simpelweg door onderscheid te maken tussen wijken/gezinsgrootte. Zo kan een groep alsnog benadeeld worden door het algoritme, ook al is de groep niet expliciet bekend bij het algoritme.</p>
-      
-              <p>We hebben ervoor gekozen om hier nader onderzoek naar te doen. Het zogenaamd onderzoek naar onbewuste vooringenomenheid (bias) uitgevoerd en de resultaten hiervan zijn te vinden op:
-                <br>Blog post 1:
-                <br> <a>Analyzing Bias in Machine Learning: a step-by-step approach (amsterdamintelligence.com)</a>
-                <br>Er kan worden geconcludeerd dat het algoritme vrij is van een ongerechtvaardigde vooringenomenheid en daarmee geschikt is om een pilot mee te starten.
-              </p>
-      
-              <p> <a>[1] Commissie Persoonsgegevens Amsterdam – Gemeente Amsterdam,</a> advies Bias analyse over ontwikkelde algoritme 10 december 2020. </p>
-            </div>
-      
-            <!--     Menselijk toezicht     -->
-            <div>
-              <p>In hoeverre houden mensen toezicht op de werking van het algoritme?</p>
-              <p>Er is geen sprake van geautomatiseerde besluitvorming. Als we een adres onderzoeken op het vermoeden van illegale vakantieverhuur komt dit voort uit een melding van bijvoorbeeld een omwonende of een verhuurplatform. Het algoritme helpt de medewerkers van Toezicht & Handhaving te bepalen bij welke meldingen de kans op illegale verhuur het grootst is, zodat die meldingen het eerst onderzocht kunnen worden. De medewerker krijgt een overzicht te zien, die toont op grond van welke criteria het algoritme het risico op illegale vakantieverhuur hoog of laag inschat. Op die manier maken we inzichtelijk waarop het algoritme de risico-inschatting heeft gebaseerd.</p>
-              <p>Er is geen sprake van geautomatiseerde besluitvorming. Als we een adres onderzoeken op het vermoeden van illegale vakantieverhuur komt dit voort uit een melding van bijvoorbeeld een omwonende of een verhuurplatform. Het algoritme helpt de medewerkers van Toezicht & Handhaving te bepalen bij welke meldingen de kans op illegale verhuur het grootst is, zodat die meldingen het eerst onderzocht kunnen worden. De medewerker krijgt een overzicht te zien, die toont op grond van welke criteria het algoritme het risico op illegale vakantieverhuur hoog of laag inschat. Op die manier maken we inzichtelijk waarop het algoritme de risico-inschatting heeft gebaseerd.</p>
-              <p>Om te voorkomen dat medewerkers teveel vertrouwen in het algoritme hebben, is er iemand aangesteld om het algoritme en de werking daarvan te monitoren. Daarnaast is een werkinstructie opgesteld voor de medewerkers die met dit instrument gaan werken. Daarbij volgen de medewerkers workshop over de kansen en risico’s van het gebruik van algoritmen.</p>
-            </div>
-      
-            <!--    Data    -->
-            <div>
-              <p>Overzicht van de belangrijkste datasets die gebruikt zijn in de ontwikkeling en de toepassing van het algoritme. De verschillende datasets worden onderscheiden door subkoppen.</p>
-              <section>
-                <div>
-                  <p>Identiteits- en huisvestingsgegevens (BRP)</p>
-                  <p>Een beperkte set gegevens uit de Basisregistratie Personen (BRP) over de identiteit en huisvestingssituatie van de bewoners, namelijk:</p>
-                  <ul>
-                    <li>Naam van de geregistreerde bewoners</li>
-                    <li>Geboortedatum</li>
-                    <li>Vertrekdatum Amsterdam</li>
-                    <li>Vertrekdatum adres</li>
-                    <li>Vestigingsdatum adres</li>
-                    <li>Overlijdensdatum</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <p>Gegevens over gebouwen (BAG)</p>
-                  <p>Een beperkte set gegevens uit de Basisregistratie Adressen en Gebouwen (BAG) over het gebouw, namelijk:</p>
-                  <ul>
-                    <li>Adres, straatcode, postcode</li>
-                    <li>id-adres</li>
-                    <li>omschrijving pand</li>
-                    <li>Amsterdamse BAG-code, landelijke BAG-code</li>
-                    <li>type woning (huur, sociale huur / vrije sector, koop)</li>
-                    <li>adresseerbaar BAG-ID</li>
-                    <li>aantal kamers</li>
-                    <li>vloeroppervlak</li>
-                    <li>bouwlaag van voordeur appartement</li>
-                    <li>aantal bouwlagen</li>
-                    <li>omschrijving verdieping woonobject</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <p>Gegevens uit illegale vakantieverhuurzaak</p>
-                  <p>Gegevens uit de melding en eventuele gerelateerde illegale vakantieverhuurzaak, namelijk:</p>
-                  <ul>
-                    <li>zaak id</li>
-                    <li>datum van start van onderzoek / melding</li>
-                    <li>stadium van behandeling van de melding</li>
-                    <li>stadia nummer, omschrijving en id</li>
-                    <li>(meld)code</li>
-                    <li>code overtreding</li>
-                    <li>code (behandelend) medewerker</li>
-                    <li>wel / geen anonieme melder</li>
-                    <li>datum melding</li>
-                    <li>situatieschets</li>
-                    <li>bevindingen onderzoek</li>
-                    <li>gebruiker die melding heeft gecreëerd (met datum), of aangepast (met datum aanpassing)</li>
-                    <li>behandelcode (type zaak, indeling in team)</li>
-                    <li>resultaat</li>
-                    <li>datum wanneer zaak is afgesloten</li>
-                    <li>reden waarom zaak is afgesloten</li>
-                  </ul>
-                </div>
-              </section>
-            </div>
-      
-            <!--   Dataverwerking     -->
-            <div>
-              <p>Hoe gebruikt het systeem de data?</p>
-              <p><strong>Architectuur van het model</strong> <br> Gemeente Amsterdam heeft een algoritme ontwikkeld dat verbanden en patronen kan vinden in grote hoeveelheid informatie over illegale vakantieverhuur. Het algoritme
-                berekent welke informatie vaker in verband kan worden gebracht met illegale vakantieverhuur en welke informatie niet. Het algoritme doet dit door wiskundige berekeningen
-                uit te voeren volgens het kansboom-principe. Dat wil zeggen dat het algoritme op basis van een groot aantal kansberekeningen een gemiddelde neemt. Dit gemiddelde wordt
-                gebruikt om de wiskundige verwachting te genereren van illegale vakantieverhuur op een adres. Het algoritme berekent deze verwachting pas als we een nieuwe melding
-                (bijvoorbeeld van een omwonende of verhuurplatform) ontvangen van mogelijke illegale vakantieverhuur.</p>
-              <p>Dit algoritme wordt een ‘random forest regressie algoritme’ genoemd. Om de door het algoritme gemaakte afwegingen inzichtelijk te maken voor mensen passen we de
-                “SHAP”-methodiek toe (SHapley Additive exPlanations; https://github.com/slundberg/shap). SHAP berekent voor iedere individuele zaak welke indicatoren hebben
-                bijgedragen aan die voorspelling en of dit ervoor zorgde dat de voorspelling hoger of lager werd. Zo kan een medewerker altijd zien waar het algoritme de risico-inschatting
-                op heeft gebaseerd en een afgewogen besluit nemen.</p>
-              <table>
-                <tr>
-                  <td>CONTENT</td>
-                  <td>ATTACHMENT</td>
-                </tr>
-                <tr>
-                  <td>Architectuur van het model</td>
-                  <td><a>Handhaving Illegale Vakantieverhuur Afbeelding</a></td>
-                </tr>
-              </table>
-              <p><strong>Prestatie</strong>
-                <br>Het voordeel van een ‘random forest regressie’ is dat het een redelijk complex algoritme is dat de werkelijkheid goed kan benaderen. Maar er is wel een kans op overfitting. Een
-                ‘tree’ met veel lagen perst de data uit om specifieke antwoorden te leveren. Er is onderzocht hoeveel lagen het model nodig heeft om generiek inzetbaar te blijven en dus niet
-                te overfitten. Daarnaast worden continu datapunten gecategoriseerd (gegroepeerd), zodat het model een overzichtelijk aantal mogelijkheden heeft in plaats van een oneindig
-                aantal met continue waarden. Hierdoor is het model beter in staat is om tot een conclusie te komen.
-              </p>
-            </div>
-      
-          </div>
-        </section>
+          </section>
         <!--Tabs-->
 
         <section class="contactgegevens">
@@ -280,42 +299,43 @@
         </section>
 
         <section class="subjects">
-          <h4>Andere binnen het onderwerp:</h4>
-          <div class="subject-container">
-              <img src="images/table-images/top400600.jpg" alt="top400600">
-              <div class="subject-content">
-                  <h5>Top 400/600 <img src="images/icons/top400600-icon.png" class="subject-icon" alt="top400600"></h5>
-                  <p>
-                      Om de stad veiliger te maken coördineert de
-                      gemeente, samen met haar gemeenschappelijke
-                      partners, vanuit...
-                  </p>
-                  <a href="#">Lees meer</a>
-              </div>
-          </div>
-          <div class="subject-container">
-              <img src="images/table-images/placeholder-img.png" alt="placeholder">
-              <div class="subject-content">
-                      <h5>Vorderingen/straf <img src="images/icons/vorderingenstraffen-icon.png" class="subject-icon" alt="vorderingenstraffen"></h5>
-                  <p>
-                      Een overzicht van vorderingen
-                      en strafmaatregelen in het 
-                      verkeer. De data bevat...
-                  </p>
-                  <a href="#">Lees meer</a>
-              </div>
-          </div>
-      </section>
+            <h4>Andere binnen het onderwerp:</h4>
+            <ul>
+              <li  class="subject-container">
+                    <img src="images/table-images/top400600.jpg" alt="top400600">
+                    <div class="subject-content">
+                        <h5 class="Openbareorde">Top 400/600</h5>
+                        <p>
+                            Om de stad veiliger te maken coördineert de
+                            gemeente, samen met haar gemeenschappelijke
+                            partners, vanuit...
+                        </p>
+                        <a href="#">Lees meer</a>
+                    </div>
+              </li>
+              <li  class="subject-container">
+                    <img src="images/table-images/placeholder-img.png" alt="placeholder">
+                    <div class="subject-content">
+                            <h5 class="Verkeer">Vorderingen/straf maatregelen</h5> 
+                        <p>
+                            Een overzicht van vorderingen
+                            en strafmaatregelen in het 
+                            verkeer. De data bevat...
+                        </p>
+                        <a href="#">Lees meer</a>
+                    </div>
+              </li>
+            </ul>
+        </section>
 
-        <button class="chatbot"><img src="images/simple-hipchat.png"></button>
+        <button class="chatbot"><img src="images/simple-hipchat.png" alt="chatbot"></button>
     </main>
 
     <footer>
-      <p>© 2022 - ALGORITMEREGISTER</p> 
+        2022 ALGORITMEREGISTER
     </footer>
 
     
-    <script src="js/script.js"></script>
-    <script src="js/ajaxscript.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
