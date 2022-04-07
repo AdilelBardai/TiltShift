@@ -241,3 +241,73 @@ async function getalgoritmestable(index,end) {
 
 viewKnop.addEventListener("click", switchview);
 window.onload =switchview;
+
+// organisatie filter
+var selectbar = document.querySelector("main section:first-of-type div select");
+const selectFilter=document.querySelector("select[name=filter]:first-of-type");
+
+async function filterCity(city){
+    if (city!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"] ===city);
+        // console.log(algoritmes);
+        }
+        let total=algoritmes.length;
+
+        if (style === "Bolkjes") {
+            getalgoritmesblokjes(0,  (total<6?total:6));
+            console.log("Blokjes");
+        } else {
+            console.log("Table");
+            getalgoritmestable(0,  (total<7?total:7));
+        }
+}
+async function organisatiefilter (event){
+    await requestData(); //get the algorithm array
+    await filterCity(event.target.value);
+}
+
+selectFilter.addEventListener("change",organisatiefilter);
+
+
+// Thema filter 
+async function filterData(event){
+    
+    if (event.target.textContent==="") return;
+    
+    if(!event.target.classList.contains("activated")){
+
+      //  await requestData();
+        event.target.classList.add("activated");
+
+        if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
+            algoritmes= algoritmes.filter(algoritm=>algoritm["THEMA"]===event.target.textContent);
+            let total=algoritmes.length;
+            if (style === "Bolkjes") {
+                getalgoritmesblokjes(0,  (total<6?total:6));
+                console.log("Blokjes");
+            } else {
+                console.log("Table");
+                getalgoritmestable(0, (total<7?total:7));
+            }
+
+            if(total===0)
+            {
+                var myp = document.createElement("p");
+                myp.textContent= "Geen resultaten gevonden.";
+                myul.appendChild(myp);
+                mytable.appendChild(myp);
+            }
+    } else {
+        console.log("already active");
+        await requestData();
+        event.target.classList.remove("activated");
+       await filterCity(selectFilter.value);
+    }
+}
+
+
+const selectBtns=document.querySelector(".filterOptions");
+selectBtns.addEventListener("click",filterData);
+
