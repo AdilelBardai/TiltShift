@@ -1,6 +1,35 @@
 
+
+  //popup
+  var popUp = document.getElementById("popUp");
+
+  // Get the button that opens the modal
+  var img = document.getElementById("notificationBtn");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  img.onclick = function() {
+    popUp.style.display = "block";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    popUp.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == popUp) {
+      popUp.style.display = "none";
+    }
+  }
+  
+
+
     // Filters actiens
-var filterknop = document.querySelector("main section:first-of-type h2");
+var filterknop = document.querySelector(".filtertitel");
 var filtermenu = document.querySelector(".filterOptions");
 
 function openfiltermenu(){
@@ -11,7 +40,6 @@ function openfiltermenu(){
 
 filterknop.addEventListener("click", openfiltermenu);
 
-//dkuyfhduyfghdiuy
 
 
 
@@ -63,32 +91,6 @@ chatbotKnop.addEventListener("click", OpenChatbot);
 VragenListKnop.addEventListener("click", Openvragenlist);
 
 
-
-    //popup
-var popUp = document.getElementById("popUp");
-
-// Get the button that opens the modal
-var img = document.getElementById("notificationBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-img.onclick = function() {
-  popUp.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  popUp.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == popUp) {
-    popUp.style.display = "none";
-  }
-}
 
 
 
