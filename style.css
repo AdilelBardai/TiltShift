@@ -10,9 +10,9 @@
 /* main div first section */
 /* Thema filter */
 
-/************* main stylen P1 Bolkjes view ************/
+/************* main stylen Bolkjes view ************/
 
-/************ main stylen P2 lijst view ***************/
+/************ main stylen table view ***************/
 
 /*************** detail-pagina stylen *****************/
 /* Dataverwerking */
@@ -482,7 +482,7 @@ main section:first-of-type div input[type="text"]{
 
 
 /* ************************************************** */
-/************* main stylen P1 Bolkjes view ************/
+/************* main stylen Bolkjes view ************/
 /* ************************************************** */
 .hidden{
     display: none;
@@ -671,7 +671,7 @@ main ul li div img{
 
 
 /* ************************************************** */
-/************ main stylen P2 lijst view ***************/
+/************ main stylen table view ***************/
 /* ************************************************** */
 
 table {
@@ -1054,11 +1054,16 @@ table {
     margin-bottom: 20px;
 }
 
-.contactgegevens table td {
+.contactgegevens table tr td {
     text-align: left;
     padding: 20px;
 }
-.contactgegevens table td p:last-of-type{
+
+.contactgegevens table tr td p:first-of-type{
+    font-style: italic;
+}
+
+.contactgegevens table tr td p:last-of-type{
     margin-top: .3em;
 }
 
@@ -1072,6 +1077,8 @@ table {
     background-color: white;
     border-bottom: 1px solid rgb(95, 94, 94);
     border-top: 1px solid rgb(95, 94, 94);
+
+
 }
 
 
