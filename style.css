@@ -15,12 +15,13 @@
 /************ main stylen P2 lijst view ***************/
 
 /*************** detail-pagina stylen *****************/
-/* Tabs */
 /* Dataverwerking */
 /* Data */
 /* contactgegevens */
 /* feedback form */
 /* subjects */
+/* Tabs */
+ /* Popup */
 
 /******************* Chatbot stylen *******************/
 /* Chatbot icon */
@@ -757,19 +758,24 @@ table {
     padding: 20px 70px 0px 70px;
 }
 
-.terug-link {
+.detail-page .terug-link {
     font-weight: bold;
 }
 
-.detail-page a {
+.detail-page section:first-of-type a {
     color: black;
     text-decoration: none;
 }
 
-.detail-container {
+.detail-page section:first-of-type div{
+    width: 120px;
+    min-width: auto;
+}
+
+.detail-page .detail-container {
     padding: 0;
     align-items: flex-end;
-    width: 85%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -777,20 +783,20 @@ table {
     flex-wrap: wrap;
 }
 
-.detail-banner {
+.detail-page .detail-banner {
     display: inline-block;
     width: 550px;
     height: 300px;
     margin-top: 15px;
 }
 
-.detail-block {
+.detail-page .detail-block {
     display: inline-block;
     margin-top: 15px;
     width: 550px;
 }
 
-.detail-block h1::after{
+.detail-page .detail-block h1::after{
     content: "";
     display: block;
     width: 21.5em;
@@ -800,14 +806,14 @@ table {
     background-color: var(--grey-color);
 }
 
-.detail-banner img {
+.detail-page .detail-banner img {
     width: 550px;
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.detail-block {
+.detail-page .detail-block {
     border-radius: 5px;
     height: 300px;
     width: 550px;
@@ -816,31 +822,31 @@ table {
     background-color: white;
 }
 
-.detail-block h1 {
+.detail-page .detail-block h1 {
     text-align: left;
     margin-bottom: 20px;
     font-weight: 100;
     width: 100%;
 }
 
-.detail-content {
+.detail-page .detail-content {
     display: inline;
     text-align: left;
     margin: 0;
     padding: 0;
 }
 
-.detail-block .detail-content li {
+.detail-page .detail-block .detail-content li {
     padding: 10px 0px 10px 10px;
     height: auto;
 }
 
-.detail-content li p {
+.detail-page .detail-content li p {
     display: inline;
     float: right;
 }
 
-.detail-content li a {
+.detail-page .detail-content li a {
     position: unset;
     background-color: white;
     padding: 5px;
@@ -848,14 +854,14 @@ table {
     border-radius: 10px;
 }
 
-.detail-content li a:hover {
+.detail-page .detail-content li a:hover {
     text-decoration: none;
     background-color: #676968;
     color: white;
     transition: 0.2s ease-in;
 }
 
-.inhoud-container {
+.detail-page .inhoud-container {
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
@@ -867,11 +873,11 @@ table {
     padding: 70px;
 }
 
-.inhoud-container article {
+.detail-page .inhoud-container article {
     text-align: left;
 }
 
-.inhoud-container h2 {
+.detail-page .inhoud-container h2 {
     font-weight: 100;
 }
 
@@ -921,7 +927,6 @@ table {
   padding: 10px 30px 40px;
   line-height: 1.4em;
   opacity: 0;
-  /* top: 3.35em; */
   left: 0;
 }
 
@@ -1001,7 +1006,9 @@ table {
 .tabs > div table tr:nth-child(even) {
   background-color: var(--secondary-color);
 }
-/*Tabs*/
+
+
+/* contactgegevens */
 
 .contactgegevens {
     display: block;
@@ -1033,6 +1040,9 @@ table {
     border-top: 1px solid rgb(95, 94, 94);
 }
 
+
+/* feedback form */
+
 .feedback {
     display: block;
     text-align: left;
@@ -1062,7 +1072,9 @@ table {
     background-color: rgb(212, 212, 212);
 }
 
-.subjects {
+
+/* subjects */
+.detail-page .subjects {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -1071,61 +1083,94 @@ table {
     align-items: flex-start;
 }
 
-.subjects h4 {
+.detail-page .subjects h4 {
     font-weight: 100;
     text-align: left;
 }
 
-.subject-container {
-    display: inline-flex;
+.detail-page .subjects ul{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 1.5em;
 }
 
-.subject-container img {
-    width: 150px;
+.detail-page ul .subject-container {
+    width: 26em;
+    height: 14em;
+    display: flex;
+    padding: 0;
+}
+
+.detail-page ul .subject-container img {
+    display: block;
+    width: 35em;
     border-radius: 10px;
-    margin-top: 20px;
+    height: 9em;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
-.subject-content {
+.detail-page ul .subject-container .subject-content {
+    min-width:auto;
+    text-align: left;
+    width: 28em;
+    height: 9em;
+
+    position:relative;
+    right: 0;
+    top: 0;
+    left: 0;
+
     display: inline-block;
     text-align: left;
-    /* margin-top: 20px; */
-    margin-left: 20px;
+    padding:  0 1em;
+
+    background-color: transparent;
 }
 
-.subject-content p {
+.detail-page .subject-container .subject-content p {
     font-size: 12px;
     margin-top: 10px;
     color: var(--grey-color);
+    position: relative;
+    top: 0;
 }
 
-.subject-content h5 {
-    width: 200px;
+.detail-page .subject-container .subject-content:nth-of-type(2) p{
+    margin-top: 12px;
+}
+
+.detail-page .subject-container .subject-content h5 {
+    width: 100%;
+    height: 21px;
+    font-size: 1em;
+    font-weight: lighter;
     background-size: 15px;
     background-position-x: right;
     background-repeat: no-repeat;
-    background-position-y: center;
-    height: 25px;
+    background-position-y: top;
 }
 
-.subject-content h5::after{
-    content: "";
-    display: block;
-    width: 100%;
-    height: .05em;
-    position: relative;
-    bottom: -1em;
-    background-color: rgb(4, 5, 0);
+.detail-page .subject-container:last-of-type .subject-content h5{
+    height: 40px; ;
+}
+.detail-page .subject-container .subject-content h5{
+    border-bottom: var(--grey-color) solid .05em;
 }
 
-.subject-content a {
+.detail-page .subject-container .subject-content > a {
     font-size: 12px;
     color: var(--hoofd-color);
-}
+    position:relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
 
-.subject-content div {
-    display: flex;
-    justify-content: flex-start;
 }
 
 /*Tabs*/
@@ -1296,7 +1341,7 @@ table {
 .tabs > div table tr:nth-child(even) {
   background-color: var(--secondary-color);
 }
-/*Tabs*/
+
 
  /* Popup */
 #notificationBtn:hover {
