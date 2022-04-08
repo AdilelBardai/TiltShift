@@ -189,7 +189,7 @@
         "STATUS":"Actief",
         "TYPE":"Rule based",
         "BESCHRIJVING":"Het bepalen en fiatteren van de WOZ-waarde op basis van taxatiemodellen en het opstellen van een taxatieverslag. De status van 4Woz 2.0 is in productie. In de gemeente Den Haag worden in 2022 voor het eerst taxatiewaarden…",
-        "THEMA":"Sociale zekerheid ",
+        "THEMA":"Sociale zekerheid",
         "THEMA-ICON":"images/icons/Socialezekerheid.icon.svg",
         "ICON":"images/denhaag.png",
         "LINK":"detail-pagina.html"

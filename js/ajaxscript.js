@@ -111,6 +111,7 @@ function noItems(){
 
 
 async function switchview() {
+currentPage=1;
     if (style === "table") {
         console.log("Bolkjes view");
         style = "Bolkjes";
@@ -161,7 +162,19 @@ async function getalgoritmesblokjes(index) {
    
     // Er was error want de data was nog niet gereed daarom heb ik await gebruikt
     if(!algoritmes) await requestData();
-
+    if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
+    //  add activated class to the previous selected filters 
+    if(themaArray.length>0){
+        algoritmes= algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"]));
+        for (const btn of document.querySelectorAll(".filterOptions button")) {
+            if (themaArray.includes(btn.textContent)) {
+              btn.classList.add("activated");
+            }
+          }
+          
+    }
     myul.classList.remove("hidden");
     mytable.classList.add("hidden");
     Body.classList.remove("lijstbackground");
@@ -234,7 +247,6 @@ async function getalgoritmesblokjes(index) {
         myul.appendChild(myli);
 
     }
-
     createPagination(Math.ceil(algoritmes.length/6));
 }
 
@@ -246,7 +258,19 @@ async function getalgoritmesblokjes(index) {
 async function getalgoritmestable(index) {
     
     if(!algoritmes) await requestData();
-
+    if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
+    //  add activated class to the previous selected filters 
+    if(themaArray.length>0){
+        algoritmes= algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"]));
+        for (const btn of document.querySelectorAll(".filterOptions button")) {
+            if (themaArray.includes(btn.textContent)) {
+              btn.classList.add("activated");
+            }
+          }
+          
+    }
     myul.classList.add("hidden");
     mytable.classList.remove("hidden");
     Body.classList.add("lijstbackground");
@@ -341,10 +365,19 @@ async function getalgoritmestable(index) {
 viewKnop.addEventListener("click", switchview);
 
 document.addEventListener('DOMContentLoaded', function() { //window.onload=>accept more than 1 func
+    var dataFilter=JSON.parse(localStorage.getItem("myFilters"));
+    if(dataFilter){
+        themaArray=dataFilter.themaArray;
+        console.log(dataFilter.city);
+        selectFilter.value=dataFilter.city;
+        localStorage.removeItem("myFilters");
+    }
+
     if(localStorage.getItem("style")==="table"){
         style="Bolkjes";
     }
     switchview();
+
 });
 
 // organisatie filter
@@ -352,10 +385,12 @@ var selectbar = document.querySelector("main section:first-of-type div select");
 const selectFilter=document.querySelector("select[name=filter]:first-of-type");
 
 async function filterCity(){
+    currentPage=1;
     if (selectFilter.value!=="organisatie"){
         algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
         }
         algoritmes=themaArray.length>0? algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"])):algoritmes;
+ 
 
             if (style === "Bolkjes") {
                 getalgoritmesblokjes(1);
@@ -364,7 +399,6 @@ async function filterCity(){
                 console.log("Table");
                 getalgoritmestable(1);
             }
-
 
 }
 async function organisatiefilter (event){
@@ -392,7 +426,18 @@ async function filterData(event){
         noItems();
     } 
 
+const bloklist=document.querySelector(".bloklist");
+const tablelist=document.querySelector(".tablelist");
 
+[tablelist,bloklist].map((element)=> element.addEventListener("click",(event)=>{
+    if(event.target.tagName==="H3" || event.target.tagName==="A")
+    {
+        localStorage.setItem("myFilters", JSON.stringify({
+            city:selectFilter.value,
+            themaArray:themaArray
+        }));
+    }
+}));
 
 const selectBtns=document.querySelector(".filterOptions");
 selectBtns.addEventListener("click",filterData);
