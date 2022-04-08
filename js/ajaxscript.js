@@ -26,7 +26,7 @@ var myul = document.querySelector("main ul");
 var mytable = document.querySelector("main table");
 
 var currentPage = 1;
-var style = "table";
+var style =  "table";
 var Body = document.body;
 
 // JSON Data
@@ -109,29 +109,28 @@ function noItems(){
 }
 
 
+
 async function switchview() {
     if (style === "table") {
         console.log("Bolkjes view");
         style = "Bolkjes";
         viewImage.src = "images/stripe-list-icon.png";
 
-        localStorage.setItem("viewImage", JSON.stringify(true));
+        localStorage.setItem("style", "Bolkjes");
     } else {
         console.log("Table view");
         style = "table";
         viewImage.src = "images/list-option.png";
 
 
-        localStorage.setItem("viewImage", JSON.stringify(false));
+        localStorage.setItem("style", "table");
     }
 
     getalgoritmes(currentPage);
     noItems();
 }
 
-if (localStorage.getItem('viewImage')==="true"){
-    viewImage.innerHTML = "table";
-}
+
 
 async function requestData() {
     response = await fetch(request);
@@ -340,7 +339,13 @@ async function getalgoritmestable(index) {
 }
 
 viewKnop.addEventListener("click", switchview);
-window.onload =switchview;
+
+document.addEventListener('DOMContentLoaded', function() { //window.onload=>accept more than 1 func
+    if(localStorage.getItem("style")==="table"){
+        style="Bolkjes";
+    }
+    switchview();
+});
 
 // organisatie filter
 var selectbar = document.querySelector("main section:first-of-type div select");
