@@ -193,6 +193,7 @@ async function getalgoritmesblokjes(index) {
         var myli = document.createElement("li");
         var link = document.createElement("a");
         var myh3 = document.createElement("h3");
+        var themaicon = document.createElement("img");
         var mypara = document.createElement("p");
         var leeslink = document.createElement("a");
         var leestekst = document.createElement("p");
@@ -200,6 +201,7 @@ async function getalgoritmesblokjes(index) {
 
         myimage.src = `${algoritmes[n]["IMAGE"]}`;
         myh3.textContent = `${algoritmes[n]["NAAM"]}`;
+        themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`;
         mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
         leeslink.href = `${algoritmes[n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
@@ -208,27 +210,21 @@ async function getalgoritmesblokjes(index) {
 
         if (`${algoritmes[n]["THEMA"]}` === "Openbare orde") {
             div.classList.add("Openbareorde-box");
-            myh3.classList.add("Openbareorde");
 
         } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Financien-box");
-            myh3.classList.add("Financien");
 
         } else if (`${algoritmes[n]["THEMA"]}` === "Verkeer") {
             div.classList.add("Verkeer-box");
-            myh3.classList.add("Verkeer");
 
         } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Socialezekerheid-box");
-            myh3.classList.add("Socialezekerheid");
 
         } else if (`${algoritmes[n]["THEMA"]}` === "Bestuur") {
             div.classList.add("Bestuur-box");
-            myh3.classList.add("Bestuur");
 
         } else if (`${algoritmes[n]["THEMA"]}` === "Onderwijs") {
             div.classList.add("Onderwijs-box");
-            myh3.classList.add("Onderwijs");
 
         } else {
             console.log("Geen thema gevonden");
@@ -239,6 +235,7 @@ async function getalgoritmesblokjes(index) {
         div.appendChild(mypara);
         div.appendChild(myicon);
         link.appendChild(myh3);
+        link.appendChild(themaicon);
         div.appendChild(link);
         myli.appendChild(div);
         myli.appendChild(myimage);

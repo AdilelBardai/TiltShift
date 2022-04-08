@@ -19,6 +19,7 @@
 /* Data */
 /* contactgegevens */
 /* feedback form */
+/* Thema's subjects icon classen */
 /* subjects */
 /* Tabs */
  /* Popup */
@@ -569,49 +570,21 @@ main ul li div a:first-of-type{
     right: 1em;
 }
 
-/* main ul li div a:first-of-type::after{
-    content: "";
-    display: block;
-} */
-
-
-main ul li div a:first-of-type h3{
-    color: #000000;
-    padding-right: 2em;
-    background-size: 1em;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: bottom;
+main ul li div a:first-of-type img{
+    width: 1.2em;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-    .Openbareorde{
-        background-image: url(images/icons/Openbareorde.icon.svg);
-    }
-
-    .Financien{
-        background-image: url(images/icons/Financien-icon.svg);
-    }
-
-    .Verkeer{
-        background-image: url(images/icons/Verkeer-icon.svg);
-    }
-
-    .Socialezekerheid{
-        background-image: url(images/icons/Socialezekerheid.icon.svg);
-    }
-
-    .Bestuur{
-        background-image: url(images/icons/Bestuur.icon.svg);
-    }
-
-    .Onderwijs{
-        background-image: url(images/icons/Onderwijs.icon.svg);
-    }
+main ul li div a:first-of-type h3{
+    color: var(--font-color);
+}
 
 main ul li div a:first-of-type h3::after{
     content: "";
     display: block;
-    width: 13.5em;
+    width: 100%;
     height: .05em;
     position: relative;
     bottom: -.4em;
@@ -622,14 +595,6 @@ main ul li div>p{
     line-height: 1.5em;
     position: relative;
     top: 4em;
-
-    /* line-height: 1.5em;
-    position: relative;
-    top: 4em;
-    overflow: hidden;
-    width: 16em;
-    height: 63%;
-    text-overflow: ellipsis; */
 }
 
 main ul li div a:last-of-type{
@@ -911,53 +876,75 @@ table {
     font-weight: 100;
 }
 
-/*Tabs*/
+/* Tabs */
 .tabbed {
-    position: absolute;
-    top: 0;
+    text-align: left;
+    width: 70%;
+    padding: 20px 0 ;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10em;
 }
 
-.tabbed input {
+.tabbed .titels {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: .2em;
+}
+
+.tabbed .titels input {
   display: none;
 }
 
-.tabbed label {
-  display: block;
-  float: left;
-  padding: 12px 11.8px;
-  margin-right: 0.15em;
-  width: 10em;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border: 0.1em solid #5379bc;
-  border-radius: 1em 1em 0 0;
-  background: var(--hoofd-color);
-  color: #ffffff;
+.tabbed .titels label{
+    display: block;
+    float: left;
+    padding: 20px 10px;
+    width: calc(97% / 5);
+    height: 4em;
+    min-width: fit-content;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 0.1em solid #5379bc;
+    border-radius: 1em 1em 0 0;
+    background: var(--hoofd-color);
+    color: #ffffff;
 }
 
-.tabbed label:hover,
-.tabbed input:checked + label {
-  /*   background: #5379bc; */
-  /*   color: #ffffff; */
-  background: #ffffff;
-  color: #000000;
-  border: 0.1em solid var(--hoofd-color);
+.tabbed .titels label:hover,
+.tabbed .titels input:checked + label {
+    background: #ffffff;
+    color: #000000;
+    border: 0.1em solid var(--hoofd-color);
 }
 
-.tabs {
-  clear: both;
+.tabbed .tabs {
+    clear: both;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top:0em;
+    left: 0;
+    z-index: 0;
 }
 
-.tabs > div {
-  width: 55em;
-  position: absolute;
-  border: 2px solid var(--hoofd-color);
-  border-radius: 0 0 1em 1em;
-  padding: 10px 30px 40px;
-  line-height: 1.4em;
-  opacity: 0;
-  left: 0;
+.tabbed .tabs > div {
+    width: 100%;
+    position: relative;
+    border: 2px solid var(--hoofd-color);
+    border-radius: 0 0 1em 1em;
+    line-height: 1.4em;
+    background-color: var(--background-color);
+    display: none;
+    text-align: left;
+    align-content: center;
+    padding: 20px 70px;
 }
 
 #tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
@@ -965,16 +952,17 @@ table {
 #tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
 #tab-nav-4:checked ~ .tabs > div:nth-of-type(4),
 #tab-nav-5:checked ~ .tabs > div:nth-of-type(5) {
-  opacity: 1;
+  display: block;
   z-index: 1;
 }
 
-.tabs > div p:first-of-type {
-  color: var(----grey-color);
+.tabbed .tabs > div > p:first-of-type {
+  color: var(--grey-color);
+  margin-bottom: .5em;
 }
 
 
-.tabs > div>p:first-of-type::after{
+.tabbed .tabs > div > p:first-of-type::after{
     content: "";
     display: block;
     width: 100%;
@@ -985,36 +973,60 @@ table {
   
 }
 
-.tabs > div p a {
+.tabbed .tabs div p a {
   text-decoration: underline;
   color: var(--hoofd-color);
 }
-.tabs > div table {
+
+/* Dataverwerking */
+.tabs div table {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
 }
 
-.tabs > div section{
+/* Data */
+.tabs>div>section{
   display:flex;
-  flex-wrap:wrap;
-  gap:2em;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  row-gap: 2em;
+  padding: 0;
 }
 
-.tabs > div section div{
-  width: 25em;
+.tabs>div>section>div{
+  width: 100%;
+  display: block;
+  text-align: left;
 }
 
-.tabs > div section p:first-of-type {
-  font-weight:bold;
+.tabs>div>section>div p:nth-of-type(1){
+    color: var(--font-color);
+    margin-bottom: 0;
+    font-weight:bold;
 }
 
-.tabs > div section div ul{
+.tabs>div>section>div p:nth-of-type(1)::after{
+    display: none;
+}
+
+.tabs div section div ul{
   list-style:none;
   margin:0;
-  padding-left:1.5em;
+  margin-top: .5em;
+  padding-left:2em;
+  gap: 0;
+
+  display: flex;
+  flex-direction: column;
 }
-.tabs > div section div ul li::before{
+
+.tabs div section div ul li{
+    width: fit-content;
+}
+
+.tabs div section div ul li::before{
   content:"- ";
 }
 
@@ -1042,7 +1054,6 @@ table {
 
 .contactgegevens {
     display: block;
-    /* width: 82%; */
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -1118,6 +1129,33 @@ table {
 
 .feedback button:hover {
     background-color: rgb(212, 212, 212);
+}
+
+
+/* Thema's subjects icon classen */
+
+.Openbareorde{
+    background-image: url(images/icons/Openbareorde.icon.svg);
+}
+
+.Financien{
+    background-image: url(images/icons/Financien-icon.svg);
+}
+
+.Verkeer{
+    background-image: url(images/icons/Verkeer-icon.svg);
+}
+
+.Socialezekerheid{
+    background-image: url(images/icons/Socialezekerheid.icon.svg);
+}
+
+.Bestuur{
+    background-image: url(images/icons/Bestuur.icon.svg);
+}
+
+.Onderwijs{
+    background-image: url(images/icons/Onderwijs.icon.svg);
 }
 
 
@@ -1215,175 +1253,6 @@ table {
     left: 0;
     bottom: 0;
 
-}
-
-/*Tabs*/
-.tabbed {
-    text-align: left;
-    display: contents;
-    width: 70%;
-    padding: 20px 0 ;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.tabbed input {
-  display: none;
-}
-
-.tabbed label{
-    display: block;
-    float: left;
-    padding: 12px 10px;
-    margin-right: 0.15em;
-    width: calc(99% / 5);
-    min-width: fit-content;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-    border: 0.1em solid #5379bc;
-    border-radius: 1em 1em 0 0;
-    background: var(--hoofd-color);
-    color: #ffffff;
-}
-
-.tabbed label:last-of-type{
-    margin-right: 0em;
-}
-
-.tabbed label:hover,
-.tabbed input:checked + label {
-    background: #ffffff;
-    color: #000000;
-    border: 0.1em solid var(--hoofd-color);
-}
-
-.tabbed .tabs {
-    clear: both;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    top:0em;
-    left: 0;
-    z-index: 0;
-}
-
-.tabbed .tabs > div {
-    width: 100%;
-    position: relative;
-    border: 2px solid var(--hoofd-color);
-    border-radius: 0 0 1em 1em;
-    line-height: 1.4em;
-    background-color: var(--background-color);
-    display: none;
-    text-align: left;
-    align-content: center;
-    padding: 20px 70px;
-}
-
-#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
-#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
-#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
-#tab-nav-4:checked ~ .tabs > div:nth-of-type(4),
-#tab-nav-5:checked ~ .tabs > div:nth-of-type(5) {
-  display: block;
-  z-index: 1;
-}
-
-.tabbed .tabs > div > p:first-of-type {
-  color: var(--grey-color);
-  margin-bottom: .5em;
-}
-
-
-.tabbed .tabs > div > p:first-of-type::after{
-    content: "";
-    display: block;
-    width: 100%;
-    height: .05em;
-    position: relative;
-    bottom: -.2em;
-    background-color: var(--grey-color);
-  
-}
-
-
-.tabbed .tabs div p a {
-  text-decoration: underline;
-  color: var(--hoofd-color);
-}
-
-/* Dataverwerking */
-.tabs div table {
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-}
-
-/* Data */
-.tabs>div>section{
-  display:flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  row-gap: 2em;
-  padding: 0;
-}
-
-.tabs>div>section>div{
-  width: 100%;
-  display: block;
-  text-align: left;
-}
-
-.tabs>div>section>div p:nth-of-type(1){
-    color: var(--font-color);
-    margin-bottom: 0;
-    font-weight:bold;
-}
-
-.tabs>div>section>div p:nth-of-type(1)::after{
-    display: none;
-}
-
-.tabs div section div ul{
-  list-style:none;
-  margin:0;
-  margin-top: .5em;
-  padding-left:2em;
-  gap: 0;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.tabs div section div ul li{
-    width: fit-content;
-}
-
-.tabs div section div ul li::before{
-  content:"- ";
-}
-
-.tabs > div table tr:first-of-type td {
-  font-weight: bold;
-  color: var(--hoofd-color);
-}
-
-.tabs > div table tr td {
-  padding: 1em;
-}
-
-.tabs > div table tr td a {
-  color: var(--hoofd-color);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.tabs > div table tr:nth-child(even) {
-  background-color: var(--secondary-color);
 }
 
 
