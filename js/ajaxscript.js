@@ -1,4 +1,18 @@
 
+    // Filters actiens
+var filterknop = document.querySelector(".filtertitel");
+var filtermenu = document.querySelector(".filterOptions");
+
+function openfiltermenu(){
+    console.log("click");
+    filtermenu.classList.toggle("openfilter");
+    filterknop.classList.toggle("closemenu");
+}
+
+filterknop.addEventListener("click", openfiltermenu);
+
+
+
 // AJAX code
 
 // view knop switch between blokjes & table
@@ -25,19 +39,24 @@ var themaArray=[];
 /* pagination / page nummer */
 function createPagination(num){
     if(num<2)return; //guard block
+    console.log("here");
+    if(currentPage!==1){
     var btnPrev = document.createElement("button");
     btnPrev.textContent= "<";
     pagination.appendChild(btnPrev);
-
+    }
     for(var i = 1;i<=num;i++){
         var btn = document.createElement("button");
+        if(currentPage===i) btn.classList.add("active");
         btn.textContent= i;
         pagination.appendChild(btn);
     }
+    if(currentPage !== num){ 
+        var btnNext = document.createElement("button");
+        btnNext.innerText= ">";
+        pagination.appendChild(btnNext);
+        }
 
-    var btnNext = document.createElement("button");
-    btnNext.innerText= ">";
-    pagination.appendChild(btnNext);
 }
 function showMore(event){
     var pageNum;
@@ -49,8 +68,11 @@ function showMore(event){
     pageNum=currentPage-1;
     currentPage--;    
 }
-    else
+    else{
     pageNum= +event.target.textContent;
+}
+
+    currentPage=pageNum;
     pagination.replaceChildren();
     if(style==="table"){
     getalgoritmestable(pageNum);
@@ -58,12 +80,9 @@ function showMore(event){
         getalgoritmesblokjes(pageNum);
     }
    console.log(currentPage);
-
-
 }
 
 pagination.addEventListener("click",showMore);
-// event.target.classList.add("active");
 
 function noItems(){
     if(!algoritmes) return;
