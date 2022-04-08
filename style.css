@@ -777,9 +777,8 @@ table {
     align-items: flex-end;
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 auto;
-    flex: wrap;
     flex-wrap: wrap;
 }
 
@@ -817,9 +816,10 @@ table {
     border-radius: 5px;
     height: 300px;
     width: 550px;
-    box-shadow: 5px 0px 20px 1px grey;
-    padding: 10px;
+    box-shadow: var(--grey-color) 0 0 6px;
+    padding: 1em;
     background-color: white;
+    position: relative;
 }
 
 .detail-page .detail-block h1 {
@@ -829,29 +829,59 @@ table {
     width: 100%;
 }
 
-.detail-page .detail-content {
-    display: inline;
-    text-align: left;
-    margin: 0;
-    padding: 0;
+.detail-page .detail-block > img{
+    width: 1.5em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
 }
 
+.detail-page .detail-block .detail-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3em;
+}
+
+
 .detail-page .detail-block .detail-content li {
-    padding: 10px 0px 10px 10px;
     height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .detail-page .detail-content li p {
     display: inline;
-    float: right;
+    position: absolute;
+    left: 7em;
 }
 
-.detail-page .detail-content li a {
-    position: unset;
+.detail-page .detail-content li ul{
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    position: absolute;
+    left: 7em;
+}
+
+.detail-page .detail-content li ul li{
+    width: max-content;
+}
+
+.detail-page .detail-content li ul li a {
+    width: max-content;
+    position: absolute;
     background-color: white;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 10px;
+    padding: 3px 5px;
+    border: 1px solid var(--grey-color);
+    border-radius: 4px;
+    color: var(--font-color);
 }
 
 .detail-page .detail-content li a:hover {
@@ -865,7 +895,7 @@ table {
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 5px 0px 20px 1px grey;
+    box-shadow: var(--grey-color) 0 0 6px;
     width: 70%;
     border-radius: 5px;
     display: block;
@@ -1012,10 +1042,11 @@ table {
 
 .contactgegevens {
     display: block;
-    width: 82%;
+    /* width: 82%; */
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .contactgegevens h2 {
@@ -1026,6 +1057,9 @@ table {
 .contactgegevens table td {
     text-align: left;
     padding: 20px;
+}
+.contactgegevens table td p:last-of-type{
+    margin-top: .3em;
 }
 
 .contactgegevens table tr:nth-child(1) {
@@ -1048,23 +1082,30 @@ table {
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-    width: 82%;
-    margin-top: 30px;
+    width: 70%;
+    margin-top: 80px;
 }
 
 .feedback h3 {
     font-weight: 100;
 }
 
+.feedback p{
+    margin-top: .5em;
+}
+
 .feedback button {
     padding: 10px;
     background-color: white;
-    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 1%);
+    box-shadow: var(--grey-color) 0 0 6px;
     border: none;
+    border-radius: .2em;
     cursor: pointer;
     margin-right: 20px;
     margin-top: 20px;
-    width: 130px;
+    width: 12em;
+    height: 3.5em;
+    font-size: 1em;
     text-align: left;
 }
 
@@ -1078,8 +1119,8 @@ table {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 82%;
-    margin-top: 30px;
+    margin-top: 80px;
+    width: 70%;
     align-items: flex-start;
 }
 
@@ -1096,10 +1137,11 @@ table {
     flex-wrap: wrap;
     padding: 0;
     margin-top: 1.5em;
+    gap: 2.5em;
 }
 
 .detail-page ul .subject-container {
-    width: 26em;
+    width: 28.5em;
     height: 14em;
     display: flex;
     padding: 0;
@@ -1109,7 +1151,7 @@ table {
     display: block;
     width: 35em;
     border-radius: 10px;
-    height: 9em;
+    height: 10em;
     position: relative;
     left: 0;
     top: 0;
@@ -1134,21 +1176,16 @@ table {
 }
 
 .detail-page .subject-container .subject-content p {
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 10px;
     color: var(--grey-color);
     position: relative;
     top: 0;
 }
 
-.detail-page .subject-container .subject-content:nth-of-type(2) p{
-    margin-top: 12px;
-}
-
 .detail-page .subject-container .subject-content h5 {
     width: 100%;
-    height: 21px;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: lighter;
     background-size: 15px;
     background-position-x: right;
@@ -1157,7 +1194,7 @@ table {
 }
 
 .detail-page .subject-container:last-of-type .subject-content h5{
-    height: 40px; ;
+    background-size: 21px;
 }
 .detail-page .subject-container .subject-content h5{
     border-bottom: var(--grey-color) solid .05em;
