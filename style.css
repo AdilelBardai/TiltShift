@@ -38,13 +38,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    caret-color: transparent;
+
 }
 
 :root{
     --background-color:#ffffff;
     --font-color: #000000;
     --hoofd-color: #4D80E2;
-    --secondary-color: aliceblue;
+    --secondary-color:  #f4faff;
     --grey-color: #676968;
     --licht-grey-color: #e2e2e2;
 
@@ -162,6 +164,35 @@ footer {
  }
 
 
+ /* thema note hover in de index en details pagina */
+.detail-page .detail-block > img + span,
+main ul li div a:first-of-type img + span{
+    position: absolute;
+    top: -1em;
+    right: 1em;
+    background-color: var(--secondary-color);
+    padding: .2em;
+    border-radius: .3em;
+    box-shadow: var(--grey-color) 0 0 3px;
+    opacity: 0;
+}
+
+main ul li div a:first-of-type img + span{
+    top: -1.8em;
+    right: 0;
+    color: var(--font-color);
+}
+
+.detail-page .detail-block > img:hover + span,
+main ul li div a:first-of-type img:hover + span{
+    opacity: 1;
+}
+
+
+
+/* p.showthema{
+    opacity: 1 !important;
+} */
 
 
 
@@ -189,6 +220,10 @@ footer {
     left: 0;
     right: 0;
 }
+
+
+
+
 
   .pagination button {
     padding: 6px 8px;
@@ -325,10 +360,20 @@ main section:first-of-type div input{
     width: 14.5em;
     opacity: 0;
     z-index: -1;
-
     box-shadow: inset var(--grey-color) 0 0 .2em;
 
     transition: .2s;
+}
+
+.detail-page section:first-of-type div input{
+    left: -10em;
+    opacity: 0;
+    z-index: -1;
+}
+
+.detail-page section:first-of-type div input.opensearchDP{
+    opacity: 1;
+    z-index: 1;
 }
 
 main section:first-of-type div input.opensearch{
@@ -336,6 +381,7 @@ main section:first-of-type div input.opensearch{
     z-index: 1;
 }
 
+.detail-page section:first-of-type div input,
 main section:first-of-type div input[type="text"]{
     color: var(--grey-color);
     padding: .3em;
@@ -346,17 +392,16 @@ main section:first-of-type div input[type="text"]{
 /* Thema filter */
 
 .filterOptions{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
+    display: none;
     padding: 0 70px;
-    justify-content: flex-start;
-    opacity: 0;
-    height: 0;
     margin: 0;
-    padding-top: 0;
-    transition: .7s;
+}
+
+.openfilter{
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap:1.5em;
 }
 
@@ -458,11 +503,6 @@ main section:first-of-type div input[type="text"]{
     .filterOptions button:nth-of-type(16):hover{
         background-color:var(--thema-openbare-orde);
     }
-
-.openfilter{
-    opacity: 1;
-    height: 100%;
- }
 
 
 
@@ -579,12 +619,13 @@ main ul li div a:first-of-type img{
 
 main ul li div a:first-of-type h3{
     color: var(--font-color);
+    width: 90%;
 }
 
 main ul li div a:first-of-type h3::after{
     content: "";
     display: block;
-    width: 100%;
+    width: 110%;
     height: .05em;
     position: relative;
     bottom: -.4em;
@@ -732,9 +773,19 @@ table {
     text-decoration: none;
 }
 
+.detail-page section:first-of-type div>img:first-of-type{
+    order:2;
+}
+
+.detail-page section:first-of-type div>img.notificationBtn{
+    width: 1.5em;
+    cursor: pointer;
+}
+
 .detail-page section:first-of-type div{
     width: 120px;
     min-width: auto;
+    flex-direction: row-reverse;
 }
 
 .detail-page .detail-container {
@@ -754,22 +805,6 @@ table {
     margin-top: 15px;
 }
 
-.detail-page .detail-block {
-    display: inline-block;
-    margin-top: 15px;
-    width: 550px;
-}
-
-.detail-page .detail-block h1::after{
-    content: "";
-    display: block;
-    width: 21.5em;
-    height: .05em;
-    position: relative;
-    bottom: -.4em;
-    background-color: var(--grey-color);
-}
-
 .detail-page .detail-banner img {
     width: 550px;
     height: 300px;
@@ -778,13 +813,27 @@ table {
 }
 
 .detail-page .detail-block {
+    display: inline-block;
+    margin-top: 15px;
+    width: 550px;
+
     border-radius: 5px;
     height: 300px;
-    width: 550px;
     box-shadow: var(--grey-color) 0 0 6px;
     padding: 1em;
     background-color: white;
     position: relative;
+}
+
+
+.detail-page .detail-block h1::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .05em;
+    position: relative;
+    bottom: -.4em;
+    background-color: var(--grey-color);
 }
 
 .detail-page .detail-block h1 {
@@ -824,7 +873,7 @@ table {
 }
 
 .detail-page .detail-content li ul{
-    width: 400px;
+    width: max-content;
     margin: 0;
     padding: 0;
     display: flex;
@@ -862,6 +911,7 @@ table {
     margin-right: auto;
     box-shadow: var(--grey-color) 0 0 6px;
     width: 70%;
+    min-width: 30em;
     border-radius: 5px;
     display: block;
     background-color: white;
@@ -877,67 +927,87 @@ table {
 }
 
 /* Tabs */
-.tabbed {
+
+.detail-page .tabbed {
     text-align: left;
     width: 70%;
+    min-width: 30em;
     padding: 20px 0 ;
     margin-left: auto;
     margin-right: auto;
-    height: 10em;
+    height: fit-content;
+    position: relative;
+    margin-top: 80px;
 }
 
-.tabbed .titels {
+.detail-page .tabbed .titels {
     margin: 0;
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    gap: .2em;
+    gap: .15em;
 }
 
-.tabbed .titels input {
+.detail-page .tabbed .titels input {
   display: none;
 }
 
-.tabbed .titels label{
+.detail-page .tabbed .titels button{
+    font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
+    color: #ffffff;
     display: block;
     float: left;
     padding: 20px 10px;
     width: calc(97% / 5);
-    height: 4em;
-    min-width: fit-content;
+    height: 5em;
+    min-width: min-content;
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
-    border: 0.1em solid #5379bc;
+    border: 0.1em solid var(--hoofd-color);
     border-radius: 1em 1em 0 0;
     background: var(--hoofd-color);
-    color: #ffffff;
 }
 
-.tabbed .titels label:hover,
-.tabbed .titels input:checked + label {
+.detail-page .tabbed .titels button:hover,
+.detail-page .tabbed .titels button.opentab{
     background: #ffffff;
     color: #000000;
-    border: 0.1em solid var(--hoofd-color);
+    border: .2em solid var(--hoofd-color);
+    z-index: 2;
+    position: relative;
 }
 
-.tabbed .tabs {
+.detail-page .tabbed .titels button.opentab::after{
+    content: "";
+    display: block;
+    background-color: white;
+    width: 100%;
+    height: .5em;
+    position: absolute;
+    left: 0em;
+    bottom: -.4em;
+}
+
+.detail-page .tabbed .tabs {
     clear: both;
     width: 100%;
+    min-width: inherit;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    top:0em;
+    top: 0;
     left: 0;
     z-index: 0;
 }
 
-.tabbed .tabs > div {
+.detail-page .tabbed .tabs > div {
     width: 100%;
     position: relative;
-    border: 2px solid var(--hoofd-color);
+    top: -.16em;
+    border: .19em solid var(--hoofd-color);
     border-radius: 0 0 1em 1em;
     line-height: 1.4em;
     background-color: var(--background-color);
@@ -947,22 +1017,18 @@ table {
     padding: 20px 70px;
 }
 
-#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
-#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
-#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
-#tab-nav-4:checked ~ .tabs > div:nth-of-type(4),
-#tab-nav-5:checked ~ .tabs > div:nth-of-type(5) {
-  display: block;
-  z-index: 1;
+.detail-page .tabbed .tabs div.opentab{
+    display: block;
+    z-index: 1;
 }
 
-.tabbed .tabs > div > p:first-of-type {
+
+.detail-page .tabbed .tabs > div > p:first-of-type {
   color: var(--grey-color);
   margin-bottom: .5em;
 }
 
-
-.tabbed .tabs > div > p:first-of-type::after{
+.detail-page .tabbed .tabs > div > p:first-of-type::after{
     content: "";
     display: block;
     width: 100%;
@@ -973,7 +1039,7 @@ table {
   
 }
 
-.tabbed .tabs div p a {
+.detail-page .tabbed .tabs div p a {
   text-decoration: underline;
   color: var(--hoofd-color);
 }
@@ -983,10 +1049,11 @@ table {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
+  margin-bottom: 2em;
 }
 
 /* Data */
-.tabs>div>section{
+.detail-page .tabbed .tabs > div > section{
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -995,23 +1062,23 @@ table {
   padding: 0;
 }
 
-.tabs>div>section>div{
+.detail-page .tabbed .tabs > div > section > div{
   width: 100%;
   display: block;
   text-align: left;
 }
 
-.tabs>div>section>div p:nth-of-type(1){
+.detail-page .tabbed .tabs > div > section > div p:nth-of-type(1){
     color: var(--font-color);
     margin-bottom: 0;
     font-weight:bold;
 }
 
-.tabs>div>section>div p:nth-of-type(1)::after{
+.detail-page .tabbed .tabs > div > section > div p:nth-of-type(1)::after{
     display: none;
 }
 
-.tabs div section div ul{
+.detail-page .tabbed .tabs div section div ul{
   list-style:none;
   margin:0;
   margin-top: .5em;
@@ -1022,32 +1089,36 @@ table {
   flex-direction: column;
 }
 
-.tabs div section div ul li{
+.detail-page .tabbed .tabs div section div ul li{
     width: fit-content;
 }
 
-.tabs div section div ul li::before{
+.detail-page .tabbed .tabs div section div ul li::before{
   content:"- ";
 }
 
-.tabs > div table tr:first-of-type td {
+.detail-page .tabbed .tabs > div table tr:first-of-type td {
   font-weight: bold;
   color: var(--hoofd-color);
 }
 
-.tabs > div table tr td {
+.detail-page .tabbed .tabs > div table tr td {
   padding: 1em;
 }
 
-.tabs > div table tr td a {
+.detail-page .tabbed .tabs > div table tr td a {
   color: var(--hoofd-color);
   text-decoration: underline;
   cursor: pointer;
 }
 
-.tabs > div table tr:nth-child(even) {
+.detail-page .tabbed .tabs > div table tr:nth-child(even) {
   background-color: var(--secondary-color);
 }
+
+
+
+
 
 
 /* contactgegevens */
@@ -1091,6 +1162,12 @@ table {
 
 
 }
+
+
+
+
+
+
 
 
 /* feedback form */
@@ -1178,7 +1255,7 @@ table {
     width: 100%;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding: 0;
     margin-top: 1.5em;
@@ -1278,8 +1355,7 @@ table {
   .popUp-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 30px;
-    border: 1px solid #888;
+    padding: 5% 5% 2%;
     width: 50%;
     border-radius: 10px;
   }
@@ -1292,16 +1368,19 @@ table {
 
   .popUp-content input {
     margin-bottom: 15px;
+    margin-right: 1em;
   }
 
   .popUp-content form {
-    padding: 20px 25px 20px 25px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    padding: 12% 0 5%;
+   
     justify-content: center;
   }
 
   .popUp-content label {
-      font-size: 15px;
+    font-size: 15px;
   }
 
   .popUp-content form label {
@@ -1309,11 +1388,12 @@ table {
   }
 
   .popUp-content form input {
-    background-color: #67696830;
-    padding: 10px;
+    background-color: var(--licht-grey-color);
+    padding: 1em;
     border: none;
+    border-radius: .3em;
     margin-top: 10px;
-    width: 300px;
+    width: 100%;
   }
   
   /* The Close Button */
@@ -1322,6 +1402,10 @@ table {
     float: right;
     font-size: 28px;
     font-weight: bold;
+
+    position: relative;
+    top: -2em;
+    right: -1.5em;
   }
   
   .close:hover,
@@ -1409,7 +1493,7 @@ main section:last-of-type{
     overflow: hidden;
 }
 
-main section:last-of-type.openchat{
+section:last-of-type.openchat{
     transform: scale(1);
 }
 

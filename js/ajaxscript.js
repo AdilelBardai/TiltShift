@@ -194,23 +194,27 @@ async function getalgoritmesblokjes(index) {
         var link = document.createElement("a");
         var myh3 = document.createElement("h3");
         var themaicon = document.createElement("img");
+        var themaNote = document.createElement("p");
         var mypara = document.createElement("p");
         var leeslink = document.createElement("a");
         var leestekst = document.createElement("p");
         var myicon = document.createElement("img");
+        var myspan = document.createElement("span");
 
         myimage.src = `${algoritmes[n]["IMAGE"]}`;
         myh3.textContent = `${algoritmes[n]["NAAM"]}`;
-        themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`;
+        themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`; // thema img
         mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
         leeslink.href = `${algoritmes[n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
         myicon.src = `${algoritmes[n]["ICON"]}`;
         link.href = `${algoritmes[n]["LINK"]}`;
 
+        myspan.textContent = `${algoritmes[n]["THEMA"]}`;
+        themaicon.setAttribute('data-after', `${algoritmes[n]["THEMA"]}`);
         if (`${algoritmes[n]["THEMA"]}` === "Openbare orde") {
             div.classList.add("Openbareorde-box");
-
+ 
         } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Financien-box");
 
@@ -229,13 +233,15 @@ async function getalgoritmesblokjes(index) {
         } else {
             console.log("Geen thema gevonden");
         }
-
+// .showthema
         console.log("Blokjes loop");
 
         div.appendChild(mypara);
+        div.appendChild(themaNote);
         div.appendChild(myicon);
         link.appendChild(myh3);
         link.appendChild(themaicon);
+        link.appendChild(myspan);
         div.appendChild(link);
         myli.appendChild(div);
         myli.appendChild(myimage);
