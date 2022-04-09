@@ -9,6 +9,8 @@
 /* pagination / page nummer */
 /* main div first section */
 /* Thema filter */
+/* thema note hover in de index en details pagina */
+
 
 /************* main stylen Bolkjes view ************/
 
@@ -90,7 +92,7 @@ body {
 /* Navigation-bar */
 
 header nav{
-    height: 70px;
+    height: 4.4em;
     width: 100%;
     text-align:center;
     background-color: var(--secondary-color);
@@ -101,12 +103,12 @@ header nav{
 
 header nav>img{
     float: left;
-    width: 250px;
-    padding: 20px 10px 10px 66px;
+    width: 15.6em;
+    padding: 1.2em .6em .6em 4em;
 }
 
 header nav ul{
-    padding: 0px 70px 0px 0px;
+    padding: 0 4.4em 0 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -115,11 +117,10 @@ header nav ul{
 
 header nav ul li a{
     color: var(--font-color);
-    font-size: 16px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-decoration: none;
-    line-height: 70px;
-    padding: 5px 15px;
+    line-height: 4.4em;
+    padding: .3em 1em;
 }
 
 header nav ul li a.actived{
@@ -142,7 +143,7 @@ header nav ul li button img{
 
 /* header stylen */
 header article {
-    padding: 20px 70px;
+    padding: 1.2em 4.4em;
     background-color: var(--secondary-color);
     height: 11em;
 }
@@ -160,39 +161,10 @@ footer {
     background-color: var(--secondary-color);
     color: var(--font-color);
     text-align: center;
-    padding: 20px;
+    padding: 1.2em;
  }
 
 
- /* thema note hover in de index en details pagina */
-.detail-page .detail-block > img + span,
-main ul li div a:first-of-type img + span{
-    position: absolute;
-    top: -1em;
-    right: 1em;
-    background-color: var(--secondary-color);
-    padding: .2em;
-    border-radius: .3em;
-    box-shadow: var(--grey-color) 0 0 3px;
-    opacity: 0;
-}
-
-main ul li div a:first-of-type img + span{
-    top: -1.8em;
-    right: 0;
-    color: var(--font-color);
-}
-
-.detail-page .detail-block > img:hover + span,
-main ul li div a:first-of-type img:hover + span{
-    opacity: 1;
-}
-
-
-
-/* p.showthema{
-    opacity: 1 !important;
-} */
 
 
 
@@ -215,8 +187,8 @@ main ul li div a:first-of-type img:hover + span{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
     left: 0;
     right: 0;
 }
@@ -226,23 +198,23 @@ main ul li div a:first-of-type img:hover + span{
 
 
   .pagination button {
-    padding: 6px 8px;
+    padding: .4em .5em;
     border: none;
     background-color: transparent ;
-    border-radius: 5px;
+    border-radius: .3em;
     cursor: pointer;
   }
 
   .pagination button.active {
     background-color: var(--hoofd-color);
     color: var(--background-color);
-    border-radius: 5px;
+    border-radius: .3em;
   }
   
 
   .pagination button:hover:not(.active) {
     background-color: var(--secondary-color);
-    border-radius: 5px;
+    border-radius: .3em;
     color: var(--font-color);
   }
 
@@ -259,10 +231,10 @@ main ul li div a:first-of-type img:hover + span{
 main section:first-of-type {
     position: relative;
     right: 0;
-    padding: 20px 70px 0px 70px;
+    padding: 1.2em 4.4em 0 4.4em;
     width: 100%;
     text-align: center;
-    margin: 15px 0 1em 0;
+    margin: .9em 0 1em 0;
 
     display: flex;
     justify-content: space-between;
@@ -310,7 +282,7 @@ main section:first-of-type div>img{
 }
 
 main section:first-of-type div button:first-of-type img {
-    width: 17px;
+    width: 1.1em;
     filter: invert(100%) sepia(0%) saturate(1833%) hue-rotate(316deg) brightness(110%) contrast(100%);
     margin: 0;
 }
@@ -323,15 +295,15 @@ main section:first-of-type div button:nth-of-type(2){
 }
 
 main section:first-of-type div button:nth-of-type(2) img{
-    width: 25px;
+    width: 1.6em;
     float: right;
     filter: invert(48%) sepia(90%) saturate(2077%) hue-rotate(201deg) brightness(92%) contrast(93%);
 }
 
 main section:first-of-type div select {
-    border-radius: 5px;
-    border: 2px solid var(--hoofd-color);
-    padding: 2px;
+    border-radius: .3em;
+    border: .1em solid var(--hoofd-color);
+    padding: .1em;
 }
 
 main section:first-of-type div select:nth-of-type(2){
@@ -340,12 +312,12 @@ main section:first-of-type div select:nth-of-type(2){
 
 
 main section:first-of-type div button:first-of-type{
-    width: 27px;
-    height: 27px;
+    width: 1.7em;
+    height: 1.7em;
     background-color: var(--hoofd-color);
     border: none;
-    border-radius: 6px;
-    padding-top: 5px;
+    border-radius: .4em;
+    padding-top: .3em;
     cursor: pointer;
     z-index: 2;
     order: 3;
@@ -354,9 +326,9 @@ main section:first-of-type div button:first-of-type{
 main section:first-of-type div input{
     position: absolute;
     left: 13em;
-    border: var(--hoofd-color) solid 2px;
-    border-radius: 6px 0 0 6px;
-    height: 26.5px;
+    border: var(--hoofd-color) solid .1em;
+    border-radius: .4em 0 0 .4em;
+    height: 1.7em;
     width: 14.5em;
     opacity: 0;
     z-index: -1;
@@ -393,7 +365,7 @@ main section:first-of-type div input[type="text"]{
 
 .filterOptions{
     display: none;
-    padding: 0 70px;
+    padding: 0 4.4em;
     margin: 0;
 }
 
@@ -409,7 +381,7 @@ main section:first-of-type div input[type="text"]{
     border: none;
     background-color: var(--secondary-color);
     color: var(--font-color);
-    border-radius: 5px;
+    border-radius: .3em;
     height: 3em;
     width: 9.7em;
     padding: 0;
@@ -505,7 +477,29 @@ main section:first-of-type div input[type="text"]{
     }
 
 
-
+ /* thema note hover in de index en details pagina */
+ .detail-page .detail-block > img + span,
+ main ul li div a:first-of-type img + span{
+     position: absolute;
+     top: -1em;
+     right: 1em;
+     background-color: var(--secondary-color);
+     padding: .2em;
+     border-radius: .3em;
+     box-shadow: var(--grey-color) 0 0 .2em;
+     opacity: 0;
+ }
+ 
+ main ul li div a:first-of-type img + span{
+     top: -1.8em;
+     right: 0;
+     color: var(--font-color);
+ }
+ 
+ .detail-page .detail-block > img:hover + span,
+ main ul li div a:first-of-type img:hover + span{
+     opacity: 1;
+ }
 
 
 
@@ -576,27 +570,27 @@ main ul li div{
 }
 
     .Openbareorde-box{
-        box-shadow: var(--thema-openbare-orde) 0 2px 6px;
+        box-shadow: var(--thema-openbare-orde) 0 .1em .4em;
     }
 
     .Financien-box{
-        box-shadow: var(--thema-Financien) 0 2px 6px;
+        box-shadow: var(--thema-Financien) 0 .1em .4em;
     }
 
     .Verkeer-box{
-        box-shadow: var(--thema-Verkeer) 0 2px 6px;
+        box-shadow: var(--thema-Verkeer) 0 .1em .4em;
     }
 
     .Socialezekerheid-box{
-        box-shadow: var(--thema-Sociale-zekerheid) 0 2px 6px;
+        box-shadow: var(--thema-Sociale-zekerheid) 0 .1em .4em;
     }
 
     .Bestuur-box{
-        box-shadow: var(--thema-Bestuur) 0 2px 6px;
+        box-shadow: var(--thema-Bestuur) 0 .1em .4em;
     }
 
     .Onderwijs-box{
-        box-shadow: var(--thema-Onderwijs) 0 2px 6px;
+        box-shadow: var(--thema-Onderwijs) 0 .1em .4em;
     }
 
 main ul li a{
@@ -692,8 +686,8 @@ table {
     }
 
     table tr th {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 1.1em;
+        padding-bottom: 1.1em;
         color: var(--hoofd-color);
         width: 4em;
     }
@@ -761,7 +755,7 @@ table {
 /*************** detail-pagina stylen *****************/
 /* ************************************************** */
 .detail-page {
-    padding: 20px 70px 0px 70px;
+    padding: 1.2em 4.4em 0 4.4em;
 }
 
 .detail-page .terug-link {
@@ -783,7 +777,7 @@ table {
 }
 
 .detail-page section:first-of-type div{
-    width: 120px;
+    width: 11.2em;
     min-width: auto;
     flex-direction: row-reverse;
 }
@@ -800,26 +794,26 @@ table {
 
 .detail-page .detail-banner {
     display: inline-block;
-    width: 550px;
-    height: 300px;
-    margin-top: 15px;
+    width: 34.4em;
+    height: 18.8em;
+    margin-top: .9em;
 }
 
 .detail-page .detail-banner img {
-    width: 550px;
-    height: 300px;
+    width: 34.4em;
+    height: 18.8em;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: .3em;
 }
 
 .detail-page .detail-block {
     display: inline-block;
-    margin-top: 15px;
-    width: 550px;
+    margin-top: .9em;
+    width: 34.4em;
 
-    border-radius: 5px;
-    height: 300px;
-    box-shadow: var(--grey-color) 0 0 6px;
+    border-radius: .3em;
+    height: 18.8em;
+    box-shadow: var(--grey-color) 0 0 .4em;
     padding: 1em;
     background-color: white;
     position: relative;
@@ -838,7 +832,7 @@ table {
 
 .detail-page .detail-block h1 {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 1.2em;
     font-weight: 100;
     width: 100%;
 }
@@ -892,9 +886,9 @@ table {
     width: max-content;
     position: absolute;
     background-color: white;
-    padding: 3px 5px;
-    border: 1px solid var(--grey-color);
-    border-radius: 4px;
+    padding: .2em .3em;
+    border: .1em solid var(--grey-color);
+    border-radius: .2em;
     color: var(--font-color);
 }
 
@@ -906,16 +900,16 @@ table {
 }
 
 .detail-page .inhoud-container {
-    margin-top: 80px;
+    margin-top: 5em;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: var(--grey-color) 0 0 6px;
+    box-shadow: var(--grey-color) 0 0 .4em;
     width: 70%;
     min-width: 30em;
-    border-radius: 5px;
+    border-radius: .3em;
     display: block;
     background-color: white;
-    padding: 70px;
+    padding: 4.4em;
 }
 
 .detail-page .inhoud-container article {
@@ -932,12 +926,12 @@ table {
     text-align: left;
     width: 70%;
     min-width: 30em;
-    padding: 20px 0 ;
+    padding: 1.2em 0 ;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
     position: relative;
-    margin-top: 80px;
+    margin-top: 5em;
 }
 
 .detail-page .tabbed .titels {
@@ -958,7 +952,7 @@ table {
     color: #ffffff;
     display: block;
     float: left;
-    padding: 20px 10px;
+    padding: 1.2em .6em;
     width: calc(97% / 5);
     height: 5em;
     min-width: min-content;
@@ -1014,7 +1008,7 @@ table {
     display: none;
     text-align: left;
     align-content: center;
-    padding: 20px 70px;
+    padding: 1.2em 4.4em;
 }
 
 .detail-page .tabbed .tabs div.opentab{
@@ -1128,17 +1122,17 @@ table {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    margin-top: 5em;
 }
 
 .contactgegevens h2 {
     font-weight: 100;
-    margin-bottom: 20px;
+    margin-bottom: 1.2em;
 }
 
 .contactgegevens table tr td {
     text-align: left;
-    padding: 20px;
+    padding: 1.2em;
 }
 
 .contactgegevens table tr td p:first-of-type{
@@ -1151,14 +1145,14 @@ table {
 
 .contactgegevens table tr:nth-child(1) {
     background-color: white;
-    border-bottom: 1px solid rgb(95, 94, 94);
-    border-top: 1px solid rgb(95, 94, 94);
+    border-bottom: .1em solid rgb(95, 94, 94);
+    border-top: .1em solid rgb(95, 94, 94);
 }
 
 .contactgegevens table tr:nth-child(3) {
     background-color: white;
-    border-bottom: 1px solid rgb(95, 94, 94);
-    border-top: 1px solid rgb(95, 94, 94);
+    border-bottom: .1em solid rgb(95, 94, 94);
+    border-top: .1em solid rgb(95, 94, 94);
 
 
 }
@@ -1178,7 +1172,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    margin-top: 80px;
+    margin-top: 5em;
 }
 
 .feedback h3 {
@@ -1190,14 +1184,14 @@ table {
 }
 
 .feedback button {
-    padding: 10px;
+    padding: .6em;
     background-color: white;
-    box-shadow: var(--grey-color) 0 0 6px;
+    box-shadow: var(--grey-color) 0 0 .4em;
     border: none;
     border-radius: .2em;
     cursor: pointer;
-    margin-right: 20px;
-    margin-top: 20px;
+    margin-right: 1.2em;
+    margin-top: 1.2em;
     width: 12em;
     height: 3.5em;
     font-size: 1em;
@@ -1241,7 +1235,7 @@ table {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    margin-top: 5em;
     width: 70%;
     align-items: flex-start;
 }
@@ -1272,7 +1266,7 @@ table {
 .detail-page ul .subject-container img {
     display: block;
     width: 35em;
-    border-radius: 10px;
+    border-radius: .6em;
     height: 10em;
     position: relative;
     left: 0;
@@ -1298,8 +1292,8 @@ table {
 }
 
 .detail-page .subject-container .subject-content p {
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 1.4em;
+    margin-top: .6em;
     color: var(--grey-color);
     position: relative;
     top: 0;
@@ -1309,21 +1303,21 @@ table {
     width: 100%;
     font-size: 1.2em;
     font-weight: lighter;
-    background-size: 15px;
+    background-size: .9em;
     background-position-x: right;
     background-repeat: no-repeat;
     background-position-y: top;
 }
 
 .detail-page .subject-container:last-of-type .subject-content h5{
-    background-size: 21px;
+    background-size: 2.1em;
 }
 .detail-page .subject-container .subject-content h5{
     border-bottom: var(--grey-color) solid .05em;
 }
 
 .detail-page .subject-container .subject-content > a {
-    font-size: 12px;
+    font-size: 1.1em;
     color: var(--hoofd-color);
     position:relative;
     top: 0;
@@ -1342,7 +1336,7 @@ table {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 6.2em; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -1357,17 +1351,17 @@ table {
     margin: auto;
     padding: 5% 5% 2%;
     width: 50%;
-    border-radius: 10px;
+    border-radius: .6em;
   }
 
   .popUp-content h5 {
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: 1.1em;
+    margin-bottom: .9em;
     font-weight: 100;
   }
 
   .popUp-content input {
-    margin-bottom: 15px;
+    margin-bottom: .9em;
     margin-right: 1em;
   }
 
@@ -1380,7 +1374,7 @@ table {
   }
 
   .popUp-content label {
-    font-size: 15px;
+    font-size: .9em;
   }
 
   .popUp-content form label {
@@ -1392,7 +1386,7 @@ table {
     padding: 1em;
     border: none;
     border-radius: .3em;
-    margin-top: 10px;
+    margin-top: .6em;
     width: 100%;
   }
   
@@ -1400,7 +1394,7 @@ table {
   .close {
     color: var(--font-color);
     float: right;
-    font-size: 28px;
+    font-size: 1.7em;
     font-weight: bold;
 
     position: relative;
@@ -1423,10 +1417,10 @@ table {
   .gereed {
     border: none;
     background-color: var(--hoofd-color);
-    padding: 10px;
-    width: 120px;
+    padding: .6em;
+    width: 11.2em;
     color: white;
-    border-radius: 5px;
+    border-radius: .3em;
   }
 
   .gereed:hover {
