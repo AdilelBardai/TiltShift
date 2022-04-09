@@ -79,8 +79,8 @@
 body {
     font-family: 'Noto Sans SC', Helvetica, arial, sans-serif;
     min-height: 100vh;
-    background-image: linear-gradient(var(--background-color) 25em, var(--secondary-color) 20em);
-    background-size: 100% 40em;
+    background-image: linear-gradient(var(--background-color) 36em, var(--secondary-color) 20em);
+    background-size: 100% 55em;
 } 
 
 .lijstbackground{
@@ -277,7 +277,7 @@ main section:first-of-type div{
 }
 
 main section:first-of-type div>img{
-    width: 2em;
+    width: 1.6em;
     order: 4;
 }
 
@@ -762,6 +762,9 @@ table {
     font-weight: bold;
 }
 
+.detail-page section:first-of-type{
+    padding: 0;
+}
 .detail-page section:first-of-type a {
     color: black;
     text-decoration: none;
@@ -772,14 +775,23 @@ table {
 }
 
 .detail-page section:first-of-type div>img.notificationBtn{
-    width: 1.5em;
+    width: 1.3em;
     cursor: pointer;
 }
 
 .detail-page section:first-of-type div{
-    width: 11.2em;
+    width: 8em;
     min-width: auto;
     flex-direction: row-reverse;
+}
+
+.detail-page  section:first-of-type div button:first-of-type{
+    width: 2em;
+    height: 2em;
+}
+
+.detail-page  section:first-of-type div input{
+    height: 2em;
 }
 
 .detail-page .detail-container {
@@ -1248,6 +1260,7 @@ table {
 .detail-page .subjects ul{
     width: 100%;
     margin: 0;
+    margin-bottom: 4em;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -1265,9 +1278,9 @@ table {
 
 .detail-page ul .subject-container img {
     display: block;
-    width: 35em;
+    width: 25em;
+    height: 8em;
     border-radius: .6em;
-    height: 10em;
     position: relative;
     left: 0;
     top: 0;
@@ -1286,13 +1299,12 @@ table {
 
     display: inline-block;
     text-align: left;
-    padding:  0 1em;
+    padding-left: 1em;
 
     background-color: transparent;
 }
 
 .detail-page .subject-container .subject-content p {
-    font-size: 1.4em;
     margin-top: .6em;
     color: var(--grey-color);
     position: relative;
@@ -1309,11 +1321,18 @@ table {
     background-position-y: top;
 }
 
-.detail-page .subject-container:last-of-type .subject-content h5{
-    background-size: 2.1em;
+.detail-page .subject-container .subject-content h5::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .01em;
+    background-color: #000;
+    position: relative;
+    bottom: -.3em;
 }
-.detail-page .subject-container .subject-content h5{
-    border-bottom: var(--grey-color) solid .05em;
+
+.detail-page .subject-container:last-of-type .subject-content h5{
+    background-size: 1.3em;
 }
 
 .detail-page .subject-container .subject-content > a {
