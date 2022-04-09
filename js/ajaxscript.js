@@ -202,6 +202,7 @@ async function getalgoritmesblokjes(index) {
         var myspan = document.createElement("span");
 
         myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        myimage.alt = `${algoritmes[n]["NAAM"]} algoritme register foto`;
         myh3.textContent = `${algoritmes[n]["NAAM"]}`;
         themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`; // thema img
         mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
@@ -329,6 +330,7 @@ async function getalgoritmestable(index) {
         mya2.href = `${algoritmes[n]["LINK"]}`;
 
         myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        myimage.alt = `${algoritmes[n]["NAAM"]} algoritme register foto`;
         mya2.textContent = `${algoritmes[n]["NAAM"]}`;
         mytd3.textContent = `${algoritmes[n]["ORGANISATIE"]}`;
         mytd4.textContent = `${algoritmes[n]["DATUM"]}`;
