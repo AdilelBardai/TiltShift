@@ -20,8 +20,6 @@ var popUp = document.getElementById("popUp");
 // Get the button that opens the modal
 var img = document.querySelector(".notificationBtn");
 
-var popUp = document.querySelector(".pop-up");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
@@ -41,6 +39,52 @@ window.onclick = function (event) {
         popUp.style.display = "none";
     }
 }
+
+
+var gereedKnop = document.querySelector(".gereed");
+var popUpContent = document.querySelector(".popUp-content ");
+var myInput = document.querySelector(".popUp-content form input");
+
+function gereedinfo (){
+
+    if(myInput.value==="" || myInput.value.indexOf("@") ===-1 || myInput.value.indexOf("@") === myInput.value.length-1){
+    return;
+}
+
+
+
+    popUpContent.replaceChildren();
+    popUpContent.classList.add("gelukt");
+
+    var gelukttitel = document.createElement("h5");
+    var myp = document.createElement("p");
+    var bedanktKnop = document.createElement("button");
+    var close = document.createElement("span");
+   
+    close.innerHTML="&times;";
+    close.className = "close";
+
+    gelukttitel.textContent = "Gelukt!";
+    myp.textContent = `Via '${myInput.value}' blijft u op de hoogte.`
+    bedanktKnop.textContent = "Bedankt";
+    bedanktKnop.className = "gereed";
+
+
+
+    popUpContent.appendChild(gelukttitel);
+    popUpContent.appendChild(myp);
+    popUpContent.appendChild(bedanktKnop);
+    popUpContent.appendChild(close);
+    img.src = "images/icons/notification-aan-icon.svg";
+    img.style.width = "2em";
+    [close,bedanktKnop,].forEach(element=>element.addEventListener("click", () =>{
+        popUp.style.display = "none";
+    }));
+
+}
+
+gereedKnop.addEventListener("click" , gereedinfo);
+
 
 // tabs actions
 

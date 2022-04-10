@@ -10,7 +10,7 @@
 <body>
     <header>
         <nav>
-            <img src="images/algoritmeregister-logo.svg">
+            <img src="images/algoritmeregister-logo.svg" alt="algoritmeregister logo">
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#" class="actived">Overzicht</a></li>
@@ -28,9 +28,9 @@
         <section>
             <h2 class="filtertitel">Filteren op thema </h2>
             <div>
-                <input type="text" value="Wat zoek je?">
+                <input aria-label="zoekveld" type="text" value="Wat zoek je?">
                 <button><img src="images/search.png" alt="zoek-knop" ></button>
-                <button><img src="images/stripe-list-icon.png"></button>
+                <button><img src="images/stripe-list-icon.png" alt="table view knop "></button>
                 <img src="images/speaker.png" alt="speaker icon">
                 
                 <select name="filter">
@@ -70,8 +70,9 @@
         <table class="tablelist"></table>
 
         <div class="pagination"> </div> 
+        <span></span>
 
-        <button class="chatbot"><img src="images/simple-hipchat.png"></button>
+        <button class="chatbot"><img src="images/simple-hipchat.png" alt = "chatbot knop"></button>
         <section>
             <p>Meest gestelde vragen </p>
             <p>Waar kan ik je mee helpen?</p>
@@ -109,8 +110,8 @@
             </dl>
 
             <div>
-                <input type="text" value="Stel uw vraag ...">
-                <button></button>
+                <input aria-label="berichtveld" type="text" value="Stel uw vraag ...">
+                <button aria-label="send"></button>
             </div>
         </section>
     </main>

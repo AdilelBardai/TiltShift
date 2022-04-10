@@ -137,7 +137,9 @@ header nav ul li button{
 
 header nav ul li button img{
     width: 2em;
-    height: 1.2em;
+    height: 1.6em;
+    border-radius: .2em;
+    display: block;
 }
 
 
@@ -148,6 +150,7 @@ header article {
 }
 
 header article h1{
+    font-weight: lighter;
     margin: 1em 0;
 }
 
@@ -314,7 +317,7 @@ main section:first-of-type div button:first-of-type{
     border-radius: .4em;
     padding-top: .3em;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
     order: 3;
 }
 
@@ -523,9 +526,10 @@ main ul{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 4.5em;
+    /* gap: 4.5em; */
+    gap: 3em;
     padding:2em 8em;
-    justify-content: flex-start;
+    justify-content: space-around;
 }
 
     main ul>p{
@@ -607,6 +611,7 @@ main ul li div a:first-of-type img{
 }
 
 main ul li div a:first-of-type h3{
+    font-weight: lighter;
     color: var(--font-color);
     width: 90%;
 }
@@ -643,6 +648,13 @@ main ul li div img{
     position: absolute;
     bottom: 1em;
     right: 1.5em;
+}
+
+main > span {
+    position: relative;
+    top: -2.5em;
+    float: right;
+    right: 5em;
 }
 
 
@@ -707,11 +719,7 @@ table {
     }
 
     table tr th:last-of-type, table tr td:last-of-type{
-        padding-right: 10%;
-    }
-
-    table tr th:first-of-type, table tr td:first-of-type {
-        padding-left: 10%;
+        padding-right: 4%;
     }
 
 
@@ -731,6 +739,7 @@ table {
         background-color: var(--secondary-color);
     }
 
+    
 /* geen items gevonden na het filteren */
 .no-item{
     width: 100%;
@@ -820,7 +829,7 @@ table {
 
     border-radius: .3em;
     height: 18.8em;
-    box-shadow: var(--grey-color) 0 0 .4em;
+    box-shadow: var(--licht-grey-color) 0 0 .4em;
     padding: 1em;
     background-color: white;
     position: relative;
@@ -910,7 +919,7 @@ table {
     margin-top: 5em;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: var(--grey-color) 0 0 .4em;
+    box-shadow: var(--licht-grey-color) 0 0 .4em;
     width: 70%;
     min-width: 30em;
     border-radius: .3em;
@@ -1193,7 +1202,7 @@ table {
 .feedback button {
     padding: .6em;
     background-color: white;
-    box-shadow: var(--grey-color) 0 0 .4em;
+    box-shadow: var(--licht-grey-color) 0 0 .2em .1em;
     border: none;
     border-radius: .2em;
     cursor: pointer;
@@ -1360,6 +1369,9 @@ table {
   .popUp-content {
     background-color: #fefefe;
     margin: auto;
+
+    position: relative;
+
     padding: 5% 5% 2%;
     width: 50%;
     border-radius: .6em;
@@ -1400,17 +1412,41 @@ table {
     margin-top: .6em;
     width: 100%;
   }
+
+
+  .popUp-content.gelukt{
+      text-align: center;
+
+      margin: auto;
+      padding: 5% 5% 2%;
+      width: 50%;
+
+      height: 66%;
+      border-radius: .6em;
+  }
+
+  .popUp-content.gelukt h5{
+      font-weight: bold;
+  }
+  .popUp-content.gelukt p{
+      margin: 2em 0 0 0 ;
+  }
+
+  .popUp-content.gelukt button{
+      position: relative;
+      bottom: -14.5em ;
+
+  }
   
   /* The Close Button */
   .close {
     color: var(--font-color);
-    float: right;
     font-size: 1.7em;
     font-weight: bold;
 
-    position: relative;
-    top: -2em;
-    right: -1.5em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
   }
   
   .close:hover,
@@ -1432,6 +1468,7 @@ table {
     width: 11.2em;
     color: white;
     border-radius: .3em;
+    margin: 0 auto;
   }
 
   .gereed:hover {

@@ -132,6 +132,7 @@
         "DATUM":"15 - 10 - 2021",
         "STATUS":"Niet gestart",
         "TYPE":"images/icons/Zelflerend-systeem.icon.png",
+        "TYPE-NAME":"Zelflerend systeem",
         "BESCHRIJVING":"Het model berekent aan de hand van verzuimmeldingen van Haagse leerlingen de kans dat een leerling (van 12 tot 18 jaar) ergens in het lopende schooljaar langdurig relatief gaat verzuimen. Langdurig relatief verzuim (LRV) wil in dit kader…",
         "THEMA":"Onderwijs",
         "THEMA-ICON":"images/icons/Onderwijs.icon.svg",

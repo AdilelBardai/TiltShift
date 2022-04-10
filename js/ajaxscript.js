@@ -116,6 +116,7 @@ currentPage=1;
         console.log("Bolkjes view");
         style = "Bolkjes";
         viewImage.src = "images/stripe-list-icon.png";
+        viewImage.alt = "Blokjes view icon";
 
         localStorage.setItem("style", "Bolkjes");
     } else {
@@ -165,6 +166,7 @@ async function getalgoritmesblokjes(index) {
     if (selectFilter.value!=="organisatie"){
         algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
         }
+
     //  add activated class to the previous selected filters 
     if(themaArray.length>0){
         algoritmes= algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"]));
@@ -175,6 +177,7 @@ async function getalgoritmesblokjes(index) {
           }
           
     }
+    
     myul.classList.remove("hidden");
     mytable.classList.add("hidden");
     Body.classList.remove("lijstbackground");
@@ -205,10 +208,12 @@ async function getalgoritmesblokjes(index) {
         myimage.alt = `${algoritmes[n]["NAAM"]} algoritme register foto`;
         myh3.textContent = `${algoritmes[n]["NAAM"]}`;
         themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`; // thema img
+        themaicon.alt = `thema ${algoritmes[n]["THEMA"]}`;
         mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
         leeslink.href = `${algoritmes[n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
         myicon.src = `${algoritmes[n]["ICON"]}`;
+        myicon.alt = `${algoritmes[n]["THEMA"]} icon`;
         link.href = `${algoritmes[n]["LINK"]}`;
 
         myspan.textContent = `${algoritmes[n]["THEMA"]}`;
@@ -252,6 +257,9 @@ async function getalgoritmesblokjes(index) {
 
     }
     createPagination(Math.ceil(algoritmes.length/6));
+    var totalSpan = document.querySelector("main>span");
+    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+
 }
 
 
@@ -353,6 +361,7 @@ async function getalgoritmestable(index) {
             console.log("its a text");
         }else{
             mytype.src = `${algoritmes[n]["TYPE"]}`;
+            mytype.alt = `${algoritmes[n]["TYPE-NAME"]} icon`;
             mytd6.appendChild(mytype);
             mytr2.appendChild(mytd6);
             console.log("its an icon");
@@ -365,6 +374,8 @@ async function getalgoritmestable(index) {
 
 
     createPagination(Math.ceil(algoritmes.length/7));
+    var totalSpan = document.querySelector("main>span");
+    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
 }
 
 viewKnop.addEventListener("click", switchview);
