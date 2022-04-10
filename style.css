@@ -51,6 +51,7 @@
     --secondary-color:  #f4faff;
     --grey-color: #676968;
     --licht-grey-color: #e2e2e2;
+    /*  de ::after werkt niet met de var() voor kleuren, dus heb ik de hashtag kleuren gebruikt voor de ::after. */
 
     /* thema's colors */
     --thema-Natuur:#DCE6BB;
@@ -81,13 +82,16 @@ body {
     min-height: 100vh;
     background-image: linear-gradient(var(--background-color) 25em, var(--secondary-color) 20em);
     background-size: 100% 50em;
+    position: relative;
 } 
 
 .lijstbackground{
     background-image: none;
 }
 
-
+main {
+    padding-bottom: 5em;
+}
 
 /* Navigation-bar */
 
@@ -156,14 +160,15 @@ header article h1{
 
 /* footer stylen */
 footer {
-    position: relative;
+    position: absolute;
+    height: 3.5em;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: var(--secondary-color);
     color: var(--font-color);
     text-align: center;
-    padding: 1.2em;
+    padding: 1.3em;
  }
 
 
@@ -193,6 +198,7 @@ footer {
     margin-bottom: 1.2em;
     left: 0;
     right: 0;
+
 }
 
   .pagination button {
@@ -388,6 +394,10 @@ main section:first-of-type div input[type="text"]{
     box-shadow: var(--licht-grey-color) 0 .15em .2em ;
 }
 
+.filterOptions button:active{
+    transform: scale(.9);
+}
+
     .filterOptions button:first-of-type.activated,
     .filterOptions button:first-of-type:hover{
         background-color:var(--thema-Natuur);
@@ -476,6 +486,7 @@ main section:first-of-type div input[type="text"]{
 
 
  /* thema note hover in de index en details pagina */
+
  .detail-page .detail-block > img + span,
  main ul li div a:first-of-type img + span{
      position: absolute;
@@ -526,10 +537,9 @@ main ul{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    /* gap: 4.5em; */
-    gap: 3em;
-    padding:2em 8em;
-    justify-content: space-around;
+    gap: calc((100% - 66em) / 2 ); /*3 elements = 66em => 2 gaps*/
+    padding:2em 8em 0;
+    justify-content: flex-start;
 }
 
     main ul>p{
@@ -539,6 +549,7 @@ main ul{
 main ul li{
     width: 22em;
     height: 32em;
+    margin-bottom: 3em;
     position: relative;
 }
 
@@ -623,7 +634,7 @@ main ul li div a:first-of-type h3::after{
     height: .05em;
     position: relative;
     bottom: -.4em;
-    background-color: var(--grey-color);
+    background-color: #e2e2e2;
 }
 
 main ul li div>p{
@@ -744,6 +755,7 @@ table {
 .no-item{
     width: 100%;
     text-align: center;
+    height: auto;
 }
 
 
@@ -843,7 +855,7 @@ table {
     height: .05em;
     position: relative;
     bottom: -.4em;
-    background-color: var(--grey-color);
+    background-color: #e2e2e2;
 }
 
 .detail-page .detail-block h1 {
@@ -866,14 +878,17 @@ table {
     display: flex;
     flex-direction: column;
     gap: 1.3em;
+    width: 100%;
 }
 
 
 .detail-page .detail-block .detail-content li {
+    width: 100%;
     height: auto;
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 0;
 }
 
 .detail-page .detail-content li p {
@@ -883,13 +898,15 @@ table {
 }
 
 .detail-page .detail-content li ul{
-    width: max-content;
+    width: 28%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-start;
 
+    gap: 1em;
     position: absolute;
     left: 7em;
 }
@@ -899,18 +916,19 @@ table {
 }
 
 .detail-page .detail-content li ul li a {
+    display: block;
     width: max-content;
     position: absolute;
     background-color: white;
     padding: .2em .3em;
-    border: .1em solid var(--grey-color);
+    border: .1em solid var(--licht-grey-color);
     border-radius: .2em;
     color: var(--font-color);
 }
 
 .detail-page .detail-content li a:hover {
     text-decoration: none;
-    background-color: #676968;
+    background-color: var(--grey-color);
     color: white;
     transition: 0.2s ease-in;
 }
@@ -992,7 +1010,7 @@ table {
 .detail-page .tabbed .titels button.opentab::after{
     content: "";
     display: block;
-    background-color: white;
+    background-color: #ffffff;
     width: 100%;
     height: .5em;
     position: absolute;
@@ -1042,10 +1060,10 @@ table {
     content: "";
     display: block;
     width: 100%;
-    height: .05em;
+    height: .06em;
     position: relative;
     bottom: -.2em;
-    background-color: var(--grey-color);
+    background-color: #e2e2e2;
   
 }
 
@@ -1061,74 +1079,6 @@ table {
   border-collapse: collapse;
   margin-bottom: 2em;
 }
-
-/* Data */
-.detail-page .tabbed .tabs > div > section{
-  display:flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  row-gap: 2em;
-  padding: 0;
-}
-
-.detail-page .tabbed .tabs > div > section > div{
-  width: 100%;
-  display: block;
-  text-align: left;
-}
-
-.detail-page .tabbed .tabs > div > section > div p:nth-of-type(1){
-    color: var(--font-color);
-    margin-bottom: 0;
-    font-weight:bold;
-}
-
-.detail-page .tabbed .tabs > div > section > div p:nth-of-type(1)::after{
-    display: none;
-}
-
-.detail-page .tabbed .tabs div section div ul{
-  list-style:none;
-  margin:0;
-  margin-top: .5em;
-  padding-left:2em;
-  gap: 0;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.detail-page .tabbed .tabs div section div ul li{
-    width: fit-content;
-}
-
-.detail-page .tabbed .tabs div section div ul li::before{
-  content:"- ";
-}
-
-.detail-page .tabbed .tabs > div table tr:first-of-type td {
-  font-weight: bold;
-  color: var(--hoofd-color);
-}
-
-.detail-page .tabbed .tabs > div table tr td {
-  padding: 1em;
-}
-
-.detail-page .tabbed .tabs > div table tr td a {
-  color: var(--hoofd-color);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.detail-page .tabbed .tabs > div table tr:nth-child(even) {
-  background-color: var(--secondary-color);
-}
-
-
-
-
 
 
 /* contactgegevens */
@@ -1173,6 +1123,74 @@ table {
 
 }
 
+
+
+/* Data */
+.detail-page .tabbed .tabs > div > section{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 2em;
+    padding: 0;
+  }
+  
+  .detail-page .tabbed .tabs > div > section > div{
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  
+  .detail-page .tabbed .tabs > div > section > div p:nth-of-type(1){
+      color: var(--font-color);
+      margin-bottom: 0;
+      font-weight:bold;
+  }
+  
+  .detail-page .tabbed .tabs > div > section > div p:nth-of-type(1)::after{
+      display: none;
+  }
+  
+  .detail-page .tabbed .tabs div section div ul{
+    list-style:none;
+    margin:0;
+    margin-top: .5em;
+    padding:0  0 0 2em;
+    gap: 0;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-page .tabbed .tabs div section div ul li{
+      width: fit-content;
+      height: auto;
+      margin-bottom: 0;
+  }
+  
+  .detail-page .tabbed .tabs div section div ul li::before{
+    content:"- ";
+  }
+  
+  .detail-page .tabbed .tabs > div table tr:first-of-type td {
+    font-weight: bold;
+    color: var(--hoofd-color);
+  }
+  
+  .detail-page .tabbed .tabs > div table tr td {
+    padding: 1em;
+  }
+  
+  .detail-page .tabbed .tabs > div table tr td a {
+    color: var(--hoofd-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .detail-page .tabbed .tabs > div table tr:nth-child(even) {
+    background-color: var(--secondary-color);
+  }
+  
 
 
 
@@ -1275,6 +1293,7 @@ table {
     height: 11em;
     display: flex;
     padding: 0;
+    margin-bottom: 0;
 }
 
 .detail-page ul .subject-container img {
@@ -1327,7 +1346,7 @@ table {
     display: block;
     width: 100%;
     height: .01em;
-    background-color: #000;
+    background-color: #676968;
     position: relative;
     bottom: -.3em;
 }
@@ -1478,6 +1497,9 @@ table {
 
 
 
+main.detail-page + footer{
+      position: relative;
+  }
 
 
 
@@ -1518,7 +1540,7 @@ table {
 
 
     /* Open chatbot */
-main section:last-of-type{
+main section.chatbot-box{
     width: 29em;
     height: 35em;
     border-radius: 2em 2em 0 2em;
@@ -1535,21 +1557,21 @@ main section:last-of-type{
     overflow: hidden;
 }
 
-section:last-of-type.openchat{
+section.chatbot-box.openchat{
     transform: scale(1);
 }
 
-    main section:last-of-type,
-    main section:last-of-type p,
-    main section:last-of-type ul,
-    main section:last-of-type ul li,
-    main section:last-of-type button{
+    main section.chatbot-box,
+    main section.chatbot-box p,
+    main section.chatbot-box ul,
+    main section.chatbot-box ul li,
+    main section.chatbot-box button{
         margin: 0;
         padding: 0;
         z-index: 99;
     }
 
-    main section:last-of-type>p:first-of-type{
+    main section.chatbot-box>p:first-of-type{
         color: var(--background-color);
         background-color: var(--hoofd-color);
         font-weight: bold;
@@ -1563,7 +1585,7 @@ section:last-of-type.openchat{
         border-radius: 2em 2em 0 0;
 
     }
-        main section:last-of-type>p:first-of-type::after{
+        main section.chatbot-box>p:first-of-type::after{
             content: ">";
             display: inline-block;
             position: absolute;
@@ -1574,11 +1596,11 @@ section:last-of-type.openchat{
             cursor: pointer;
         }
 
-            main section:last-of-type>p.closelist::after{
+            main section.chatbot-box>p.closelist::after{
                 transform: rotate(90deg);
             }
 
-        main section:last-of-type p:nth-of-type(2){
+        main section.chatbot-box p:nth-of-type(2){
             max-width: 20em;
             padding: .5em 1em ;
             font-size: .8em;
@@ -1589,7 +1611,7 @@ section:last-of-type.openchat{
             left: 1em;
         }
 
-        main section:last-of-type p:nth-of-type(3){
+        main section.chatbot-box p:nth-of-type(3){
             font-size: .6em;
             color: var(--grey-color);
             position: absolute;
@@ -1598,7 +1620,7 @@ section:last-of-type.openchat{
         }
 
     /* De vragen list */
-main section:last-of-type dl{
+main section.chatbot-box dl{
     width: 100%;
     position: absolute;
     top: 3em;
@@ -1610,25 +1632,25 @@ main section:last-of-type dl{
     z-index: 99;
 }
 
-    main section:last-of-type dl.closelist{
+    main section.chatbot-box dl.closelist{
         transform: scaleY(0);
         transform-origin: top;
     }
 
-    main section:last-of-type dl dt,
-    main section:last-of-type dl dd{
+    main section.chatbot-box dl dt,
+    main section.chatbot-box dl dd{
         width: 100%;
         font-size: .8em;
         padding: 1em 2em 1em 1em;
         text-align: left;
     }
 
-    main section:last-of-type dl dd:nth-of-type(2n+1),
-    main section:last-of-type dl dt:nth-of-type(2n+1){
+    main section.chatbot-box dl dd:nth-of-type(2n+1),
+    main section.chatbot-box dl dt:nth-of-type(2n+1){
         background-color: var(--secondary-color);
     }
 
-    main section:last-of-type dl dt::after{
+    main section.chatbot-box dl dt::after{
         content: ">";
         display: inline-block;
         position: absolute;
@@ -1639,20 +1661,20 @@ main section:last-of-type dl{
         cursor: pointer;
     }
 
-    main section:last-of-type dl dt.closedslid{
+    main section.chatbot-box dl dt.closedslid{
         padding-bottom: .5em;
     }
 
-    main section:last-of-type dl dt.closedslid::after{
+    main section.chatbot-box dl dt.closedslid::after{
         transform: rotate(-90deg);
     }
 
-    main section:last-of-type dl dd{
+    main section.chatbot-box dl dd{
         padding: 0 1.5em 1em 2em;
 
     }
 
-    main section:last-of-type dl dd.closedslid{
+    main section.chatbot-box dl dd.closedslid{
         clip: rect(0 0 0 0);
         position: absolute;
         white-space: nowrap;
@@ -1660,9 +1682,8 @@ main section:last-of-type dl{
 
 
 
-
     /* input position */
-main section:last-of-type div{
+main section.chatbot-box div{
     width: 100%;
     height: 3em;
     border-radius: 0 0 0 1.5em;
@@ -1672,18 +1693,18 @@ main section:last-of-type div{
     z-index:99;
 }
 
-    main section:last-of-type div::after{
+    main section.chatbot-box div::after{
         content: "";
         display: block;
         height: .07em;
         width: 93%;
-        background-color: var(--licht-grey-color);
+        background-color: #e2e2e2;
         position: absolute;
         top: 0;
         left: 1em;
     }
 
-    main section:last-of-type div button{
+    main section.chatbot-box div button{
         background-color: transparent;
 
         border-top: 1.5em solid transparent;
@@ -1695,11 +1716,11 @@ main section:last-of-type div{
         right: 1em;
     }
 
-    main section:last-of-type div button:hover{
+    main section.chatbot-box div button:hover{
         transform: scale(.8);
     }
 
-    main section:last-of-type div input{
+    main section.chatbot-box div input{
         background-color: var(--hoofd-color);
         width: 87%;
         height: 2em ;
@@ -1711,9 +1732,9 @@ main section:last-of-type div{
         opacity: 1;
     }
 
-        main section:last-of-type div input[type="text"]{
-            color: var(--background-color);
-            padding: 0 1em;
-        }
-
+    main section.chatbot-box div input[type="text"] ,
+    main section.chatbot-box div input::placeholder {
+        color: var(--background-color);
+        padding: 0 1em;
+    }
 

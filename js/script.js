@@ -16,12 +16,12 @@ searchKnop.addEventListener("click", opensearcharea);
 
 // Chatbot actions 
 var chatbotKnop = document.querySelector("button.chatbot");
-var chatbotbox = document.querySelector("main > section:last-of-type");
-var VragenListKnop = document.querySelector("main section:last-of-type>p:first-of-type");
+var chatbotbox = document.querySelector("main > section.chatbot-box");
+var VragenListKnop = document.querySelector("main section.chatbot-box > p:first-of-type");
 
-var vragenList = document.querySelector("main section:last-of-type dl");
-var detailTitles = document.querySelectorAll("main section:last-of-type dl dt");
-var detailDescription = document.querySelectorAll("main section:last-of-type dl dd");
+var vragenList = document.querySelector("main section.chatbot-box dl");
+var detailTitles = document.querySelectorAll("main section.chatbot-box dl dt");
+var detailDescription = document.querySelectorAll("main section.chatbot-box dl dd");
 var elementArray = Array.from(detailTitles);
 
 elementArray.forEach((element, index) => {

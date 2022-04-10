@@ -88,7 +88,6 @@ function noItems(){
     if(!algoritmes) return;
     if(algoritmes.length===0)
     {
-     
         if (style === "table") {
         var myTdEmpty = document.createElement("td");
         var myTrEmpty = document.createElement("tr");
@@ -258,8 +257,14 @@ async function getalgoritmesblokjes(index) {
     }
     createPagination(Math.ceil(algoritmes.length/6));
     var totalSpan = document.querySelector("main>span");
-    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+    totalSpan.textContent="";
+    totalSpan.style.display="none";
 
+    if(algoritmes.length!==0){
+    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+    totalSpan.style.display="block";
+
+    }
 }
 
 
@@ -375,7 +380,12 @@ async function getalgoritmestable(index) {
 
     createPagination(Math.ceil(algoritmes.length/7));
     var totalSpan = document.querySelector("main>span");
+    totalSpan.style.display="none";
+    totalSpan.textContent="";
+    if(algoritmes.length!==0){
     totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+    totalSpan.style.display="block";
+    }
 }
 
 viewKnop.addEventListener("click", switchview);
@@ -406,6 +416,7 @@ async function filterCity(){
         algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
         }
         algoritmes=themaArray.length>0? algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"])):algoritmes;
+        if(themaArray.length===0)  await requestData();
  
 
             if (style === "Bolkjes") {
@@ -415,7 +426,7 @@ async function filterCity(){
                 console.log("Table");
                 getalgoritmestable(1);
             }
-
+            noItems();
 }
 async function organisatiefilter (event){
     await requestData(); //get the algorithm array
@@ -439,7 +450,7 @@ async function filterData(event){
         event.target.classList.toggle("activated");
 
         filterCity();
-        noItems();
+     
     } 
 
 const bloklist=document.querySelector(".bloklist");

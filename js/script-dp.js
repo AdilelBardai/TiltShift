@@ -51,8 +51,6 @@ function gereedinfo (){
     return;
 }
 
-
-
     popUpContent.replaceChildren();
     popUpContent.classList.add("gelukt");
 
@@ -111,12 +109,12 @@ titelsBar.forEach((titel,index) =>{
 
 // Chatbot actions 
 var chatbotKnop = document.querySelector(".detail-page .chatbot");
-var chatbotbox = document.querySelector(".detail-page > section:last-of-type");
-var VragenListKnop = document.querySelector(".detail-page section:last-of-type>p:first-of-type");
+var chatbotbox = document.querySelector(".detail-page > section.chatbot-box");
+var VragenListKnop = document.querySelector(".detail-page section.chatbot-box > p:first-of-type");
 
-var vragenList = document.querySelector(".detail-page section:last-of-type dl");
-var detailTitles = document.querySelectorAll(".detail-page section:last-of-type dl dt");
-var detailDescription = document.querySelectorAll(".detail-page section:last-of-type dl dd");
+var vragenList = document.querySelector(".detail-page section.chatbot-box dl");
+var detailTitles = document.querySelectorAll(".detail-page section.chatbot-box dl dt");
+var detailDescription = document.querySelectorAll(".detail-page section.chatbot-box dl dd");
 var elementArray = Array.from(detailTitles);
 
 elementArray.forEach((element, index) => {
