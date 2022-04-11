@@ -1,4 +1,18 @@
 
+    // Filters actiens
+var filterknop = document.querySelector(".filtertitel");
+var filtermenu = document.querySelector(".filterOptions");
+
+function openfiltermenu(){
+    console.log("click");
+    filtermenu.classList.toggle("openfilter");
+    filterknop.classList.toggle("closemenu");
+}
+
+filterknop.addEventListener("click", openfiltermenu);
+
+
+
 // AJAX code
 
 // view knop switch between blokjes & table
@@ -6,11 +20,13 @@
 var viewKnop = document.querySelector("main section:first-of-type div button:nth-of-type(2)");
 var viewImage = document.querySelector("main section:first-of-type div button:nth-of-type(2) img");
 
+var pagination=document.querySelector(".pagination");
+
 var myul = document.querySelector("main ul");
 var mytable = document.querySelector("main table");
 
-var currentPage = 0;
-var style = "table";
+var currentPage = 1;
+var style =  "table";
 var Body = document.body;
 
 // JSON Data
@@ -18,31 +34,104 @@ var requestfile = "json\\database.json";
 var request = new Request(requestfile);
 var response;
 var algoritmes;
+var themaArray=[];
+
+/* pagination / page nummer */
+function createPagination(num){
+    if(num<2)return; //guard block
+    console.log("here");
+    if(currentPage!==1){
+    var btnPrev = document.createElement("button");
+    btnPrev.textContent= "<";
+    pagination.appendChild(btnPrev);
+    }
+    for(var i = 1;i<=num;i++){
+        var btn = document.createElement("button");
+        if(currentPage===i) btn.classList.add("active");
+        btn.textContent= i;
+        pagination.appendChild(btn);
+    }
+    if(currentPage !== num){ 
+        var btnNext = document.createElement("button");
+        btnNext.innerText= ">";
+        pagination.appendChild(btnNext);
+        }
+
+}
+function showMore(event){
+    var pageNum;
+    if(event.target.textContent===">"){
+    pageNum=currentPage+1;
+    currentPage++;
+}
+    else if(event.target.textContent==="<"){
+    pageNum=currentPage-1;
+    currentPage--;    
+}
+    else{
+    pageNum= +event.target.textContent;
+}
+
+    currentPage=pageNum;
+    pagination.replaceChildren();
+    if(style==="table"){
+    getalgoritmestable(pageNum);
+    }else{
+        getalgoritmesblokjes(pageNum);
+    }
+   console.log(currentPage);
+}
+
+pagination.addEventListener("click",showMore);
+
+function noItems(){
+    if(!algoritmes) return;
+    if(algoritmes.length===0)
+    {
+        if (style === "table") {
+        var myTdEmpty = document.createElement("td");
+        var myTrEmpty = document.createElement("tr");
+        myTdEmpty.textContent= "Geen resultaten gevonden.";
+        myTrEmpty.appendChild(myTdEmpty);
+        mytable.appendChild(myTrEmpty);
+        myTdEmpty.classList.add("no-item");
+        myTdEmpty.colSpan="6";
+       }
+        else{
+            var myLiEmpty = document.createElement("li");
+            myLiEmpty.textContent = "Geen resultaten gevonden.";
+            myul.appendChild(myLiEmpty);
+            myLiEmpty.classList.add("no-item");
+        
+        }
+    }
+}
+
 
 
 async function switchview() {
+currentPage=1;
     if (style === "table") {
         console.log("Bolkjes view");
         style = "Bolkjes";
         viewImage.src = "images/stripe-list-icon.png";
+        viewImage.alt = "Blokjes view icon";
 
-        localStorage.setItem("viewImage", JSON.stringify(true));
+        localStorage.setItem("style", "Bolkjes");
     } else {
         console.log("Table view");
         style = "table";
         viewImage.src = "images/list-option.png";
-        var pageResultaten = document.querySelector(".pagination p");
-        pageResultaten.innerHTML = "Resultaten: 1-7 van 14";
 
-        localStorage.setItem("viewImage", JSON.stringify(false));
+
+        localStorage.setItem("style", "table");
     }
 
     getalgoritmes(currentPage);
+    noItems();
 }
 
-if (localStorage.getItem('viewImage')==="true"){
-    viewImage.innerHTML = "table";
-}
+
 
 async function requestData() {
     response = await fetch(request);
@@ -55,22 +144,39 @@ function getalgoritmes(index) {
     console.log(currentPage);
 
     if (style === "Bolkjes") {
-        getalgoritmesblokjes(index, index+6);
+        getalgoritmesblokjes(index);
         console.log("Blokjes");
     } else {
         console.log("Table");
-        getalgoritmestable(index, index+7);
+        getalgoritmestable(index);
     }
+
+    
 }
 
 // ******************************
 // making Bolkjes****************
 // ******************************
 
-async function getalgoritmesblokjes(index,end) {
+async function getalgoritmesblokjes(index) {
+   
     // Er was error want de data was nog niet gereed daarom heb ik await gebruikt
     if(!algoritmes) await requestData();
+    if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
 
+    //  add activated class to the previous selected filters 
+    if(themaArray.length>0){
+        algoritmes= algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"]));
+        for (const btn of document.querySelectorAll(".filterOptions button")) {
+            if (themaArray.includes(btn.textContent)) {
+              btn.classList.add("activated");
+            }
+          }
+          
+    }
+    
     myul.classList.remove("hidden");
     mytable.classList.add("hidden");
     Body.classList.remove("lijstbackground");
@@ -79,69 +185,86 @@ async function getalgoritmesblokjes(index,end) {
     if (x > 0) {
         myul.replaceChildren();
     }
-
-    for (let n = 0; n < end; n++) {
+    pagination.replaceChildren();
+    var start =(index-1)*6;//1*66
+    var end = (index-1)*6 + 6<=algoritmes.length?(index-1)*6+6:algoritmes.length;
+    for (let n = start; n < end; n++) {
 
         var myimage = document.createElement("img");
         var div = document.createElement("div");
         var myli = document.createElement("li");
         var link = document.createElement("a");
         var myh3 = document.createElement("h3");
+        var themaicon = document.createElement("img");
+        var themaNote = document.createElement("p");
         var mypara = document.createElement("p");
         var leeslink = document.createElement("a");
         var leestekst = document.createElement("p");
         var myicon = document.createElement("img");
+        var myspan = document.createElement("span");
 
-        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
-        myh3.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
-        mypara.textContent = `${algoritmes[index * end + n]["BESCHRIJVING"]}`;
-        leeslink.href = `${algoritmes[index * end + n]["LINK"]}`;
+        myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        myimage.alt = `${algoritmes[n]["NAAM"]} algoritme register foto`;
+        myh3.textContent = `${algoritmes[n]["NAAM"]}`;
+        themaicon.src = `${algoritmes[n]["THEMA-ICON"]}`; // thema img
+        themaicon.alt = `thema ${algoritmes[n]["THEMA"]}`;
+        mypara.textContent = `${algoritmes[n]["BESCHRIJVING"]}`;
+        leeslink.href = `${algoritmes[n]["LINK"]}`;
         leestekst.textContent = `Lees meer`;
-        myicon.src = `${algoritmes[index * end + n]["ICON"]}`;
-        link.href = `${algoritmes[index * end + n]["LINK"]}`;
+        myicon.src = `${algoritmes[n]["ICON"]}`;
+        myicon.alt = `${algoritmes[n]["THEMA"]} icon`;
+        link.href = `${algoritmes[n]["LINK"]}`;
 
-        if (`${algoritmes[index * end + n]["THEMA"]}` === "Openbare orde") {
+        myspan.textContent = `${algoritmes[n]["THEMA"]}`;
+        themaicon.setAttribute('data-after', `${algoritmes[n]["THEMA"]}`);
+        if (`${algoritmes[n]["THEMA"]}` === "Openbare orde") {
             div.classList.add("Openbareorde-box");
-            myh3.classList.add("Openbareorde");
-
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
+ 
+        } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Financien-box");
-            myh3.classList.add("Financien");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Verkeer") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Verkeer") {
             div.classList.add("Verkeer-box");
-            myh3.classList.add("Verkeer");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Sociale zekerheid") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Sociale zekerheid") {
             div.classList.add("Socialezekerheid-box");
-            myh3.classList.add("Socialezekerheid");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Bestuur") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Bestuur") {
             div.classList.add("Bestuur-box");
-            myh3.classList.add("Bestuur");
 
-        } else if (`${algoritmes[index * end + n]["THEMA"]}` === "Onderwijs") {
+        } else if (`${algoritmes[n]["THEMA"]}` === "Onderwijs") {
             div.classList.add("Onderwijs-box");
-            myh3.classList.add("Onderwijs");
 
         } else {
             console.log("Geen thema gevonden");
         }
-
+// .showthema
         console.log("Blokjes loop");
 
         div.appendChild(mypara);
+        div.appendChild(themaNote);
         div.appendChild(myicon);
         link.appendChild(myh3);
+        link.appendChild(themaicon);
+        link.appendChild(myspan);
         div.appendChild(link);
         myli.appendChild(div);
         myli.appendChild(myimage);
         leeslink.appendChild(leestekst);
         div.appendChild(leeslink);
         myul.appendChild(myli);
+
     }
+    createPagination(Math.ceil(algoritmes.length/6));
+    var totalSpan = document.querySelector("main>span");
+    totalSpan.textContent="";
+    totalSpan.style.display="none";
 
+    if(algoritmes.length!==0){
+    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+    totalSpan.style.display="block";
 
+    }
 }
 
 
@@ -149,18 +272,31 @@ async function getalgoritmesblokjes(index,end) {
 // making tabel *****************
 // ******************************
 
-async function getalgoritmestable(index,end) {
-
+async function getalgoritmestable(index) {
+    
     if(!algoritmes) await requestData();
-
+    if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
+    //  add activated class to the previous selected filters 
+    if(themaArray.length>0){
+        algoritmes= algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"]));
+        for (const btn of document.querySelectorAll(".filterOptions button")) {
+            if (themaArray.includes(btn.textContent)) {
+              btn.classList.add("activated");
+            }
+          }
+          
+    }
     myul.classList.add("hidden");
     mytable.classList.remove("hidden");
     Body.classList.add("lijstbackground");
 
-    let y = mytable.hasChildNodes()
+    let y = mytable.hasChildNodes();
     if (y > 0) {
         mytable.replaceChildren();
     }
+    pagination.replaceChildren();
 
     var mytr1 = document.createElement("tr");
     var myth1 = document.createElement("th");
@@ -184,9 +320,9 @@ async function getalgoritmestable(index,end) {
     mytr1.appendChild(myth5);
     mytr1.appendChild(myth6);
     mytable.appendChild(mytr1);
-
-    // 7 - end
-    for (let n = 0; n < end; n++) {
+    var start =(index-1)*7;//1*66
+    var end = (index-1)*7 + 7<=algoritmes.length?(index-1)*7+7:algoritmes.length;
+    for (let n = start; n < end; n++) {
         var mytr2 = document.createElement("tr");
         var myimage = document.createElement("img");
 
@@ -201,16 +337,17 @@ async function getalgoritmestable(index,end) {
         var mytd6 = document.createElement("td");
         var mytype = document.createElement("img");
 
-        console.log(mytype);
+        console.log(n);
 
-        mya1.href = `${algoritmes[index * end + n]["LINK"]}`;
-        mya2.href = `${algoritmes[index * end + n]["LINK"]}`;
+        mya1.href = `${algoritmes[n]["LINK"]}`;
+        mya2.href = `${algoritmes[n]["LINK"]}`;
 
-        myimage.src = `${algoritmes[index * end + n]["IMAGE"]}`;
-        mya2.textContent = `${algoritmes[index * end + n]["NAAM"]}`;
-        mytd3.textContent = `${algoritmes[index * end + n]["ORGANISATIE"]}`;
-        mytd4.textContent = `${algoritmes[index * end + n]["DATUM"]}`;
-        mytd5.textContent = `${algoritmes[index * end + n]["STATUS"]}`;
+        myimage.src = `${algoritmes[n]["IMAGE"]}`;
+        myimage.alt = `${algoritmes[n]["NAAM"]} algoritme register foto`;
+        mya2.textContent = `${algoritmes[n]["NAAM"]}`;
+        mytd3.textContent = `${algoritmes[n]["ORGANISATIE"]}`;
+        mytd4.textContent = `${algoritmes[n]["DATUM"]}`;
+        mytd5.textContent = `${algoritmes[n]["STATUS"]}`;
 
         mya1.appendChild(myimage);
         mytd1.appendChild(mya1);
@@ -223,21 +360,113 @@ async function getalgoritmestable(index,end) {
         mytr2.appendChild(mytd5);
         mytr2.appendChild(mytd6);
 
-        if((`${algoritmes[index * end + n]["TYPE"]}` === "Rule based") || (`${algoritmes[index * end + n]["TYPE"]}` === "?")){
-            mytd6.textContent = `${algoritmes[index * end + n]["TYPE"]}`;
+        if((`${algoritmes[n]["TYPE"]}` === "Rule based") || (`${algoritmes[n]["TYPE"]}` === "?")){
+            mytd6.textContent = `${algoritmes[n]["TYPE"]}`;
             mytr2.appendChild(mytd6);
             console.log("its a text");
         }else{
-            mytype.src = `${algoritmes[index * end + n]["TYPE"]}`;
+            mytype.src = `${algoritmes[n]["TYPE"]}`;
+            mytype.alt = `${algoritmes[n]["TYPE-NAME"]} icon`;
             mytd6.appendChild(mytype);
             mytr2.appendChild(mytd6);
             console.log("its an icon");
         }
 
         mytable.appendChild(mytr2);
+
+        
     }
 
+
+    createPagination(Math.ceil(algoritmes.length/7));
+    var totalSpan = document.querySelector("main>span");
+    totalSpan.style.display="none";
+    totalSpan.textContent="";
+    if(algoritmes.length!==0){
+    totalSpan.textContent= `Resultaten: ${start+1}-${end} van ${algoritmes.length}`;
+    totalSpan.style.display="block";
+    }
 }
 
 viewKnop.addEventListener("click", switchview);
-window.onload =switchview;
+
+document.addEventListener('DOMContentLoaded', function() { //window.onload=>accept more than 1 func
+    var dataFilter=JSON.parse(localStorage.getItem("myFilters"));
+    if(dataFilter){
+        themaArray=dataFilter.themaArray;
+        console.log(dataFilter.city);
+        selectFilter.value=dataFilter.city;
+        localStorage.removeItem("myFilters");
+    }
+
+    if(localStorage.getItem("style")==="table"){
+        style="Bolkjes";
+    }
+    switchview();
+
+});
+
+// organisatie filter
+var selectbar = document.querySelector("main section:first-of-type div select");
+const selectFilter=document.querySelector("select[name=filter]:first-of-type");
+
+async function filterCity(){
+    currentPage=1;
+    if (selectFilter.value!=="organisatie"){
+        algoritmes= algoritmes.filter(algoritm=>algoritm["ORGANISATIE"]===selectFilter.value);
+        }
+        algoritmes=themaArray.length>0? algoritmes.filter(algoritm=>themaArray.includes(algoritm["THEMA"])):algoritmes;
+        if(themaArray.length===0)  await requestData();
+ 
+
+            if (style === "Bolkjes") {
+                getalgoritmesblokjes(1);
+                console.log("Blokjes");
+            } else {
+                console.log("Table");
+                getalgoritmestable(1);
+            }
+            noItems();
+}
+async function organisatiefilter (event){
+    await requestData(); //get the algorithm array
+    await filterCity();
+}
+
+selectFilter.addEventListener("change",organisatiefilter);
+
+
+// Thema filter 
+async function filterData(event){
+    
+    if (event.target.textContent==="") return;
+    await requestData();
+    if(!event.target.classList.contains("activated")){
+        themaArray.push(event.target.textContent);
+    }else {
+
+        themaArray.splice(themaArray.indexOf(event.target.textContent),1);
+    }
+        event.target.classList.toggle("activated");
+
+        filterCity();
+     
+    } 
+
+const bloklist=document.querySelector(".bloklist");
+const tablelist=document.querySelector(".tablelist");
+
+[tablelist,bloklist].map((element)=> element.addEventListener("click",(event)=>{
+    if(event.target.tagName==="H3" || event.target.tagName==="A")
+    {
+        localStorage.setItem("myFilters", JSON.stringify({
+            city:selectFilter.value,
+            themaArray:themaArray
+        }));
+    }
+}));
+
+const selectBtns=document.querySelector(".filterOptions");
+selectBtns.addEventListener("click",filterData);
+
+

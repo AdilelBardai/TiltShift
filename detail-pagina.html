@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +9,13 @@
 </head>
 <body>
     <header>
-        <nav class="navigation-bar">          
-            <img src="images/algoritmeregister-logo.svg">
+        <nav class="navigation-bar">
+            <img src="images/algoritmeregister-logo.svg" alt="algoritmeregister logo">
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="index.html">Overzicht</a></li>
               <li><a href="#">Contact</a></li>
-              <li><button><img src="images/Netherlands.png" alt=""></button></li>
+              <li><button><img src="images/Netherlands.png" alt="taal-selectie"></button></li>
             </ul>
         </nav>    
         <article>
@@ -24,16 +24,37 @@
         </article> 
     </header>
 
-    <main class="detail-page">
+    <main class="detail-page" id="detail-page">
         <section>
-            <a href="index.html"> < Terug </a>
+            <a href="index.html" class="terug-link">< Terug </a>
             <div>
-                <input type="text" value="Wat zoek je?">
-                <button><img src="images/search.png"></button>
-                <a href="#"><img src="images/icons/notification.png" alt="notification-knop"></a>
-                <a href="#"><img src="images/icons/sound.png" alt="voorlees-knop"></a>
-            </div>
+                <input aria-label="zoekveld" type="text" placeholder="Wat zoek je?">
+                <button><img src="images/search.png" alt="zoek-knop" ></button>
+                <img src="images/speaker.png" alt="voorlees-knop">
+                <img src="images/icons/notification-icon.svg" alt="notification-knop" class="notificationBtn">
+                
+
+              </div>
         </section>
+
+        <div id="popUp" class="pop-up">
+          <div class="popUp-content">
+            <span class="close">&times;</span>
+            <h5>Ik wil op de hoogte blijven van:</h5>
+            <input type="checkbox" checked name="keuze1" value="keuze1">
+            <label for="keuze1"> Wanneer er wijzigingen plaatsvinden voor <b>"Handhaving Illegale Vakantieverhuur"</b></label><br>
+            <input type="checkbox" name="keuze2" value="keuze2">
+            <label for="keuze2">Nieuwe algoritmes met hetzelfde thema bijkomen</label><br>
+            <input type="checkbox" name="keuze3" value="keuze3">
+            <label for="keuze3"> Nieuwe algoritmes bijkomen</label><br>
+            <form>
+              <label for="e-mail">Voer uw e-mail in:</label>
+              <input type="email"  placeholder="Example: algoritmeregister@gmail.com" required>
+              
+              <button class="gereed">Gereed</button>
+            </form>
+          </div>
+        </div>
 
         <section class="detail-container">
             <div class="detail-banner">
@@ -42,13 +63,21 @@
             
             <div class="detail-block">
                 <h1>Handhaving Illegale Vakantieverhuur</h1>
+                <img src="images/icons/Openbareorde.icon.svg" alt="Openbareorde icon">
+                <span>Openbare orde</span>
+
                 <ul class="detail-content">
-                    <li>Organisatie: <p>Gemeente Amsterdam</p></li>
-                    <li>Datum: <p>01-12 -2021</p></li>
-                    <li>Status <p>Test</p></li>
-                    <li>Type <p>?</p></li>
-                    <li>Risico's</li>
-                    <li>Taggs: <a href="#">Melding</a> <a href="#">Toezicht en Handhaving</a></li>
+                    <li>Organisatie:<p>Gemeente Amsterdam</p></li>
+                    <li>Datum:<p>01-12 -2021</p></li>
+                    <li>Status:<p>Test</p></li>
+                    <li>Type:<p>?</p></li>
+                    <li>Risico's:</li>
+                    <li>Taggs: 
+                      <ul>
+                        <li><a href="#">Melding</a></li>
+                        <li><a href="#">Toezicht en Handhaving</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -89,27 +118,24 @@
         </section>
 
         <!--Tabs-->
-      <section class="tabbed">
-          <input type="radio" name="tabs" id="tab-nav-1" checked>
-          <label for="tab-nav-1">Risico’s</label>
-          <input type="radio" name="tabs" id="tab-nav-2">
-          <label for="tab-nav-2">Discriminatie</label>
-          <input type="radio" name="tabs" id="tab-nav-3">
-          <label for="tab-nav-3">Menselijk toezicht</label>
-          <input type="radio" name="tabs" id="tab-nav-4">
-          <label for="tab-nav-4">Data</label>
-          <input type="radio" name="tabs" id="tab-nav-5">
-          <label for="tab-nav-5">Dataverwerking</label>
-
+        <section class="tabbed">
+          <div class="titels">
+            <button class="opentab">Risico’s</button>
+            <button>Discriminatie</button>
+            <button>Menselijk toezicht</button>
+            <button>Data</button>
+            <button>Dataverwerking</button>
+          </div>
+          
           <div class="tabs">
             <!--     Risico’s     -->
-            <div>
+            <div class="opentab">
               <p>Welke risico’s heeft het gebruik van het algoritme en wat doet de gemeente om deze risico’s te ondervangen?
               <p>
       
               <p>Het systeem heeft uiteraard gevolgen voor de mogelijke overtreder. Een melding kan namelijk meer of minder prioriteit krijgen dan zonder het algoritme. We hebben verschillende maatregelen getroffen om ervoor te zorgen dat alle risico-inschattingen van het algoritme niet op toeval berusten. Een belangrijk maatregel is dat we dit algoritme in een pilotfase uitvoerig en voortdurend evalueren op bv. betrouwbaarheid, voordat het wordt geïmplementeerd in de bedrijfsvoering. </p>
             </div>
-
+      
             <!--    Discriminatie    -->
             <div>
               <p>Hoe bevordert het algoritme gelijke behandeling of gaat het ongelijke behandeling tegen?
@@ -228,94 +254,132 @@
             </div>
       
           </div>
-        </section>
-        <!--Tabs-->
+          </section>
 
         <section class="contactgegevens">
             <h2>Contactgegevens</h2>
             <table>    
                 <tr>
                     <td>
-                        <i>Afdeling of team</i>
-                        <br>
-                        Directie Wonen, Toezicht en Handhaving
+                      <p>Afdeling of team</p>
+                      <p>Directie Wonen, Toezicht en Handhaving</p>
                     </td>
+
                     <td>
-                        <i>Contactteam voor vragen</i>
-                        <br>
-                        Team Vakantieverhuur/onderhuur
+                      <p>Contactteam voor vragen</p>
+                      <p>Team Vakantieverhuur/onderhuur</p>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>
-                        <i>Telefoonnummer</i>
-                        <br>
-                        14020
-                    </td>
-                    <td>
-                        <i>External suppliers</i>
-                        <br>
-                        Ontwikkeld in eigen beheer
-                    </td>
+                  <td>
+                    <p>Telefoonnummer</p>
+                    <p>14020</p>
+                  </td>
+
+                  <td>
+                    <p>External suppliers</p>
+                    <p>Ontwikkeld in eigen beheer</p>
+                  </td>
                 </tr>
 
                 <tr>
-                    <td>
-                        <i>E-mail</i>
-                        <br>
-                        CIO-office@amsterdam.nl
+                    <td colspan="2">
+                        <p>E-mail</p>
+                        <p>CIO-office@amsterdam.nl</p>
                     </td>
-                    <td></td>
+                    <!-- <td></td> -->
                 </tr>
             </table>
         </section>
-
         <section class="feedback">
             <h3>Vond u deze informatie nuttig?</h3>
-            <p>Met behulp van uw feedback kunnen wij de website verbeteren en zo optimaal mogelijk maken</p>
+            <p>Met behulp van uw feedback kunnen wij de website verbeteren en zo optimaal mogelijk maken.</p>
             <button>&#128512; Ja</button>
             <button>&#128528; Een beetje</button>
             <button>&#128543; Nee</button>
         </section>
 
         <section class="subjects">
-          <h4>Andere binnen het onderwerp:</h4>
-          <div class="subject-container">
-              <img src="images/table-images/top400600.jpg" alt="top400600">
-              <div class="subject-content">
-                  <h5>Top 400/600 <img src="images/icons/top400600-icon.png" class="subject-icon" alt="top400600"></h5>
-                  <p>
-                      Om de stad veiliger te maken coördineert de
-                      gemeente, samen met haar gemeenschappelijke
-                      partners, vanuit...
-                  </p>
-                  <a href="#">Lees meer</a>
-              </div>
-          </div>
-          <div class="subject-container">
-              <img src="images/table-images/placeholder-img.png" alt="placeholder">
-              <div class="subject-content">
-                      <h5>Vorderingen/straf <img src="images/icons/vorderingenstraffen-icon.png" class="subject-icon" alt="vorderingenstraffen"></h5>
-                  <p>
-                      Een overzicht van vorderingen
-                      en strafmaatregelen in het 
-                      verkeer. De data bevat...
-                  </p>
-                  <a href="#">Lees meer</a>
-              </div>
-          </div>
-      </section>
+            <h4>Andere binnen het onderwerp:</h4>
+            <ul>
+              <li  class="subject-container">
+                    <img src="images/table-images/top400600.jpg" alt="top400600">
+                    <div class="subject-content">
+                        <h5 class="Openbareorde">Top 400/600</h5>
+                        <p>
+                            Om de stad veiliger te maken coördineert de
+                            gemeente, samen met haar gemeenschappelijke
+                            partners, vanuit...
+                        </p>
+                        <a href="#">Lees meer</a>
+                    </div>
+              </li>
+              <li  class="subject-container">
+                    <img src="images/table-images/standaard-foto.png" alt="placeholder">
+                    <div class="subject-content">
+                            <h5 class="Verkeer">Vorderingen/straf maatregelen</h5> 
+                        <p>
+                            Een overzicht van vorderingen
+                            en strafmaatregelen in het 
+                            verkeer. De data bevat...
+                        </p>
+                        <a href="#">Lees meer</a>
+                    </div>
+              </li>
+            </ul>
+        </section>
 
-        <button class="chatbot"><img src="images/simple-hipchat.png"></button>
-    </main>
+        <button class="chatbot"><img src="images/simple-hipchat.png" alt = "chatbot knop"></button>
+        <section class="chatbot-box">
+            <p>Meest gestelde vragen </p>
+            <p>Waar kan ik je mee helpen?</p>
+            <p>13:42 PM</p>
+
+            <dl>
+                <dt class="vraag">Wat is een algoritmeregister?</dt>
+                    <dd class="closedslid">Het algoritmeregister is een overzicht 
+                        van de algoritmes die de gemeenten bij 
+                        gemeentelijke dienstverlening. 
+                        Een algoritme is een vooraf bepa alde set 
+                        regels of stappen die door de computer gevolgd worden. 
+                        Per algoritme vindt u eerst algemene informatie over de 
+                        bedoeling en werking van het algoritme.</dd>
+
+                <dt class="vraag">Waar word al mijn data opgeslagen? </dt>
+                    <dd class="closedslid">Het algoritmeregister is een overzicht 
+                        van de algoritmes die de gemeenten bij 
+                        gemeentelijke dienstverlening. </dd>
+
+                <dt class="vraag">Krijg ik te zien waar algoritmes voor worden gebruikt? </dt>
+                    <dd class="closedslid">Het algoritmeregister is een overzicht 
+                        van de algoritmes die de gemeenten bij 
+                        gemeentelijke dienstverlening. </dd>
+
+                <dt class="vraag">Hoe kan ik up-to-date blijven over nieuwe algoritmes? </dt>
+                    <dd class="closedslid">Het algoritmeregister is een overzicht 
+                        van de algoritmes die de gemeenten bij 
+                        gemeentelijke dienstverlening. </dd>
+
+                <dt class="vraag">Hoelang word data bewaard?</dt>
+                    <dd class="closedslid">Het algoritmeregister is een overzicht 
+                        van de algoritmes die de gemeenten bij 
+                        gemeentelijke dienstverlening. </dd>
+            </dl>
+
+            <div>
+                <input aria-label="berichtveld" type="text" placeholder="Stel uw vraag ...">
+                <button aria-label="send"></button>
+            </div>
+        </section>
+      
+      </main>
 
     <footer>
-      <p>© 2022 - ALGORITMEREGISTER</p> 
+        <p>2022 ALGORITMEREGISTER</p>
     </footer>
 
     
-    <script src="js/script.js"></script>
-    <script src="js/ajaxscript.js"></script>
+    <script src="js/script-dp.js"></script>
 </body>
 </html>

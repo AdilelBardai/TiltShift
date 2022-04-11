@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +10,12 @@
 <body>
     <header>
         <nav>
-            <img src="images/algoritmeregister-logo.svg">
+            <img src="images/algoritmeregister-logo.svg" alt="algoritmeregister logo">
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#" class="actived">Overzicht</a></li>
               <li><a href="#">Contact</a></li>
-              <li><button><img src="images/Netherlands.png" alt=""></button></li>
+              <li><button><img src="images/Netherlands.png" alt="Netherlands vlag"></button></li>
             </ul>
         </nav>    
         <article>
@@ -26,11 +26,11 @@
 
     <main>
         <section>
-            <h2>Filteren op thema </h2>
+            <h2 class="filtertitel">Filteren op thema </h2>
             <div>
-                <input type="text" value="Wat zoek je?">
-                <button><img src="images/search.png"></button>
-                <button><img src="images/stripe-list-icon.png"></button>
+                <input aria-label="zoekveld" type="text" placeholder="Wat zoek je?">
+                <button><img src="images/search.png" alt="zoek-knop" ></button>
+                <button><img src="images/stripe-list-icon.png" alt="table view knop "></button>
                 <img src="images/speaker.png" alt="speaker icon">
                 
                 <select name="filter">
@@ -66,23 +66,14 @@
             <button>Openbare orde</button>
         </section>
 
-        <ul></ul>
-        <table></table>
+        <ul class="bloklist"></ul>
+        <table class="tablelist"></table>
 
-        <div class="pagination">
-            <button>&laquo;</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>&raquo;</button>
-            <p>Resultaten: 1-6 van 14</p>
-        </div> 
+        <div class="pagination"> </div> 
+        <span></span>
 
-        <button class="chatbot"><img src="images/simple-hipchat.png"></button>
-        <section>
+        <button class="chatbot"><img src="images/simple-hipchat.png" alt = "chatbot knop"></button>
+        <section class="chatbot-box">
             <p>Meest gestelde vragen </p>
             <p>Waar kan ik je mee helpen?</p>
             <p>13:42 PM</p>
@@ -119,8 +110,8 @@
             </dl>
 
             <div>
-                <input type="text" value="Stel uw vraag ...">
-                <button></button>
+                <input aria-label="berichtveld" type="text" placeholder="Stel uw vraag ...">
+                <button aria-label="send"></button>
             </div>
         </section>
     </main>
