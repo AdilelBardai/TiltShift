@@ -10,3 +10,10 @@ creëert het toch overzicht.
 # Header
 De header is voorzien van een navigatiebalk die het mogelijk maakt om door de gehele
 website te kunnen navigeren. 
+
+# Main 
+In de main is er voornamelijk gewerkt met sections met daarin een div. De section word gebruikt
+als grote container om de elementen heen en in een div bevinden zich de kleinere elementen. Denk
+bijvoorbeeld aan een section met daarin 2 divjes die ervoor zorgt dat de divjes in de section 
+goed worden gepositioneerd. Niet voor elk element word een class gebruikt, zodat de code er 
+nog wat overzichtellijker uitziet. 
