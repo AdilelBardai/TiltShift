@@ -30,6 +30,8 @@ Ik heb een JSON file gemaakt met de belangrijkeste informatie in het overzichtsp
 ### JavaScript
 Ik heb een JavaScript file voor elke pagina gemaakt om geen errors te hebben als elementen in een pagina staan en niet in de andere en een JavaScript file voor de AJAX code, want hij is te ingewikkeld.
 
+Ik heb een localStorage gebruikt in de AJAX code om het view, de thema filter en de organisatie filter resultaten te onthouden, als we naar de detailspagina gegaan hebben en nog een keer terug gekomen naar de overzichtspagina.
+
 # Overzichtspagina
 
 ### **Sundous**:
