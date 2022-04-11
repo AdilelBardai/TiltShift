@@ -41,7 +41,7 @@ Ik heb in de code twee functions gemaakt voor elke view, want we hebben verschil
 We hebben de blokken als standaard view dus heb ik met onload event in de Javascript dat aangepast. en volgens de Loop die maakt de elementen voor mij heb ik de pagination gemaakt en de resultaten stukje onder het pagina, want de loop moet mijn info van de JSON file halen en werken volgens de pagination buttons en de resutaten rekenen volgens de resultaten van de loop.
 
 ### Filters
-Voor de filters heb ik een function filter voor de organisaties heet "filterCity" gemaakt en "filterData" voor thema en koppeld om samen te werken. De pagination en de elementen resultaten hebben relatie met de filters om de juiste values altijd te hebben.
+Voor de filters heb ik een function heet "filterCity" gemaakt daar wordt de elementen filteren volgens de organistaties. er ook function "filterData" voor thema filteren en koppeld om samen te werken volgens de organitatie filter. De pagination en de elementen resultaten hebben relatie met de filters functions om de juiste values altijd te hebben.
 
 Ik heb ook een function gemaakt heet "noItems" om duidelijk te vertelen dat er geen resultaten is . Dat beteken dat er geen algoritme info in de database volgens de filteren is.
 
